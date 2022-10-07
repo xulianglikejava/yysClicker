@@ -55,7 +55,7 @@ def 开始御灵() :
         startX,startY, = CommonUtils.openimages(startImg)
         CommonUtils.click_point_random(startX, startY)
         # 一把打完至少要120秒
-        time.sleep(120)
+        time.sleep(92)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
