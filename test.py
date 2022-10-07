@@ -7,6 +7,7 @@ import aircv as ac
 import random
 import time
 hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+import CommonUtils
 # hwnd = win32gui.FindWindow(0, "雷电模拟器")
 
 a1 = "./image/28/11.png"
@@ -87,24 +88,10 @@ def openimages(template):
         return 0
 
 def test():
-    abss = openimages(a1)
-    print(abss)
-    x, y = abss
-    print(x, y)
-    click_point(x, y)
-    # makeimg()
-    # click_point(720, 412)
-    print("点击完成")
-
-    # while True:
-    #     for i in range(7):
-    #         abss = openimages(imagesList[i])
-    #         if abss == 0:
-    #             print("0")
-    #             time.sleep(0.2)
-    #         else:
-    #             x , y = abss
-    #             click_point(x,y)
-    #             time.sleep(0.5)
+    successImg = './image/结界突破/success.png'
+    failImg = './image/结界突破/fail.png'
+    startImg = './image/结界突破/start.png'
+    print(CommonUtils.openimages(successImg))
+    print(CommonUtils.openimages(failImg))
 
 test()

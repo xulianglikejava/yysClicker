@@ -13,9 +13,11 @@ hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 # 简单点击事件
 def click_point(x,y):
     # 模拟鼠标指针 传送到指定坐标
+    x = int(x)
+    y = int(y)
     long_position = win32api.MAKELONG(x, y)
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
-    time.sleep(random.random(0.02 , 0.08))
+    time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 
 # 简单点击事件
@@ -31,6 +33,23 @@ def click_point_random(x,y):
         y = int(y) + random.randint(0,3)
     print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
+    win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
+    time.sleep(random.uniform(0.02 , 0.08))
+    win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
+
+def click_point_random_clear(x,y):
+    # 模拟鼠标指针 传送到指定坐标
+    # 随机一下
+    random1 = random.randint(0,10)
+    if random1 > 5 :
+        x = int(x) + random.randint(0,4)
+        y = int(y) - random.randint(0,3)
+    else:
+        x = int(x) - random.randint(0,4)
+        y = int(y) + random.randint(0,3)
+    print("点击的坐标为：" + str(x) + "," + str(y))
+    long_position = win32api.MAKELONG(x, y)
+    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
     time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
@@ -59,9 +78,14 @@ def makeimg(self):
     saveDC.BitBlt((0, 0), (width, height), mfcDC, (0, 0), win32con.SRCCOPY)
 
     bmpinfo = saveBitMap.GetInfo()
+
     bmpstr = saveBitMap.GetBitmapBits(True)
     im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
     # im_PIL.save("screen.png")  # 保存
+    # pil转换格式到opencv
+    win32gui.DeleteObject(saveBitMap.GetHandle())
+    mfcDC.DeleteDC()
+    saveDC.DeleteDC()
     im_PILs = cv2.cvtColor(np.array(im_PIL), cv2.COLOR_RGB2BGR)
     # pil转换格式到opencv
     return im_PILs
@@ -71,7 +95,9 @@ def openimages(template):
     """
     传入需要匹配的原图路径,返回值为,
     """
-    templates = ac.imread(template)
+    # templates = ac.imread(template)
+    templates = cv2.imdecode(np.fromfile(template, dtype=np.uint8), -1)  # 读取中文路径及名称
+
     # 进行比对
     # templates = cv2.imread(template, cv2.IMREAD_UNCHANGED)
     # match_results = cv2.matchTemplate(source, templates, cv2.TM_CCOEFF_NORMED)

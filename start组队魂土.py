@@ -10,7 +10,7 @@ import random
 import datetime
 
 # 体力
-power = 80
+power = 92
 # 每局消耗体力
 consume = 8
 # 计划打的局数
