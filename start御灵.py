@@ -24,20 +24,20 @@ smallWaitTime = 2
 
 hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 # hwnd = win32gui.FindWindow(0, "MuMu模拟器")
-successImg = './image/业原火/success.png'
-failImg = './image/业原火/fail.png'
-startImg = './image/业原火/start.png'
+successImg = './image/御灵/success.png'
+failImg = './image/御灵/fail.png'
+startImg = './image/御灵/start.png'
 
 
-def 开始业原火() :
+def 开始御灵() :
     # 设置挑战次数
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
-    print("预计挑战业原火 " + str(maxcount) + "局")
+    print("预计挑战御灵 " + str(maxcount) + "局")
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/业原火/结算坐标.txt')
+    overFile = open('./address/御灵/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -76,5 +76,5 @@ def 开始业原火() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始业原火()
+开始御灵()
 

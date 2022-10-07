@@ -123,6 +123,7 @@ def 开始组队魂土() :
 
     # 开始执行任务
     for i in range(maxcount):
+        print("------------------------")
         print("开始打第 " + str(i) + " 次")
         i += 1
 
