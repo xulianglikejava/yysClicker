@@ -68,6 +68,9 @@ def 开始结界突破() :
         print("开始打第 " + str(i) + " 次")
         i += 1
 
+        if i % 3 == 0 and i != 0:
+            CommonUtils.click_point_random(flushX, flushY)
+            time.sleep(2)
 
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0,9)
@@ -78,9 +81,8 @@ def 开始结界突破() :
 
         while tempAddr in totalAddress:
             tempAddr = random.randint(0, 9)
-
         totalAddress.append(tempAddr)
-
+        print(tempAddr)
         startX, startY, againX, againY = startAddress[tempAddr].split(',')
         CommonUtils.click_point_random(startX,startY)
         time.sleep(random.uniform(1.2,1.6))

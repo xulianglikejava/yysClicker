@@ -9,6 +9,7 @@ import time
 
 
 hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+#hwnd = win32gui.FindWindow(0, "夜神模拟器")
 
 # 简单点击事件
 def click_point(x,y):
@@ -81,7 +82,7 @@ def makeimg(self):
 
     bmpstr = saveBitMap.GetBitmapBits(True)
     im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
-    # im_PIL.save("screen.png")  # 保存
+    im_PIL.save("screen.png")  # 保存
     # pil转换格式到opencv
     win32gui.DeleteObject(saveBitMap.GetHandle())
     mfcDC.DeleteDC()

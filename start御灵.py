@@ -10,11 +10,11 @@ import random
 import datetime
 
 # 体力
-power = 200
+power = 150
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 17
+maxcount = 30
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -22,7 +22,6 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 # hwnd = win32gui.FindWindow(0, "MuMu模拟器")
 successImg = './image/御灵/success.png'
 failImg = './image/御灵/fail.png'
