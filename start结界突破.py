@@ -62,15 +62,14 @@ def 开始结界突破() :
     # 用于计算已经攻击过的点
     totalAddress = []
 
+
+    successTotal = 0
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i) + " 次")
+        print("开始打第 " + str(i + 1) + " 次")
         i += 1
 
-        if i % 3 == 0 and i != 0:
-            CommonUtils.click_point_random(flushX, flushY)
-            time.sleep(2)
 
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0,9)
@@ -78,35 +77,62 @@ def 开始结界突破() :
             totalAddress = []
             CommonUtils.click_point_random(flushX,flushY)
             time.sleep(5)
+        # 正常流程
 
         while tempAddr in totalAddress:
             tempAddr = random.randint(0, 9)
         totalAddress.append(tempAddr)
-        print(tempAddr)
+        print("开始打第 " + str(tempAddr + 1) + " 个点")
         startX, startY, againX, againY = startAddress[tempAddr].split(',')
         CommonUtils.click_point_random(startX,startY)
-        time.sleep(random.uniform(1.2,1.6))
+        time.sleep(random.uniform(2.1,2.9))
+
+        if CommonUtils.openimages(startImg) == 0:
+            CommonUtils.click_point_random(startX, startY)
         if CommonUtils.openimages(startImg) != 0:
             againX, againY = CommonUtils.openimages(startImg)
             CommonUtils.click_point_random(againX, againY)
 
         # 一把打完至少要三十秒
         time.sleep(25)
+        # 循环找图用的
         flag = 0
+        # 由于计算等待次数
+        countTime = 0
+
         # 循环截图 判断是否打完
         while flag == 0 :
 
             if CommonUtils.openimages(successImg) == 0 and CommonUtils.openimages(failImg) == 0:
-                print("等待中...")
+                print("等待第 " + str(countTime + 1 ) + " 次...")
+                countTime = countTime + 1
                 time.sleep(5)
+                if countTime > 15 :
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    print("等不下去了，随便点一点")
+                    break;
 
-            else:
+
+            elif CommonUtils.openimages(successImg) != 0 :
+                # 如果成功 那么成功次数加一  加一后再计算是否是第三次 如果是得多点次
+                successTotal = successTotal + 1
+                overX, overY = overAddress[random.randint(0, 9)].split(',')
+                print("点击结算")
+                print("已经成功打完了第" + str(successTotal + 1 ) + " 次...")
+                CommonUtils.click_point_random(overX, overY)
+                if successTotal != 0 and successTotal % 3 == 0 :
+                    print("点击弹窗胜利")
+                    CommonUtils.click_point_random(overX, overY)
+                flag = 1
+                break;
+            elif CommonUtils.openimages(failImg) != 0:
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
                 CommonUtils.click_point_random(overX, overY)
                 flag = 1
                 break;
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+
+        time.sleep(bigWaitTime + random.uniform(1.4,2.5))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")

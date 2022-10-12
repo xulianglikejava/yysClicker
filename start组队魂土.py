@@ -10,13 +10,13 @@ import random
 import datetime
 
 # 体力
-power = 150
+power = 300
 # 每局消耗体力
 consume = 8
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 23
+consumeTime = 25
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
