@@ -10,25 +10,28 @@ import random
 import datetime
 
 # 体力
-power = 150
+power = 192
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 30
+maxcount = 50
 # 每局消耗时间
-consumeTime = 23
+consumeTime = 50
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
+hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 # hwnd = win32gui.FindWindow(0, "MuMu模拟器")
 successImg = './image/御灵/success.png'
 failImg = './image/御灵/fail.png'
 startImg = './image/御灵/start.png'
 
 
-def 开始御灵() :
+def 开始御灵(hwndBig) :
+    hwnd = CommonUtils.get_child_windows(hwndBig)
+
     # 设置挑战次数
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
@@ -49,24 +52,24 @@ def 开始御灵() :
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i) + " 次")
+        print("开始打第 " + str(i + 1 ) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg)
-        CommonUtils.click_point_random(startX, startY)
+        startX,startY, = CommonUtils.openimages(startImg,hwnd)
+        CommonUtils.click_point_random(startX, startY,hwnd)
         # 一把打完至少要120秒
-        time.sleep(92)
+        time.sleep(consumeTime)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg) == 0 and CommonUtils.openimages(failImg) == 0:
+            if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
                 print("战斗还没结束...")
                 time.sleep(5)
             else :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
-                CommonUtils.click_point_random(overX, overY)
+                CommonUtils.click_point_random(overX, overY,hwnd)
                 time.sleep(smallWaitTime + random.uniform(0.2,0.5))
-                CommonUtils.click_point_random(overX, overY)
+                CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
         time.sleep(bigWaitTime + random.uniform(0.2,0.6))
@@ -75,5 +78,5 @@ def 开始御灵() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始御灵()
+开始御灵(hwndBig)
 

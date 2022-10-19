@@ -25,7 +25,7 @@ smallWaitTime = 2
 successImg = './image/结界突破/success.png'
 failImg = './image/结界突破/fail.png'
 startImg = './image/结界突破/start.png'
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
+hwndBig = win32gui.FindWindow(0, "捉鼠大师小叮当")
 
 def 开始结界突破(hwndBig) :
     hwnd = hwndBig

@@ -8,21 +8,11 @@ import random
 import time
 
 
-hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
-#hwnd = win32gui.FindWindow(0, "夜神模拟器")
+
+
 
 # 简单点击事件
-def click_point(x,y):
-    # 模拟鼠标指针 传送到指定坐标
-    x = int(x)
-    y = int(y)
-    long_position = win32api.MAKELONG(x, y)
-    win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
-    time.sleep(random.uniform(0.02 , 0.08))
-    win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
-
-# 简单点击事件
-def click_point_random(x,y):
+def click_point_random(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
     # 随机一下
     random1 = random.randint(0,10)
@@ -38,7 +28,7 @@ def click_point_random(x,y):
     time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 
-def click_point_random_clear(x,y):
+def click_point_random_clear(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
     # 随机一下
     random1 = random.randint(0,10)
@@ -56,7 +46,7 @@ def click_point_random_clear(x,y):
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 
 # 对窗口进行后台截图 并返回信息
-def makeimg(self):
+def makeimg(hwnd):
     """
     后台截屏函数,并返回opencv的对象
     """
@@ -92,7 +82,7 @@ def makeimg(self):
     return im_PILs
 
 # 传入小图信息 然后截屏里找大图 最后返回x，y坐标
-def openimages(template):
+def openimages(template,hwnd):
     """
     传入需要匹配的原图路径,返回值为,
     """
@@ -112,3 +102,5 @@ def openimages(template):
         return x1, y1
     else:
         return 0
+
+
