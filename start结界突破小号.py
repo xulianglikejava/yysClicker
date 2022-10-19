@@ -14,7 +14,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 0
+maxcount = 3
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -29,9 +29,7 @@ hwndBig = win32gui.FindWindow(0, "捉鼠大师小叮当")
 
 def 开始结界突破(hwndBig) :
     hwnd = hwndBig
-
     # 设置突破卷数量
-    maxcount = 30
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计挑战结界 " + str(maxcount) + "局")

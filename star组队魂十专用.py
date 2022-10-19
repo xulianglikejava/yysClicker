@@ -11,7 +11,7 @@ import datetime
 import os
 
 # 体力
-power = 230
+power = 96
 # 每局消耗体力
 consume = 4
 # 计划打的局数
