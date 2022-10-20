@@ -22,7 +22,6 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-# hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
 
@@ -186,5 +185,4 @@ def 开始组队探索() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始组队探索()
 

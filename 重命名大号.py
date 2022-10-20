@@ -11,8 +11,7 @@ hwndBig = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 
 
 
-def test():
+def rename():
 
     win32gui.SetWindowText(hwndBig,'铁血战士胖虎')
 
-test()

@@ -14,7 +14,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 0
+maxcount = 3
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -25,13 +25,11 @@ smallWaitTime = 2
 successImg = './image/结界突破/success.png'
 failImg = './image/结界突破/fail.png'
 startImg = './image/结界突破/start.png'
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
+hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
 
-def 开始结界突破(hwndBig) :
-    hwnd = hwndBig
-
+def 开始结界突破(hwndSmall) :
+    hwnd = hwndSmall
     # 设置突破卷数量
-    maxcount = 30
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计挑战结界 " + str(maxcount) + "局")
@@ -138,5 +136,4 @@ def 开始结界突破(hwndBig) :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始结界突破(hwndBig)
 

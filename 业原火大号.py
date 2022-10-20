@@ -10,36 +10,33 @@ import random
 import datetime
 
 # 体力
-power = 192
+power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 50
+maxcount = 17
 # 每局消耗时间
-consumeTime = 50
+consumeTime = 23
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-# hwnd = win32gui.FindWindow(0, "MuMu模拟器")
-successImg = './image/御灵/success.png'
-failImg = './image/御灵/fail.png'
-startImg = './image/御灵/start.png'
+hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+successImg = './image/业原火/success.png'
+failImg = './image/业原火/fail.png'
+startImg = './image/业原火/start.png'
 
 
-def 开始御灵(hwndBig) :
-    hwnd = CommonUtils.get_child_windows(hwndBig)
-
+def 开始业原火() :
     # 设置挑战次数
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
-    print("预计挑战御灵 " + str(maxcount) + "局")
+    print("预计挑战业原火 " + str(maxcount) + "局")
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/御灵/结算坐标.txt')
+    overFile = open('./address/业原火/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -52,12 +49,12 @@ def 开始御灵(hwndBig) :
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i + 1 ) + " 次")
+        print("开始打第 " + str(i) + " 次")
         i += 1
         startX,startY, = CommonUtils.openimages(startImg,hwnd)
         CommonUtils.click_point_random(startX, startY,hwnd)
         # 一把打完至少要120秒
-        time.sleep(consumeTime)
+        time.sleep(120)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
@@ -78,5 +75,4 @@ def 开始御灵(hwndBig) :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始御灵(hwndBig)
 

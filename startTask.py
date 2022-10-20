@@ -7,10 +7,10 @@ import aircv as ac
 import random
 import time
 
-import start业原火
-import start御灵
-import start组队魂土
-import start结界突破
+import 业原火大号
+import 御灵大号
+import 组队魂土
+import 结界突破大号
 
 hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 import CommonUtils

@@ -1,20 +1,17 @@
-import math
 import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
 import CommonUtils
 import random
 import datetime
+import PySimpleGUI as sg
+
 
 # 体力
 power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 3
+maxcount = 0
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -25,11 +22,12 @@ smallWaitTime = 2
 successImg = './image/结界突破/success.png'
 failImg = './image/结界突破/fail.png'
 startImg = './image/结界突破/start.png'
-hwndBig = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 
-def 开始结界突破(hwndBig) :
+def 开始结界突破() :
     hwnd = hwndBig
     # 设置突破卷数量
+    maxcount = 30
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计挑战结界 " + str(maxcount) + "局")
@@ -136,5 +134,4 @@ def 开始结界突破(hwndBig) :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始结界突破(hwndBig)
 

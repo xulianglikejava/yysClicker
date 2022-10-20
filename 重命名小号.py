@@ -11,8 +11,7 @@ hwndBig = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 
 
 
-def test():
+def rename():
+    print('hhhhh')
+    # win32gui.SetWindowText(hwndBig,'捉鼠大师小叮当')
 
-    win32gui.SetWindowText(hwndBig,'捉鼠大师小叮当')
-
-test()
