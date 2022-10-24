@@ -11,13 +11,13 @@ import datetime
 import os
 
 # 体力
-power = 96
+power = 450
 # 每局消耗体力
 consume = 4
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 33
+consumeTime = 34
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -28,7 +28,7 @@ hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 
 
-def 开始组队魂十(hwndSmall,hwndBig) :
+def 开始组队魂十() :
 
     maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
@@ -83,4 +83,4 @@ def 开始组队魂十(hwndSmall,hwndBig) :
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
 
-
+开始组队魂十()

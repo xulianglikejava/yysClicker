@@ -31,6 +31,7 @@ successImg = './image/探索/success.png'
 startImg = './image/探索/start.png'
 fightImg = './image/探索/fight.png'
 fightImg2 = './image/探索/fight2.png'
+fightImg3 = './image/探索/fight3.png'
 giftImg = './image/探索/gift.png'
 sureImg = './image/探索/sure.png'
 makesureImg = './image/探索/makesure.png'
@@ -66,10 +67,11 @@ def 开始组队探索() :
     for i in range(maxcount):
         print("------------------------")
         print("开始打第 " + str(i + 1) + " 次")
-        time.sleep(random.uniform(1.0, 2.0))
+        time.sleep(random.uniform(0.5, 1.2))
 
         # 首先找到挑战坐标 点击
         if CommonUtils.openimages(startImg, hwndSmall) != 0:
+            print("小号点击开始")
             smallX,smallY = CommonUtils.openimages(startImg, hwndSmall)
             CommonUtils.click_point_random(smallX,smallY,hwndSmall)
             time.sleep(random.uniform(3.1, 4.9))
@@ -77,6 +79,7 @@ def 开始组队探索() :
 
         # 如果有找到战斗坐标 点击
         if CommonUtils.openimages(fightImg2, hwndSmall) != 0:
+            print("小号点击首领")
             smallX, smallY = CommonUtils.openimages(fightImg2, hwndSmall)
             CommonUtils.click_point_random(smallX, smallY, hwndSmall)
             time.sleep(random.uniform(1.1, 2.9) + consumeTime)
@@ -89,64 +92,27 @@ def 开始组队探索() :
             time.sleep(random.uniform(0.5, 1.0))
             print("大号点击结算")
             CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-
-            time.sleep(random.uniform(1.2, 1.9))
-            print("小号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndSmall)
-            time.sleep(random.uniform(0.5, 1.0))
+            time.sleep(random.uniform(2.2, 3.9))
             print("大号再点击结算")
             CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            # 结束一次循环
-            i += 1
-
-
-            continue
-
-        # 如果有找到战斗坐标 点击
-        if CommonUtils.openimages(fightImg, hwndSmall) != 0:
-            smallX, smallY = CommonUtils.openimages(fightImg, hwndSmall)
-            CommonUtils.click_point_random(smallX, smallY, hwndSmall)
-            time.sleep(random.uniform(1.1, 2.9) + consumeTime)
-
-            # 打完后点击结算
-            print("小号点击结算")
-            overX, overY = overAddress[random.randint(0, 9)].split(',')
-            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
-            print("大号点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-
-            time.sleep(random.uniform(1.0, 2.2))
             print("小号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndSmall)
-            time.sleep(random.uniform(1.0, 2.2))
-            print("大号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            # 需要检查一下大号
-            # 结束一次循环
-            i += 1
-
-            continue
-        # 没有怪物 并且在 探索场景当中
-        if CommonUtils.openimages(fightImg, hwndSmall) == 0 and CommonUtils.openimages(backgroudImg, hwndSmall) != 0 and CommonUtils.openimages(giftImg, hwndSmall) == 0:
-            # 模拟人物走动,走到近头
-            print("模拟人物走动,走到近头")
-
-            moveX, moveY = moveAddress[0].split(',')
-            CommonUtils.click_point_random(moveX, moveY, hwndSmall)
-            time.sleep(random.uniform(1.1, 2.9) + smallWaitTime)
-            continue
-
-        # 如果有小纸人 把小纸人都点掉
-        if CommonUtils.openimages(giftImg, hwndSmall) != 0:
-            smallX, smallY = CommonUtils.openimages(giftImg, hwndSmall)
-            CommonUtils.click_point_random(smallX, smallY, hwndSmall)
-            time.sleep(random.uniform(1.1, 2.9) )
-            overX, overY = overAddress[random.randint(0, 9)].split(',')
             CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+            i += 1
+            time.sleep(random.uniform(6.0, 6.0))
 
             # 如果有小纸人 把小纸人都点掉
-            if CommonUtils.openimages(giftImg, hwndBig) != 0:
+            while CommonUtils.openimages(giftImg, hwndSmall) != 0:
+                print("小号小纸人")
+                smallX, smallY = CommonUtils.openimages(giftImg, hwndSmall)
+                CommonUtils.click_point_random(smallX, smallY, hwndSmall)
+                time.sleep(random.uniform(1.1, 2.9))
+                overX, overY = overAddress[random.randint(0, 9)].split(',')
+                CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+            # 如果有小纸人 把小纸人都点掉
+            while CommonUtils.openimages(giftImg, hwndBig) != 0:
+                print("大号小纸人")
                 smallX, smallY = CommonUtils.openimages(giftImg, hwndBig)
                 CommonUtils.click_point_random(smallX, smallY, hwndBig)
                 time.sleep(random.uniform(1.1, 2.9))
@@ -165,15 +131,72 @@ def 开始组队探索() :
                     # 大号同意邀请
                     CommonUtils.click_point_random(BigX, BigY, hwndBig)
                     time.sleep(random.uniform(1.1, 2.9))
-                    # 然后开始战斗
-                    # 首先找到挑战坐标 点击
-                    if CommonUtils.openimages(startImg, hwndSmall) != 0:
-                        smallX, smallY = CommonUtils.openimages(startImg, hwndSmall)
-                        CommonUtils.click_point_random(smallX, smallY, hwndSmall)
-                        time.sleep(random.uniform(3.1, 4.9))
-                        continue
                     continue
+                continue
             continue
+            # 结束一次循环
+
+        # 如果有找到战斗坐标 点击
+        if CommonUtils.openimages(fightImg3, hwndSmall) != 0:
+            print("小号点击闪光怪")
+            smallX, smallY = CommonUtils.openimages(fightImg3, hwndSmall)
+            CommonUtils.click_point_random(smallX, smallY, hwndSmall)
+            time.sleep(random.uniform(1.1, 2.9) + consumeTime)
+
+            # 打完后点击结算
+            print("小号点击结算")
+            overX, overY = overAddress[random.randint(0, 9)].split(',')
+            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+            CommonUtils.click_point_random(overX, overY, hwndSmall)
+            time.sleep(random.uniform(0.5, 1.0))
+            print("大号点击结算")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            time.sleep(random.uniform(2.2, 3.9))
+            print("大号再点击结算")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            print("小号再点击结算")
+            CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+            time.sleep(random.uniform(2.0, 3.0))
+            i += 1
+
+
+
+        # 如果有找到战斗坐标 点击
+        if CommonUtils.openimages(fightImg, hwndSmall) != 0:
+            print("小号点击普通")
+            smallX, smallY = CommonUtils.openimages(fightImg, hwndSmall)
+            CommonUtils.click_point_random(smallX, smallY, hwndSmall)
+            time.sleep(random.uniform(1.1, 2.9) + consumeTime)
+
+            # 打完后点击结算
+            print("小号点击结算")
+            overX, overY = overAddress[random.randint(0, 9)].split(',')
+            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+            CommonUtils.click_point_random(overX, overY, hwndSmall)
+            time.sleep(random.uniform(0.5, 1.0))
+            print("大号点击结算")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            time.sleep(random.uniform(2.2, 3.9))
+            print("大号再点击结算")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            print("小号再点击结算")
+            CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+            time.sleep(random.uniform(2.0, 3.0))
+            i += 1
+
+        # 没有怪物 并且在 探索场景当中
+        if CommonUtils.openimages(fightImg, hwndSmall) == 0 and CommonUtils.openimages(backgroudImg, hwndSmall) != 0 :
+            # 模拟人物走动,走到近头
+            print("模拟人物走动,走到近头")
+
+            moveX, moveY = moveAddress[0].split(',')
+            CommonUtils.click_point_random(moveX, moveY, hwndSmall)
+            time.sleep(random.uniform(1.1, 2.9) + smallWaitTime)
+            continue
+
+
 
 
 
@@ -185,4 +208,4 @@ def 开始组队探索() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-
+开始组队探索()

@@ -10,7 +10,7 @@ import random
 import datetime
 
 # 体力
-power = 300
+power = 392
 # 每局消耗体力
 consume = 8
 # 计划打的局数
@@ -72,5 +72,5 @@ def 开始组队魂土() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-
+开始组队魂土()
 

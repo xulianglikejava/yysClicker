@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-import pandas as pd
 import matplotlib
 
 import 业原火大号

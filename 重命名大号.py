@@ -15,3 +15,4 @@ def rename():
 
     win32gui.SetWindowText(hwndBig,'铁血战士胖虎')
 
+rename()
