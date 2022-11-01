@@ -72,7 +72,7 @@ def makeimg(hwnd):
 
     bmpstr = saveBitMap.GetBitmapBits(True)
     im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
-    im_PIL.save("screen.png")  # 保存
+    # im_PIL.save("screen.png")  # 保存
     # pil转换格式到opencv
     win32gui.DeleteObject(saveBitMap.GetHandle())
     mfcDC.DeleteDC()
