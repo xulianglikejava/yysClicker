@@ -11,13 +11,13 @@ import datetime
 import os
 
 # 体力
-power = 450
+power = 230
 # 每局消耗体力
-consume = 4
+consume = 8
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 34
+consumeTime = 37
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -28,7 +28,7 @@ hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 
 
-def 开始组队魂十() :
+def 开始组队魂土() :
 
     maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
@@ -64,7 +64,7 @@ def 开始组队魂十() :
         CommonUtils.click_point_random(overX,overY,hwndSmall)
         print("大号点击结算")
         CommonUtils.click_point_random(overXBig,overYBig,hwndBig)
-        wait = smallWaitTime + random.uniform(1.2, 1.4)
+        wait = smallWaitTime + random.uniform(0.3, 1)
 
         print("结算中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)
@@ -83,4 +83,4 @@ def 开始组队魂十() :
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
 
-开始组队魂十()
+开始组队魂土()

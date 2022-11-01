@@ -20,10 +20,11 @@ consumeTime = 23
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
-smallWaitTime = 2
+smallWaitTime = 1.5
 
 successImg = './image/结界突破/success.png'
 failImg = './image/结界突破/fail.png'
+fail2Img = './image/结界突破/fail2.png'
 startImg = './image/结界突破/start.png'
 hwndSmall = win32gui.FindWindow(0, "铁血战士胖虎")
 
@@ -73,7 +74,13 @@ def 开始结界突破() :
         if i % 10 == 0 and i != 0:
             totalAddress = []
             successTotal = 0
+            print("点击刷新")
+
             CommonUtils.click_point_random(flushX, flushY, hwnd)
+            time.sleep(random.uniform(1.1, 2.9))
+
+            CommonUtils.click_point_random(flushX, flushY, hwnd)
+
             time.sleep(random.uniform(1.1, 2.9))
             CommonUtils.click_point_random(559, 326, hwnd)
 
@@ -120,10 +127,17 @@ def 开始结界突破() :
             if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
                 print("等待第 " + str(countTime + 1 ) + " 次...")
                 countTime = countTime + 1
-                time.sleep(5)
+                time.sleep(3)
 
+            elif CommonUtils.openimages(failImg,hwnd) != 0 and CommonUtils.openimages(fail2Img,hwnd) != 0 and CommonUtils.openimages(successImg,hwnd) == 0:
+                overX, overY = overAddress[random.randint(0, 9)].split(',')
+                print("点击结算")
+                print("失败了")
+                CommonUtils.click_point_random(overX, overY,hwnd)
+                flag = 1
+                break;
 
-            elif CommonUtils.openimages(successImg,hwnd) != 0 :
+            elif CommonUtils.openimages(successImg,hwnd) != 0 and CommonUtils.openimages(failImg,hwnd) == 0 :
                 # 如果成功 那么成功次数加一  加一后再计算是否是第三次 如果是得多点次
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
@@ -136,15 +150,9 @@ def 开始结界突破() :
                     CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-            elif CommonUtils.openimages(failImg,hwnd) != 0:
-                overX, overY = overAddress[random.randint(0, 9)].split(',')
-                print("点击结算")
-                print("失败了")
-                CommonUtils.click_point_random(overX, overY,hwnd)
-                flag = 1
-                break;
 
-        time.sleep(bigWaitTime +  random.uniform(1.4,2.5))
+
+        time.sleep(bigWaitTime +  random.uniform(0.1,0.7))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")

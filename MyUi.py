@@ -4,8 +4,8 @@ import matplotlib
 import 业原火大号
 import 御灵大号
 import 组队探索专用
-import 组队魂十专用
-import 组队魂土
+import 组队魂土大小号
+import 组队魂土同心队
 import 结界突破大号
 import 结界突破小号
 import 重命名大号

@@ -16,7 +16,7 @@ consume = 8
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 25
+consumeTime = 24
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -64,7 +64,7 @@ def 开始组队魂土() :
         print("再点击结算")
         CommonUtils.click_point_random(overX,overY,hwnd)
         # 等待跳转
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+        time.sleep(bigWaitTime + random.uniform(0.1,0.3))
 
 
     startFile.close()
