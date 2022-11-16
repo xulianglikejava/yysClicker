@@ -66,11 +66,10 @@ def 开始组队觉醒() :
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0:
-            if CommonUtils.openimages(successImg, hwndSmall) == 0 or CommonUtils.openimages(success1Img, hwndSmall) == 0:
+            if  CommonUtils.openimages(success1Img, hwndSmall) == 0:
                 print("战斗还没结束...")
                 time.sleep(1)
             else:
-                time.sleep(bigWaitTime + random.uniform(2.2, 2.6))
                 print("小号点击结算")
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
