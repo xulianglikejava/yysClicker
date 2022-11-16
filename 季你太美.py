@@ -9,40 +9,35 @@ import CommonUtils
 import random
 import datetime
 
-import async_all
-
 # 体力
-power = 192
+power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 50
+maxcount = 10
 # 每局消耗时间
-consumeTime = 50
+consumeTime = 70
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-# hwnd = win32gui.FindWindow(0, "MuMu模拟器")
-successImg = './image/御灵/success.png'
-failImg = './image/御灵/fail.png'
-startImg = './image/御灵/start.png'
+hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+successImg = './image/季你太美/success.png'
+success1Img = './image/季你太美/success1.png'
+failImg = './image/季你太美/fail.png'
+startImg = './image/季你太美/start.png'
 
 
-@async_all.async_call
-def 开始御灵() :
-    hwnd = CommonUtils.get_child_windows(hwndBig)
-
+def 开始季你太美() :
     # 设置挑战次数
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
-    print("预计挑战御灵 " + str(maxcount) + "局")
+    print("预计挑战季你太美 " + str(maxcount) + "局")
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/御灵/结算坐标.txt')
+    overFile = open('./address/业原火/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -55,7 +50,7 @@ def 开始御灵() :
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i + 1 ) + " 次")
+        print("开始打第 " + str(i+1) + " 次")
         i += 1
         startX,startY, = CommonUtils.openimages(startImg,hwnd)
         CommonUtils.click_point_random(startX, startY,hwnd)
@@ -64,9 +59,9 @@ def 开始御灵() :
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
+            if CommonUtils.openimages(successImg,hwnd) == 0 or CommonUtils.openimages(success1Img,hwnd) == 0  :
                 print("战斗还没结束...")
-                time.sleep(5)
+                time.sleep(3)
             else :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
@@ -80,5 +75,5 @@ def 开始御灵() :
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
 
-
+开始季你太美()
 

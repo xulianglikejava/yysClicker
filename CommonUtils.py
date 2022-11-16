@@ -1,5 +1,4 @@
 import win32gui, win32con, win32api,win32ui
-from win32clipboard import *
 from PIL import Image
 import cv2
 import numpy as np

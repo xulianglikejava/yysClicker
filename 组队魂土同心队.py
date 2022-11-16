@@ -9,14 +9,16 @@ import CommonUtils
 import random
 import datetime
 
+import async_all
+
 # 体力
 power = 392
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 0
+maxcount = 49
 # 每局消耗时间
-consumeTime = 24
+consumeTime = 25
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -24,8 +26,8 @@ smallWaitTime = 2
 
 hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 
+
 def 开始组队魂土() :
-    maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计组队挑战魂土 " + str(maxcount) + "局")
@@ -71,6 +73,6 @@ def 开始组队魂土() :
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
 
-
 开始组队魂土()
+
 

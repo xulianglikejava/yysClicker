@@ -9,6 +9,8 @@ import CommonUtils
 import random
 import datetime
 
+import async_all
+
 # 体力
 power = 230
 # 每局消耗体力
@@ -36,8 +38,9 @@ giftImg = './image/探索/gift.png'
 sureImg = './image/探索/sure.png'
 makesureImg = './image/探索/makesure.png'
 backgroudImg = './image/探索/backgroud.png'
+backImg = './image/探索/back.png'
 
-
+@async_all.async_call
 def 开始组队探索() :
     maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
@@ -102,7 +105,7 @@ def 开始组队探索() :
             time.sleep(random.uniform(6.0, 6.0))
 
             # 如果有小纸人 把小纸人都点掉
-            while CommonUtils.openimages(giftImg, hwndSmall) != 0:
+            while CommonUtils.openimages(giftImg, hwndSmall) != 0 and CommonUtils.openimages(backImg, hwndSmall) != 0:
                 print("小号小纸人")
                 smallX, smallY = CommonUtils.openimages(giftImg, hwndSmall)
                 CommonUtils.click_point_random(smallX, smallY, hwndSmall)
@@ -111,7 +114,7 @@ def 开始组队探索() :
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
 
             # 如果有小纸人 把小纸人都点掉
-            while CommonUtils.openimages(giftImg, hwndBig) != 0:
+            while CommonUtils.openimages(giftImg, hwndBig) != 0 and CommonUtils.openimages(backImg, hwndBig) != 0:
                 print("大号小纸人")
                 smallX, smallY = CommonUtils.openimages(giftImg, hwndBig)
                 CommonUtils.click_point_random(smallX, smallY, hwndBig)
@@ -189,6 +192,7 @@ def 开始组队探索() :
         # 没有怪物 并且在 探索场景当中
         if CommonUtils.openimages(fightImg, hwndSmall) == 0 and CommonUtils.openimages(backgroudImg, hwndSmall) != 0 :
             # 模拟人物走动,走到近头
+            print("------------------------")
             print("模拟人物走动,走到近头")
 
             moveX, moveY = moveAddress[0].split(',')
@@ -208,4 +212,3 @@ def 开始组队探索() :
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-开始组队探索()

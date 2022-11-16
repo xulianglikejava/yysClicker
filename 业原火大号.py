@@ -14,9 +14,9 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 17
+maxcount = 10
 # 每局消耗时间
-consumeTime = 23
+consumeTime = 50
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -54,7 +54,7 @@ def 开始业原火() :
         startX,startY, = CommonUtils.openimages(startImg,hwnd)
         CommonUtils.click_point_random(startX, startY,hwnd)
         # 一把打完至少要120秒
-        time.sleep(120)
+        time.sleep(consumeTime)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
@@ -74,5 +74,5 @@ def 开始业原火() :
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
 
-
+开始业原火()
 

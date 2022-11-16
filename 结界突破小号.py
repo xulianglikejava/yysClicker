@@ -1,13 +1,10 @@
-import math
 import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
 import CommonUtils
 import random
 import datetime
+
+import async_all
 
 # 体力
 power = 200
@@ -20,16 +17,22 @@ consumeTime = 23
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
-smallWaitTime = 2
+smallWaitTime = 1.5
 
 successImg = './image/结界突破/success.png'
 failImg = './image/结界突破/fail.png'
 fail2Img = './image/结界突破/fail2.png'
 startImg = './image/结界突破/start.png'
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+返回按钮Img = './image/结界突破/返回按钮.png'
+退出确认按钮Img = './image/结界突破/退出确认按钮.png'
+再次挑战按钮Img = './image/结界突破/再次挑战按钮.png'
+再次挑战确认按钮Img = './image/结界突破/再次挑战确认按钮.png'
+
+
+hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+
 
 def 开始结界突破() :
-    hwnd = hwndSmall
     # 设置突破卷数量
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
@@ -105,14 +108,59 @@ def 开始结界突破() :
         startX, startY, againX, againY = startAddress[tempAddr].split(',')
         CommonUtils.click_point_random(startX,startY,hwnd)
         time.sleep(random.uniform(0.8,1.2))
-        if CommonUtils.openimages(startImg,hwnd) == 0:
-            CommonUtils.click_point_random(startX, startY, hwnd)
-            time.sleep(random.uniform(0.5, 1.2))
-        while CommonUtils.openimages(startImg,hwnd) != 0:
-            againX, againY = CommonUtils.openimages(startImg,hwnd)
-            CommonUtils.click_point_random(againX, againY,hwnd)
+        # 如果最后一次 那么就要退出2次
+        if i == 9 :
+            while CommonUtils.openimages(startImg, hwnd) == 0:
+                CommonUtils.click_point_random(startX, startY, hwnd)
+                time.sleep(random.uniform(0.5, 1.2))
+
+
+            while CommonUtils.openimages(startImg, hwnd) != 0:
+                againX, againY = CommonUtils.openimages(startImg, hwnd)
+                CommonUtils.click_point_random(againX, againY, hwnd)
+                break
             time.sleep(random.uniform(1.1, 2.9))
-            break
+
+            print('返回退回2次')
+            for j in range(2):
+                j += 1
+                print('返回退回2次')
+                for j in range(2):
+                    j += 1
+                    while CommonUtils.openimages(返回按钮Img, hwnd) != 0:
+                        x, y = CommonUtils.openimages(返回按钮Img, hwnd)
+                        CommonUtils.click_point_random(x, y, hwnd)
+                        break
+                    time.sleep(random.uniform(1.0, 1.5))
+                    while CommonUtils.openimages(退出确认按钮Img, hwnd) != 0:
+                        x, y = CommonUtils.openimages(退出确认按钮Img, hwnd)
+                        CommonUtils.click_point_random(x, y, hwnd)
+                        break
+                    time.sleep(random.uniform(8.0, 9.5))
+
+                    while CommonUtils.openimages(再次挑战按钮Img, hwnd) != 0:
+                        x, y = CommonUtils.openimages(再次挑战按钮Img, hwnd)
+                        CommonUtils.click_point_random(x, y, hwnd)
+                        break
+                    time.sleep(random.uniform(1.0, 2.5))
+
+                    while CommonUtils.openimages(再次挑战确认按钮Img, hwnd) != 0:
+                        x, y = CommonUtils.openimages(再次挑战确认按钮Img, hwnd)
+                        CommonUtils.click_point_random(x, y, hwnd)
+                        break
+                    time.sleep(random.uniform(2.0, 3.5))
+
+
+        else:
+            while CommonUtils.openimages(startImg, hwnd) == 0:
+                CommonUtils.click_point_random(startX, startY, hwnd)
+                time.sleep(random.uniform(0.5, 1.2))
+
+            while CommonUtils.openimages(startImg, hwnd) != 0:
+                againX, againY = CommonUtils.openimages(startImg, hwnd)
+                CommonUtils.click_point_random(againX, againY, hwnd)
+                break
+            time.sleep(random.uniform(1.1, 2.9))
 
         # 一把打完至少要三十秒
         time.sleep(25)
@@ -156,7 +204,6 @@ def 开始结界突破() :
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
-
 
 
 开始结界突破()

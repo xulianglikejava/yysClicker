@@ -9,6 +9,8 @@ import CommonUtils
 import random
 import datetime
 
+import async_all
+
 # 体力
 power = 230
 # 每局消耗体力
@@ -29,7 +31,7 @@ hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 # 图片素材
 endImg = './image/百鬼夜行/end.png'
 
-
+@async_all.async_call
 def 开始百鬼夜行() :
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
@@ -93,21 +95,21 @@ def 开始百鬼夜行() :
 
 
 
-        print('首先先进去')
-        CommonUtils.click_point_random(startX, startY, hwnd)
-        time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
-
-        mainX, mainY = mainAddress[random.randint(0, 2)].split(',')
-
-        #  选择鬼王
-        print('选择鬼王')
-        CommonUtils.click_point_random(mainX, mainY, hwnd)
-        time.sleep(smallWaitTime + random.uniform(0.1, 0.3))
-
-        #  开始
-        print('开始')
-        CommonUtils.click_point_random(startX, startY, hwnd)
-        time.sleep(bigWaitTime + random.uniform(2.0, 3.1))
+        # print('首先先进去')
+        # CommonUtils.click_point_random(startX, startY, hwnd)
+        # time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
+        #
+        # mainX, mainY = mainAddress[random.randint(0, 2)].split(',')
+        #
+        # #  选择鬼王
+        # print('选择鬼王')
+        # CommonUtils.click_point_random(mainX, mainY, hwnd)
+        # time.sleep(smallWaitTime + random.uniform(0.1, 0.3))
+        #
+        # #  开始
+        # print('开始')
+        # CommonUtils.click_point_random(startX, startY, hwnd)
+        # time.sleep(bigWaitTime + random.uniform(2.0, 3.1))
 
         print("撒豆开始")
         for j in range(25):
