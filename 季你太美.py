@@ -16,7 +16,7 @@ consume = 8
 # 计划打的局数
 maxcount = 10
 # 每局消耗时间
-consumeTime = 70
+consumeTime = 90
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -70,7 +70,7 @@ def 开始季你太美() :
                 CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+        time.sleep(bigWaitTime + random.uniform(2.2,2.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
