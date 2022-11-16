@@ -14,7 +14,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 10
+maxcount = 4
 # 每局消耗时间
 consumeTime = 90
 # 大等待时间
