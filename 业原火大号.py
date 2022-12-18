@@ -14,15 +14,15 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 10
+maxcount = 30
 # 每局消耗时间
-consumeTime = 50
+consumeTime = 40
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+hwnd = CommonUtils.getBigHwnd()
 successImg = './image/业原火/success.png'
 failImg = './image/业原火/fail.png'
 startImg = './image/业原火/start.png'

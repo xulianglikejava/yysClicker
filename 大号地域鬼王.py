@@ -38,8 +38,8 @@ smallWaitTime = 2
 红蛋蛋3Img = './image/地域鬼王/红蛋蛋3.png'
 叉叉Img = './image/地域鬼王/叉叉.png'
 
-hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 
+hwnd = CommonUtils.getBigHwnd()
 # 读取文件里的挑战坐标
 startAddress = []
 startFile = open('./address/地域鬼王/鬼王坐标.txt')

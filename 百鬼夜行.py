@@ -16,7 +16,7 @@ power = 230
 # 每局消耗体力
 consume = 3
 # 计划打的局数
-maxcount = 1
+maxcount = 10
 # 每局消耗时间
 consumeTime = 13
 # 大等待时间
@@ -25,7 +25,7 @@ bigWaitTime = 3
 smallWaitTime = 2
 
 # hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
-hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+hwnd = CommonUtils.getBigHwnd()
 
 
 # 图片素材
@@ -83,36 +83,36 @@ def 开始百鬼夜行() :
         print("开始打第 " + str(i + 1) + " 次")
         time.sleep(random.uniform(0.5, 1.2))
 
-        # #     邀请好友
-        # print('邀请好友')
-        # CommonUtils.click_point_random(125, 453, hwnd)
-        # time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
-        #
-        # #     选择第一个好友
-        # print('选择第一个好友')
-        # CommonUtils.click_point_random(377, 197, hwnd)
-        # time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
+        #     邀请好友
+        print('邀请好友')
+        CommonUtils.click_point_random(125, 453, hwnd)
+        time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
+
+        #     选择第一个好友
+        print('选择第一个好友')
+        CommonUtils.click_point_random(377, 197, hwnd)
+        time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
 
 
 
-        # print('首先先进去')
-        # CommonUtils.click_point_random(startX, startY, hwnd)
-        # time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
-        #
-        # mainX, mainY = mainAddress[random.randint(0, 2)].split(',')
-        #
-        # #  选择鬼王
-        # print('选择鬼王')
-        # CommonUtils.click_point_random(mainX, mainY, hwnd)
-        # time.sleep(smallWaitTime + random.uniform(0.1, 0.3))
-        #
-        # #  开始
-        # print('开始')
-        # CommonUtils.click_point_random(startX, startY, hwnd)
-        # time.sleep(bigWaitTime + random.uniform(2.0, 3.1))
+        print('首先先进去')
+        CommonUtils.click_point_random(startX, startY, hwnd)
+        time.sleep(smallWaitTime + random.uniform(0.5, 0.9))
+
+        mainX, mainY = mainAddress[random.randint(0, 2)].split(',')
+
+        #  选择鬼王
+        print('选择鬼王')
+        CommonUtils.click_point_random(mainX, mainY, hwnd)
+        time.sleep(smallWaitTime + random.uniform(0.1, 0.3))
+
+        #  开始
+        print('开始')
+        CommonUtils.click_point_random(startX, startY, hwnd)
+        time.sleep(bigWaitTime + random.uniform(2.0, 3.1))
 
         print("撒豆开始")
-        for j in range(25):
+        for j in range(50):
             fightX, fightY = fightAddress[random.randint(0, 9)].split(',')
             CommonUtils.click_point_random(fightX, fightY, hwnd)
             print(250 - j*10)

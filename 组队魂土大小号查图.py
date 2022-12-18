@@ -14,31 +14,29 @@ import logging
 import async_all
 
 # 体力
-power = 120
+power = 400
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 15
+maxcount = 0
 # 每局消耗时间
-consumeTime = 65
+consumeTime = 24
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
-
-# 图片素材
-successImg = './image/通用图片/success.png'
-success1Img = './image/通用图片/success1.png'
-挑战Img = './image/通用图片/挑战.png'
-
+挑战按钮 = './image/魂土/挑战按钮.png'
+成功 = './image/魂土/成功.png'
+成功1 = './image/魂土/成功1.png'
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
 hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
 
 
-def 开始组队日轮() :
+def 开始组队魂土() :
+    maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
-    print("预计组队挑战日轮 " + str(maxcount) + "局")
+    print("预计组队挑战魂十 " + str(maxcount) + "局")
     # 读取文件里的挑战坐标
     startFile = open('./address/组队魂土/挑战坐标.txt')
     startAddress = startFile.read()
@@ -58,28 +56,26 @@ def 开始组队日轮() :
         i += 1
 
         # 首先找到挑战坐标 点击
-        startX, startY, = CommonUtils.openimages(挑战Img, hwndSmall)
+        startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
         CommonUtils.click_point_random(startX, startY, hwndSmall)
         time.sleep(random.uniform(0.8, 1.2))
-        while CommonUtils.openimages(挑战Img, hwndSmall) != 0:
+        while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
             print("---没有成功进去挑战!!!---")
-            startX, startY, = CommonUtils.openimages(挑战Img, hwndSmall)
+            startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
             CommonUtils.click_point_random(startX, startY, hwndSmall)
             time.sleep(random.uniform(0.8, 1.2))
         wait = consumeTime + random.uniform(0.5,0.9)
-
         print("战斗中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)
+        # 打完后点击结算
         flag = 0
-        countTime = 0
         while flag == 0:
-
-            if CommonUtils.openimages(successImg, hwndSmall) == 0 and CommonUtils.openimages(success1Img, hwndSmall) == 0:
+            if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1,hwndSmall) == 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
                 time.sleep(1)
 
-            elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg,hwndSmall) != 0 :
+            elif CommonUtils.openimages(成功, hwndSmall) != 0 or CommonUtils.openimages(成功1,hwndSmall) != 0:
                 print("小号点击结算")
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
@@ -96,7 +92,7 @@ def 开始组队日轮() :
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
 
                 # 等待跳转
-                time.sleep(2.5 + random.uniform(0.2, 0.6))
+                time.sleep(2.5 + random.uniform(0.2, 0.5))
                 flag = 1
                 break;
 
@@ -107,4 +103,4 @@ def 开始组队日轮() :
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
 
-开始组队日轮()
+开始组队魂土()

@@ -18,7 +18,7 @@ consume = 3
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 13
+consumeTime = 9
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -40,7 +40,6 @@ makesureImg = './image/探索/makesure.png'
 backgroudImg = './image/探索/backgroud.png'
 backImg = './image/探索/back.png'
 
-@async_all.async_call
 def 开始组队探索() :
     maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
@@ -87,22 +86,37 @@ def 开始组队探索() :
             CommonUtils.click_point_random(smallX, smallY, hwndSmall)
             time.sleep(random.uniform(1.1, 2.9) + consumeTime)
 
-            # 打完后点击结算
-            print("小号点击结算")
-            overX, overY = overAddress[random.randint(0, 9)].split(',')
-            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
-            time.sleep(random.uniform(0.5, 1.0))
-            print("大号点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            time.sleep(random.uniform(2.2, 3.9))
-            print("大号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            print("小号再点击结算")
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
+            flag = 0
+            countTime = 0
+            while flag == 0:
+
+                if CommonUtils.openimages(successImg, hwndSmall) == 0 :
+                    print("等待第 " + str(countTime + 1) + " 次...")
+                    countTime = countTime + 1
+                    time.sleep(1)
+
+                elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg,hwndSmall) != 0:
+                    # 打完后点击结算
+                    print("小号点击结算")
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+                    time.sleep(random.uniform(0.5, 1.0))
+                    print("大号点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    time.sleep(random.uniform(2.2, 3.9))
+                    print("大号再点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    print("小号再点击结算")
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+                    flag = 1
+                    break;
+
+
 
             i += 1
-            time.sleep(random.uniform(6.0, 6.0))
+            time.sleep(random.uniform(6.0, 7.0))
 
             # 如果有小纸人 把小纸人都点掉
             while CommonUtils.openimages(giftImg, hwndSmall) != 0 and CommonUtils.openimages(backImg, hwndSmall) != 0:
@@ -112,6 +126,7 @@ def 开始组队探索() :
                 time.sleep(random.uniform(1.1, 2.9))
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
+            print("小号小纸人点完了")
 
             # 如果有小纸人 把小纸人都点掉
             while CommonUtils.openimages(giftImg, hwndBig) != 0 and CommonUtils.openimages(backImg, hwndBig) != 0:
@@ -123,15 +138,18 @@ def 开始组队探索() :
                 CommonUtils.click_point_random(overX, overY, hwndBig)
                 time.sleep(random.uniform(1.1, 2.9))
 
+            print("大号小纸人点完了")
             # 小号邀请大号
             if CommonUtils.openimages(sureImg, hwndSmall) != 0:
                 smallX, smallY = CommonUtils.openimages(sureImg, hwndSmall)
                 CommonUtils.click_point_random(smallX, smallY, hwndSmall)
                 time.sleep(random.uniform(1.1, 2.9))
                 # 小号邀请大号
+                print("小号邀请大号")
                 if CommonUtils.openimages(makesureImg, hwndBig) != 0:
                     BigX, BigY = CommonUtils.openimages(makesureImg, hwndBig)
                     # 大号同意邀请
+                    print("大号同意邀请")
                     CommonUtils.click_point_random(BigX, BigY, hwndBig)
                     time.sleep(random.uniform(1.1, 2.9))
                     continue
@@ -146,19 +164,33 @@ def 开始组队探索() :
             CommonUtils.click_point_random(smallX, smallY, hwndSmall)
             time.sleep(random.uniform(1.1, 2.9) + consumeTime)
 
-            # 打完后点击结算
-            print("小号点击结算")
-            overX, overY = overAddress[random.randint(0, 9)].split(',')
-            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
-            time.sleep(random.uniform(0.5, 1.0))
-            print("大号点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            time.sleep(random.uniform(2.2, 3.9))
-            print("大号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            print("小号再点击结算")
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
+            flag = 0
+            countTime = 0
+            while flag == 0:
+
+                if CommonUtils.openimages(successImg, hwndSmall) == 0:
+                    print("等待第 " + str(countTime + 1) + " 次...")
+                    countTime = countTime + 1
+                    time.sleep(1)
+
+                elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg,
+                                                                                                  hwndSmall) != 0:
+                    # 打完后点击结算
+                    print("小号点击结算")
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+                    time.sleep(random.uniform(0.5, 1.0))
+                    print("大号点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    time.sleep(random.uniform(2.2, 3.9))
+                    print("大号再点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    print("小号再点击结算")
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+                    flag = 1
+                    break;
 
             time.sleep(random.uniform(2.0, 3.0))
             i += 1
@@ -172,19 +204,33 @@ def 开始组队探索() :
             CommonUtils.click_point_random(smallX, smallY, hwndSmall)
             time.sleep(random.uniform(1.1, 2.9) + consumeTime)
 
-            # 打完后点击结算
-            print("小号点击结算")
-            overX, overY = overAddress[random.randint(0, 9)].split(',')
-            overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
-            time.sleep(random.uniform(0.5, 1.0))
-            print("大号点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            time.sleep(random.uniform(2.2, 3.9))
-            print("大号再点击结算")
-            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-            print("小号再点击结算")
-            CommonUtils.click_point_random(overX, overY, hwndSmall)
+            flag = 0
+            countTime = 0
+            while flag == 0:
+
+                if CommonUtils.openimages(successImg, hwndSmall) == 0:
+                    print("等待第 " + str(countTime + 1) + " 次...")
+                    countTime = countTime + 1
+                    time.sleep(1)
+
+                elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg,
+                                                                                                  hwndSmall) != 0:
+                    # 打完后点击结算
+                    print("小号点击结算")
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+                    time.sleep(random.uniform(0.5, 1.0))
+                    print("大号点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    time.sleep(random.uniform(2.2, 3.9))
+                    print("大号再点击结算")
+                    CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                    print("小号再点击结算")
+                    CommonUtils.click_point_random(overX, overY, hwndSmall)
+
+                    flag = 1
+                    break;
 
             time.sleep(random.uniform(2.0, 3.0))
             i += 1
@@ -210,5 +256,5 @@ def 开始组队探索() :
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
-
+开始组队探索()
 

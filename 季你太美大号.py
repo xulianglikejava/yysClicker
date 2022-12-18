@@ -22,7 +22,7 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = CommonUtils.getSmallHwnd()
+hwnd = CommonUtils.getBigHwnd()
 successImg = './image/季你太美/success.png'
 success1Img = './image/季你太美/success1.png'
 failImg = './image/季你太美/fail.png'
@@ -70,7 +70,7 @@ def 开始季你太美() :
                 CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-        time.sleep(2 + random.uniform(1.2,1.6))
+        time.sleep(2 + random.uniform(2.2,2.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")

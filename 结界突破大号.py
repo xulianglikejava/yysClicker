@@ -11,7 +11,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 15
+maxcount = 30
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -32,7 +32,6 @@ startImg = './image/结界突破/start.png'
 
 
 hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
-
 
 def 开始结界突破() :
     # 设置突破卷数量
@@ -157,6 +156,7 @@ def 开始结界突破() :
                 time.sleep(random.uniform(2.0, 2.5))
 
             while CommonUtils.openimages(startImg, hwnd) != 0:
+                print('没有成功进去')
                 againX, againY = CommonUtils.openimages(startImg, hwnd)
                 CommonUtils.click_point_random(againX, againY, hwnd)
                 break

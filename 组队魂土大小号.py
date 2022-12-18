@@ -20,15 +20,15 @@ consume = 8
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 33
+consumeTime = 31
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
-
-
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+挑战按钮 = './image/魂土/挑战按钮.png'
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
+hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+
 
 def 开始组队魂土() :
     maxcount = math.floor(power/consume)
@@ -54,9 +54,17 @@ def 开始组队魂土() :
         i += 1
 
         # 首先找到挑战坐标 点击
-        CommonUtils.click_point_random(startX,startY,hwndSmall)
+        startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
+        CommonUtils.click_point_random(startX, startY, hwndSmall)
+        time.sleep(random.uniform(0.8, 1.2))
+        while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
+            print("---没有成功进去挑战!!!---")
+            startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
+            CommonUtils.click_point_random(startX, startY, hwndSmall)
+            time.sleep(random.uniform(0.8, 1.2))
         wait = consumeTime + random.uniform(0.5,0.9)
         print("战斗中间间隔：" + str(wait) + " 秒")
+
         time.sleep(wait)
         # 打完后点击结算
         print("小号点击结算")

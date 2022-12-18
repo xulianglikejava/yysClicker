@@ -18,22 +18,20 @@ consume = 8
 # 计划打的局数
 maxcount = 50
 # 每局消耗时间
-consumeTime = 50
+consumeTime = 40
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
+hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 # hwnd = win32gui.FindWindow(0, "MuMu模拟器")
 successImg = './image/御灵/success.png'
 failImg = './image/御灵/fail.png'
 startImg = './image/御灵/start.png'
 
 
-@async_all.async_call
 def 开始御灵() :
-    hwnd = CommonUtils.get_child_windows(hwndBig)
 
     # 设置挑战次数
     start = datetime.datetime.now()
@@ -66,7 +64,7 @@ def 开始御灵() :
         while flag == 0 :
             if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
                 print("战斗还没结束...")
-                time.sleep(5)
+                time.sleep(2)
             else :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
@@ -75,10 +73,10 @@ def 开始御灵() :
                 CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+        time.sleep(2 + random.uniform(0.2,0.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
 
 
-
+开始御灵()

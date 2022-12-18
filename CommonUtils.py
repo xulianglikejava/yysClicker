@@ -7,7 +7,8 @@ import random
 import time
 
 
-
+child_handles = []
+SmallHwnd = 0
 
 
 # 简单点击事件
@@ -101,5 +102,18 @@ def openimages(template,hwnd):
         return x1, y1
     else:
         return 0
+def winfun(hwnd, lparam):
+    s = win32gui.GetWindowText(hwnd)
+    if len(s) > 3:
+        child_handles.clear()
+        child_handles.append(hwnd)
+    return 1
+def getBigHwnd():
+    hwnd = win32gui.FindWindow(None, "铁血战士胖虎")
+    win32gui.EnumChildWindows(hwnd, winfun, None)
+    return child_handles[0]
 
-
+def getSmallHwnd():
+    hwnd = win32gui.FindWindow(None, "捉鼠大师小叮当")
+    win32gui.EnumChildWindows(hwnd, winfun, None)
+    return child_handles[0]

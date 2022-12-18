@@ -11,7 +11,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 9
+maxcount = 30
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -27,11 +27,12 @@ startImg = './image/结界突破/start.png'
 退出确认按钮Img = './image/结界突破/退出确认按钮.png'
 再次挑战按钮Img = './image/结界突破/再次挑战按钮.png'
 再次挑战确认按钮Img = './image/结界突破/再次挑战确认按钮.png'
+刷新按钮 = './image/结界突破/刷新按钮.png'
+刷新确认按钮 = './image/结界突破/刷新确认按钮.png'
+
 
 
 hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
-
-
 def 开始结界突破() :
     # 设置突破卷数量
     start = datetime.datetime.now()
@@ -74,31 +75,29 @@ def 开始结界突破() :
 
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0, 8)
-        if i % 10 == 0 and i != 0:
-            totalAddress = []
-            successTotal = 0
-            print("点击刷新")
+        if i % 10 == 0  or i % 19 == 0 or i % 28 == 0 :
+            if successTotal == 9 :
+                totalAddress = []
+                successTotal = 0
 
-            CommonUtils.click_point_random(flushX, flushY, hwnd)
-            time.sleep(random.uniform(1.1, 2.9))
+            else:
+                totalAddress = []
+                successTotal = 0
+                print("点击刷新")
 
-            CommonUtils.click_point_random(flushX, flushY, hwnd)
+                while CommonUtils.openimages(刷新按钮, hwnd) != 0:
+                    x, y = CommonUtils.openimages(刷新按钮, hwnd)
+                    CommonUtils.click_point_random(x, y, hwnd)
+                    break
+                time.sleep(random.uniform(2.0, 2.5))
+                while CommonUtils.openimages(刷新确认按钮, hwnd) != 0:
+                    print("点击刷新确认按钮")
+                    x, y = CommonUtils.openimages(刷新确认按钮, hwnd)
+                    CommonUtils.click_point_random(x, y, hwnd)
+                    break
+                time.sleep(random.uniform(8.0, 9.5))
 
-            time.sleep(random.uniform(1.1, 2.9))
-            CommonUtils.click_point_random(559, 326, hwnd)
 
-        # 正常流程
-
-        if i % 18 == 0 and i != 0:
-            totalAddress = []
-            CommonUtils.click_point_random(flushX, flushY, hwnd)
-            time.sleep(5)
-        # 正常流程
-
-        if i % 29 == 0 and i != 0:
-            totalAddress = []
-            CommonUtils.click_point_random(flushX, flushY, hwnd)
-            time.sleep(5)
         # 正常流程
 
         while tempAddr in totalAddress:
@@ -109,7 +108,7 @@ def 开始结界突破() :
         CommonUtils.click_point_random(startX,startY,hwnd)
         time.sleep(random.uniform(0.8,1.2))
         # 如果最后一次 那么就要退出2次
-        if i == 9 :
+        if i == 9 or i == 18 or  i == 27 :
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
                 time.sleep(random.uniform(0.5, 1.2))
@@ -131,7 +130,7 @@ def 开始结界突破() :
                         x, y = CommonUtils.openimages(返回按钮Img, hwnd)
                         CommonUtils.click_point_random(x, y, hwnd)
                         break
-                    time.sleep(random.uniform(1.0, 1.5))
+                    time.sleep(random.uniform(2.0,2.5))
                     while CommonUtils.openimages(退出确认按钮Img, hwnd) != 0:
                         x, y = CommonUtils.openimages(退出确认按钮Img, hwnd)
                         CommonUtils.click_point_random(x, y, hwnd)
@@ -154,7 +153,7 @@ def 开始结界突破() :
         else:
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
-                time.sleep(random.uniform(0.5, 1.2))
+                time.sleep(random.uniform(2.0, 2.5))
 
             while CommonUtils.openimages(startImg, hwnd) != 0:
                 againX, againY = CommonUtils.openimages(startImg, hwnd)
