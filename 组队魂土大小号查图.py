@@ -69,6 +69,7 @@ def 开始组队魂土() :
         time.sleep(wait)
         # 打完后点击结算
         flag = 0
+        countTime = 0
         while flag == 0:
             if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1,hwndSmall) == 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
