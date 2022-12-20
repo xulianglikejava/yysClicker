@@ -82,24 +82,21 @@ def 开始组队魂土() :
 
             elif CommonUtils.openimages(成功, hwndSmall) != 0 or CommonUtils.openimages(成功1,hwndSmall) != 0:
                 print("小号找到完成图了")
-
-                time.sleep(random.uniform(1.2, 1.8))
+                time.sleep(random.uniform(1.2, 2.3))
                 print("小号点击结算")
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
                 print("大号点击结算")
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-                time.sleep(random.uniform(1.5, 1.9))
-                print("大号再点击结算")
-                CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
-                wait = 2 + random.uniform(0.3, 1)
+                wait = smallWaitTime + random.uniform(0.3, 1)
+
                 print("结算中间间隔：" + str(wait) + " 秒")
                 time.sleep(wait)
                 print("小号再点击结算")
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
-
-
+                print("大号再点击结算")
+                CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
                 # 等待跳转
                 time.sleep(2.5 + random.uniform(0.2, 0.5))
                 flag = 1
