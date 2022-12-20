@@ -135,7 +135,7 @@ def 开始结界突破() :
                         x, y = CommonUtils.openimages(退出确认按钮Img, hwnd)
                         CommonUtils.click_point_random(x, y, hwnd)
                         break
-                    time.sleep(random.uniform(8.0, 9.5))
+                    time.sleep(random.uniform(4.0, 5.5))
 
                     while CommonUtils.openimages(再次挑战按钮Img, hwnd) != 0:
                         x, y = CommonUtils.openimages(再次挑战按钮Img, hwnd)
@@ -154,7 +154,7 @@ def 开始结界突破() :
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
                 time.sleep(random.uniform(2.0, 2.5))
-
+                break
             while CommonUtils.openimages(startImg, hwnd) != 0:
                 againX, againY = CommonUtils.openimages(startImg, hwnd)
                 CommonUtils.click_point_random(againX, againY, hwnd)
