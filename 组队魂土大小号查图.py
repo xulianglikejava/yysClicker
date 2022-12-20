@@ -49,7 +49,7 @@ def 开始组队魂土() :
         line = line.strip('\n')
         overAddress.append(line)
     # 赋值完毕
-    # 开始执行任务
+
     for i in range(maxcount):
         print("------------------------")
         print("开始打第 " + str(i + 1) + " 次")
@@ -67,7 +67,7 @@ def 开始组队魂土() :
                 return
             startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
             CommonUtils.click_point_random(startX, startY, hwndSmall)
-            time.sleep(random.uniform(0.8, 1.2))
+            time.sleep(random.uniform(1.2, 1.8))
         wait = consumeTime + random.uniform(0.5,0.9)
         print("战斗中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)
