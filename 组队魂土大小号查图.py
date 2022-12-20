@@ -26,6 +26,7 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 挑战按钮 = './image/魂土/挑战按钮.png'
+不可挑战按钮 = './image/魂土/不可挑战按钮.png'
 成功 = './image/魂土/成功.png'
 成功1 = './image/魂土/成功1.png'
 hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
@@ -62,6 +63,9 @@ def 开始组队魂土() :
         playCount = 0
         while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
             print("---没有成功进去挑战!!!---")
+            if CommonUtils.openimages(不可挑战按钮, hwndSmall) != 0:
+                print('---队友没有进来---')
+                return
             playCount = playCount + 1
             if playCount > 5:
                 return
