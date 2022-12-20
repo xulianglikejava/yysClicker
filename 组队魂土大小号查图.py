@@ -63,11 +63,11 @@ def 开始组队魂土() :
         playCount = 0
         while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
             print("---没有成功进去挑战!!!---")
-            if CommonUtils.openimages(不可挑战按钮, hwndSmall) != 0:
-                print('---队友没有进来---')
-                return
+            # if CommonUtils.openimages(不可挑战按钮, hwndSmall) != 0:
+            #     print('---队友没有进来---')
+            #     return
             playCount = playCount + 1
-            if playCount > 5:
+            if playCount > 3:
                 return
             startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
             CommonUtils.click_point_random(startX, startY, hwndSmall)
