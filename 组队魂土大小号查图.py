@@ -98,7 +98,7 @@ def 开始组队魂土() :
                 print("大号再点击结算")
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
                 # 等待跳转
-                time.sleep(2.5 + random.uniform(0.2, 0.5))
+                time.sleep(2.5 + random.uniform(1.2, 2.5))
                 flag = 1
                 break;
 
