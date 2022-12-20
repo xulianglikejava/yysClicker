@@ -74,7 +74,7 @@ def 开始组队魂土() :
         print("再点击结算")
         CommonUtils.click_point_random(overX,overY,hwnd)
         # 等待跳转
-        time.sleep(bigWaitTime + random.uniform(0.1,0.3))
+        time.sleep(bigWaitTime + random.uniform(1.4,2.3))
 
 
     startFile.close()

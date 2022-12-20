@@ -111,14 +111,14 @@ def 开始结界突破() :
         if i == 9 or i == 18 or  i == 27 :
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
-                time.sleep(random.uniform(0.5, 1.2))
+                time.sleep(random.uniform(0.5, 0.7))
 
 
             while CommonUtils.openimages(startImg, hwnd) != 0:
                 againX, againY = CommonUtils.openimages(startImg, hwnd)
                 CommonUtils.click_point_random(againX, againY, hwnd)
                 break
-            time.sleep(random.uniform(1.1, 2.9))
+            time.sleep(random.uniform(0.5, 0.7))
 
             print('返回退回2次')
             for j in range(2):
