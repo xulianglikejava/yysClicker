@@ -16,25 +16,40 @@ import async_all
 # 体力
 power = 350
 # 每局消耗体力
-consume = 8
+consume = 60
 # 计划打的局数
-maxcount = 0
+maxcount = 2
 # 每局消耗时间
-consumeTime = 26
+consumeTime = 500
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
-挑战按钮 = './image/魂土/挑战按钮.png'
-不可挑战按钮 = './image/魂土/不可挑战按钮.png'
-成功 = './image/魂土/成功.png'
-成功1 = './image/魂土/成功1.png'
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+
+仿造按钮 = './image/六道-月之海/仿造按钮.png'
+仿造按钮 = './image/六道-月之海/准备按钮.png'
+仿造按钮 = './image/六道-月之海/开启按钮.png'
+仿造按钮 = './image/六道-月之海/技能怪.png'
+仿造按钮 = './image/六道-月之海/挑战按钮.png'
+仿造按钮 = './image/六道-月之海/星之子按钮.png'
+仿造按钮 = './image/六道-月之海/柔风按钮.png'
+仿造按钮 = './image/六道-月之海/混沌按钮.png'
+仿造按钮 = './image/六道-月之海/确定按钮.png'
+仿造按钮 = './image/六道-月之海/确认按钮.png'
+仿造按钮 = './image/六道-月之海/神秘按钮.png'
+仿造按钮 = './image/六道-月之海/跳过按钮.png'
+仿造按钮 = './image/六道-月之海/选择按钮.png'
+仿造按钮 = './image/六道-月之海/麓战按钮.png'
 
 
-def 开始组队魂土() :
-    maxcount = math.floor(power/consume)
+
+
+
+
+hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+
+
+def 开始六道月之海() :
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计组队挑战魂十 " + str(maxcount) + "局")
@@ -50,13 +65,13 @@ def 开始组队魂土() :
         line = line.strip('\n')
         overAddress.append(line)
     # 赋值完毕
-
-    for i in range(maxcount):
+    # 战斗次数
+    playCount = 0
+    while playCount < maxcount :
         print("------------------------")
-        print("开始打第 " + str(i + 1) + " 次")
-        i += 1
+        print("开始打第 " + str(playCount + 1) + " 次")
 
-        # 首先找到挑战坐标 点击
+        # 首先找到开启坐标 点击
         startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
         CommonUtils.click_point_random(startX, startY, hwndSmall)
         time.sleep(random.uniform(0.8, 1.2))
@@ -113,4 +128,4 @@ def 开始组队魂土() :
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
 
-开始组队魂土()
+开始六道月之海()
