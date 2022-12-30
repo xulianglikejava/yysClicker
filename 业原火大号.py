@@ -80,7 +80,7 @@ def 开始业原火() :
                 CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+        time.sleep(bigWaitTime + random.uniform(1.2,1.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
