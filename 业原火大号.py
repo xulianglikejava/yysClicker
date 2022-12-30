@@ -22,7 +22,7 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = CommonUtils.getBigHwnd()
+hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 successImg = './image/业原火/success.png'
 failImg = './image/业原火/fail.png'
 startImg = './image/业原火/start.png'
@@ -49,10 +49,21 @@ def 开始业原火() :
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i) + " 次")
+        print("开始打第 " + str(i + 1) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg,hwnd)
-        CommonUtils.click_point_random(startX, startY,hwnd)
+        # 首先找到挑战坐标 点击
+        startX, startY, = CommonUtils.openimages(startImg, hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(0.8, 1.2))
+        playCount = 0
+        while CommonUtils.openimages(startImg, hwnd) != 0:
+            print("---没有成功进去挑战!!!---")
+            playCount = playCount + 1
+            if playCount > 5:
+                return
+            startX, startY, = CommonUtils.openimages(startImg, hwnd)
+            CommonUtils.click_point_random(startX, startY, hwnd)
+            time.sleep(random.uniform(1.2, 1.8))
         # 一把打完至少要120秒
         time.sleep(consumeTime)
         flag = 0
