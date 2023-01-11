@@ -16,7 +16,7 @@ consume = 8
 # 计划打的局数
 maxcount = 30
 # 每局消耗时间
-consumeTime = 40
+consumeTime = 55
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
