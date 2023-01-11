@@ -23,10 +23,10 @@ bigWaitTime = 3
 smallWaitTime = 2
 
 hwnd = CommonUtils.getSmallHwnd()
-successImg = './image/季你太美/success.png'
-success1Img = './image/季你太美/success1.png'
-failImg = './image/季你太美/fail.png'
-startImg = './image/季你太美/start.png'
+successImg = './image/活动通用/success.png'
+success1Img = './image/活动通用/success1.png'
+failImg = './image/活动通用/fail.png'
+startImg = './image/活动通用/start.png'
 
 
 def 开始季你太美() :
