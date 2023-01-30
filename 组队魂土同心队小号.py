@@ -25,7 +25,7 @@ bigWaitTime = 3
 smallWaitTime = 2
 挑战按钮 = './image/魂土/挑战按钮.png'
 
-hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwnd = CommonUtils.getSmallHwnd()
 
 
 def 开始组队魂土() :

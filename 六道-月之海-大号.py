@@ -26,37 +26,63 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-仿造按钮 = './image/六道-月之海/仿造按钮.png'
 准备按钮 = './image/六道-月之海/准备按钮.png'
 开启按钮 = './image/六道-月之海/开启按钮.png'
 开启2按钮 = './image/六道-月之海/开启2按钮.png'
 技能怪 = './image/六道-月之海/技能怪.png'
 挑战按钮 = './image/六道-月之海/挑战按钮.png'
 挑战技能怪 = './image/六道-月之海/挑战技能怪.png'
+
 柔风抱暖 = './image/六道-月之海/柔风抱暖.png'
 细雨化屏 = './image/六道-月之海/细雨化屏.png'
-暴虐按钮 = './image/六道-月之海/暴虐按钮.png'
-妖力分身 = './image/六道-月之海/妖力分身.png'
-混沌按钮 = './image/六道-月之海/混沌按钮.png'
-确定按钮 = './image/六道-月之海/确定按钮.png'
-确认按钮 = './image/六道-月之海/确认按钮.png'
-神秘按钮 = './image/六道-月之海/神秘按钮.png'
-跳过按钮 = './image/六道-月之海/跳过按钮.png'
-选择按钮 = './image/六道-月之海/选择按钮.png'
-麓战按钮 = './image/六道-月之海/麓战按钮.png'
-麓战1 = './image/六道-月之海/麓战1.png'
-麓战2 = './image/六道-月之海/麓战2.png'
-麓战3 = './image/六道-月之海/麓战3.png'
-麓战4 = './image/六道-月之海/麓战4.png'
-麓战5 = './image/六道-月之海/麓战5.png'
-混沌1 = './image/六道-月之海/混沌1.png'
-混沌2 = './image/六道-月之海/混沌2.png'
-星之屿1 = './image/六道-月之海/星之屿1.png'
-
-月读按钮 = './image/六道-月之海/月读按钮.png'
+六道暴虐 = './image/六道-月之海/六道暴虐.png'
+妖力化身 = './image/六道-月之海/妖力化身.png'
+小柔风抱暖 = './image/六道-月之海/小柔风抱暖.png'
+小细雨化屏 = './image/六道-月之海/小细雨化屏.png'
+小六道暴虐 = './image/六道-月之海/小六道暴虐.png'
+小妖力化身 = './image/六道-月之海/小妖力化身.png'
 万相之赐 = './image/六道-月之海/万相之赐.png'
 没钱按钮 = './image/六道-月之海/没钱按钮.png'
 刷新按钮 = './image/六道-月之海/刷新按钮.png'
+
+确定按钮 = './image/六道-月之海/确定按钮.png'
+确认按钮 = './image/六道-月之海/确认按钮.png'
+跳过按钮 = './image/六道-月之海/跳过按钮.png'
+选择按钮 = './image/六道-月之海/选择按钮.png'
+
+麓战1 = './image/六道-月之海/麓战1.png'
+混沌1 = './image/六道-月之海/混沌1.png'
+神秘1 = './image/六道-月之海/神秘1.png'
+星之屿1 = './image/六道-月之海/星之屿1.png'
+
+火之卷 = './image/六道-月之海/火之卷.png'
+冰之卷 = './image/六道-月之海/冰之卷.png'
+变呱符咒 = './image/六道-月之海/变呱符咒.png'
+抵抗御守 = './image/六道-月之海/抵抗御守.png'
+风之卷 = './image/六道-月之海/风之卷.png'
+石之卷 = './image/六道-月之海/石之卷.png'
+雷之卷 = './image/六道-月之海/雷之卷.png'
+生命御守 = './image/六道-月之海/生命御守.png'
+庇护头盔 = './image/六道-月之海/庇护头盔.png'
+乾坤袋 = './image/六道-月之海/乾坤袋.png'
+乾坤袋 = './image/六道-月之海/乾坤袋.png'
+# 混沌
+幸运宝箱 = './image/六道-月之海/幸运宝箱.png'
+精英 = './image/六道-月之海/精英.png'
+
+
+# 神秘
+仿造按钮 = './image/六道-月之海/仿造按钮.png'
+虚仿造按钮 = './image/六道-月之海/虚仿造按钮.png'
+转换1 = './image/六道-月之海/转换1.png'
+退出神秘之屿 = './image/六道-月之海/退出神秘之屿.png'
+
+# 安息
+离开商店 = './image/六道-月之海/离开商店.png'
+
+月读按钮 = './image/六道-月之海/月读按钮.png'
+胜利 = './image/六道-月之海/胜利.png'
+
 
 
 # 技能怪坐标
@@ -67,9 +93,9 @@ smallWaitTime = 2
 精英怪X = 637
 精英怪Y = 252
 
-# 精英怪坐标
-精英怪X = 788
-精英怪Y = 92
+# 符咒坐标
+符咒X = 788
+符咒Y = 92
 
 # 读取文件里的结算坐标
 overAddress = []
@@ -86,25 +112,52 @@ overFile.close()
 hwnd = CommonUtils.getBigHwnd()
 
 def 关卡内战斗():
-    # 判断是否打到月读了
-    while CommonUtils.openimages(挑战按钮, hwnd) != 0:
-         # 调整技能
-         break
-    星之子()
-    麓战()
-    神秘()
-    混沌()
-    安息()
+    while CommonUtils.openimages(胜利, hwnd) == 0:
+        # 判断是否打到月读了
+        while CommonUtils.openimages(挑战按钮, hwnd) != 0:
+            # 调整技能
+            continue
+
+        # 判断是否有星之子
+        if CommonUtils.openimages(星之屿1, hwnd) != 0:
+            星之子()
+            continue
+
+        # 判断是否有麓战
+        if CommonUtils.openimages(麓战1, hwnd) != 0:
+            麓战()
+            continue
+
+        # 神秘()
+        # 混沌()
+        # 安息()
+
+
+    # 判断是否胜利
+    while CommonUtils.openimages(胜利, hwnd) != 0:
+        print("点击结算")
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
+        CommonUtils.click_point_random(overX, overY, hwnd)
+        time.sleep(random.uniform(2.8, 3.2))
+        print("再点击结算")
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
+        CommonUtils.click_point_random(overX, overY, hwnd)
+        break
+
+
+
 
 def 星之子():
+
+    # 判断是否有麓战 优先打麓战
     while CommonUtils.openimages(星之屿1, hwnd) != 0:
-        print("打技能怪喽")
+        print("打星之子喽")
         CommonUtils.click_img(星之屿1, hwnd)
 
         CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-
+        time.sleep(random.uniform(2.4, 3.5))
         CommonUtils.click_img(挑战技能怪, hwnd)
-
+        time.sleep(15)
         # 打完后点击结算
         flag = 0
         countTime = 0
@@ -115,15 +168,73 @@ def 星之子():
                 time.sleep(1)
             elif CommonUtils.openimages(万相之赐, hwnd) != 0:
                 flag = 1
+                选择符咒()
+                选择技能(1)
                 break;
         break
 def 神秘():
     print("选择神秘")
+    # 判断是否有麓战 优先打麓战
+    while CommonUtils.openimages(神秘1, hwnd) != 0:
+        CommonUtils.click_img(神秘1, hwnd)
+        # 如果是转换
+        if CommonUtils.openimages(转换1, hwnd) != 0:
+            CommonUtils.click_img(退出神秘之屿, hwnd)
+            CommonUtils.click_img(确定按钮, hwnd)
+
+        # 如果是仿造
+        while CommonUtils.openimages(虚仿造按钮, hwnd) != 0:
+            if CommonUtils.openimages(小柔风抱暖, hwnd) != 0:
+                CommonUtils.click_img(小柔风抱暖, hwnd)
+                break
+            if CommonUtils.openimages(小六道暴虐, hwnd) != 0:
+                CommonUtils.click_img(小六道暴虐, hwnd)
+                break
+            if CommonUtils.openimages(小妖力化身, hwnd) != 0:
+                CommonUtils.click_img(小妖力化身, hwnd)
+                break
+            if CommonUtils.openimages(小细雨化屏, hwnd) != 0:
+                CommonUtils.click_img(小细雨化屏, hwnd)
+                break
+
+        CommonUtils.click_img(仿造按钮,hwnd)
+        CommonUtils.click_img(确认按钮,hwnd)
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
+        CommonUtils.click_point_random(overX, overY, hwnd)
 def 混沌():
     print("选择混沌")
+    # 判断是否有麓战 优先打麓战
+    while CommonUtils.openimages(混沌1, hwnd) != 0:
+        CommonUtils.click_img(混沌1, hwnd)
+
+        if CommonUtils.openimages(幸运宝箱, hwnd) != 0:
+            CommonUtils.click_img(幸运宝箱, hwnd)
+            CommonUtils.click_img(开启按钮, hwnd)
+            overX, overY = overAddress[random.randint(0, 9)].split(',')
+            CommonUtils.click_point_random(overX, overY, hwnd)
+            break
+
+        if CommonUtils.openimages(精英, hwnd) != 0:
+            CommonUtils.click_point_random(精英怪X,精英怪Y,hwnd)
+            time.sleep(random.uniform(2.4, 2.9))
+            CommonUtils.click_img(挑战技能怪, hwnd)
+            time.sleep(10)
+            # 打完后点击结算
+            flag = 0
+            countTime = 0
+            while flag == 0:
+                if CommonUtils.openimages(万相之赐, hwnd) == 0:
+                    print("等待第 " + str(countTime + 1) + " 次...")
+                    countTime = countTime + 1
+                    time.sleep(1)
+                elif CommonUtils.openimages(万相之赐, hwnd) != 0:
+                    flag = 1
+                    选择技能(0)
+                    选择技能(1)
+                    break;
+            break
 def 安息():
     print("选择安息")
-
 def 麓战():
     # 判断是否有麓战 优先打麓战
     while CommonUtils.openimages(麓战1, hwnd) != 0:
@@ -133,7 +244,7 @@ def 麓战():
         CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
         time.sleep(random.uniform(2.4, 3.5))
         CommonUtils.click_img(挑战技能怪, hwnd)
-
+        time.sleep(10)
         # 打完后点击结算
         flag = 0
         countTime = 0
@@ -144,134 +255,112 @@ def 麓战():
                 time.sleep(1)
             elif CommonUtils.openimages(万相之赐, hwnd) != 0:
                 flag = 1
-                break;
-        break
-    while CommonUtils.openimages(麓战2, hwnd) != 0:
-        print("打技能怪喽")
-        CommonUtils.click_img(麓战2, hwnd)
-
-        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-        time.sleep(random.uniform(2.4, 3.5))
-
-        CommonUtils.click_img(挑战技能怪, hwnd)
-
-        # 打完后点击结算
-        flag = 0
-        countTime = 0
-        while flag == 0:
-            if CommonUtils.openimages(万相之赐, hwnd) == 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
-                countTime = countTime + 1
-                time.sleep(1)
-            elif CommonUtils.openimages(万相之赐, hwnd) != 0:
-                flag = 1
+                选择技能(1)
                 break;
         break
 
-        # 判断是否有麓战 优先打麓战
-    while CommonUtils.openimages(麓战3, hwnd) != 0:
-        print("打技能怪喽")
-        CommonUtils.click_img(麓战3, hwnd)
-
-        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-        time.sleep(random.uniform(2.4, 3.5))
-
-        CommonUtils.click_img(挑战技能怪, hwnd)
-
-        # 打完后点击结算
-        flag = 0
-        countTime = 0
-        while flag == 0:
-            if CommonUtils.openimages(万相之赐, hwnd) == 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
-                countTime = countTime + 1
-                time.sleep(1)
-            elif CommonUtils.openimages(万相之赐, hwnd) != 0:
-                flag = 1
-                break;
-        break
-    while CommonUtils.openimages(麓战4, hwnd) != 0:
-        print("打技能怪喽")
-        CommonUtils.click_img(麓战4, hwnd)
-
-        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-        time.sleep(random.uniform(2.4, 3.5))
-
-        CommonUtils.click_img(挑战技能怪, hwnd)
-
-        # 打完后点击结算
-        flag = 0
-        countTime = 0
-        while flag == 0:
-            if CommonUtils.openimages(万相之赐, hwnd) == 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
-                countTime = countTime + 1
-                time.sleep(1)
-            elif CommonUtils.openimages(万相之赐, hwnd) != 0:
-                flag = 1
-                break;
-        break
-    while CommonUtils.openimages(麓战5, hwnd) != 0:
-        print("打技能怪喽")
-        CommonUtils.click_img(麓战5, hwnd)
-
-        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-        time.sleep(random.uniform(2.4, 3.5))
-
-        CommonUtils.click_img(挑战技能怪, hwnd)
-
-        # 打完后点击结算
-        flag = 0
-        countTime = 0
-        while flag == 0:
-            if CommonUtils.openimages(万相之赐, hwnd) == 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
-                countTime = countTime + 1
-                time.sleep(1)
-            elif CommonUtils.openimages(万相之赐, hwnd) != 0:
-                flag = 1
-                break;
-        break
-
-def 选择技能():
+def 选择技能(flag):
     # 刷新次数
     flush = 0
-    flag = 0
     print("选技能咯")
-    while flag == 0:
-        if flush < 3 :
-            if CommonUtils.openimages(柔风抱暖, hwnd) != 0:
-                print("选柔风咯")
-                CommonUtils.click_img_select(柔风抱暖,hwnd)
-                break;
+    while flush < 3:
+        if CommonUtils.openimages(柔风抱暖, hwnd) != 0:
+            print("选柔风咯")
+            CommonUtils.click_img_select(柔风抱暖,hwnd)
+            break;
 
-            if CommonUtils.openimages(细雨化屏, hwnd) != 0:
-                print("选化雨咯")
-                CommonUtils.click_img_select(细雨化屏,hwnd)
-                break;
+        if CommonUtils.openimages(细雨化屏, hwnd) != 0:
+            print("选化雨咯")
+            CommonUtils.click_img_select(细雨化屏,hwnd)
+            break;
 
-            if CommonUtils.openimages(暴虐按钮, hwnd) != 0:
-                print("选暴虐咯")
-                CommonUtils.click_img_select(暴虐按钮,hwnd)
-                break;
+        if CommonUtils.openimages(六道暴虐, hwnd) != 0:
+            print("选暴虐咯")
+            CommonUtils.click_img_select(六道暴虐,hwnd)
+            break;
 
-            if CommonUtils.openimages(妖力分身, hwnd) != 0:
-                print("选分身咯")
-                CommonUtils.click_img_select(妖力分身,hwnd)
-                break;
+        if CommonUtils.openimages(妖力化身, hwnd) != 0:
+            print("选分身咯")
+            CommonUtils.click_img_select(妖力化身,hwnd)
+            break;
 
-            if CommonUtils.openimages(没钱按钮, hwnd) == 0:
-                print("没钱喽，选万相之赐咯")
-                CommonUtils.click_img(万相之赐,hwnd)
-                break;
+        if CommonUtils.openimages(没钱按钮, hwnd) != 0:
+            print("没钱喽，选万相之赐咯")
+            CommonUtils.click_img(万相之赐,hwnd)
+            break;
 
-            if CommonUtils.openimages(没钱按钮, hwnd) != 0:
-                print("刷新！刷新技能!")
-                CommonUtils.click_img(刷新按钮,hwnd)
-                flush += 1
+        if CommonUtils.openimages(没钱按钮, hwnd) == 0:
+            print("刷新！刷新技能!")
+            x,y = CommonUtils.openimages(刷新按钮, hwnd)
+            CommonUtils.click_point_random(x,y,hwnd)
+            flush += 1
+    if flag == 1 :
+        print("点击结算")
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
+        CommonUtils.click_point_random(overX, overY, hwnd)
 
-    overX, overY = overAddress[random.randint(0, 9)].split(',')
-    CommonUtils.click_point_random(overX, overY,hwnd)
+def 选择符咒():
+    # 刷新次数
+    flag = 0
+    print("选符咒咯")
+    while flag == 0 :
+        if CommonUtils.openimages(火之卷, hwnd) != 0:
+            print("选火之卷咯")
+            CommonUtils.click_img_select(火之卷, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(雷之卷, hwnd) != 0:
+            print("选雷之卷咯")
+            CommonUtils.click_img_select(雷之卷, hwnd)
+            flag = 1
+            break
+
+        if CommonUtils.openimages(冰之卷, hwnd) == 0:
+            print("选冰之卷咯")
+            CommonUtils.click_img(冰之卷, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(变呱符咒, hwnd) == 0:
+            print("选变呱符咒咯")
+            CommonUtils.click_img(变呱符咒, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(抵抗御守, hwnd) == 0:
+            print("选抵抗御守咯")
+            CommonUtils.click_img(抵抗御守, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(风之卷, hwnd) == 0:
+            print("选风之卷咯")
+            CommonUtils.click_img(风之卷, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(石之卷, hwnd) == 0:
+            print("选石之卷咯")
+            CommonUtils.click_img(石之卷, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(生命御守, hwnd) == 0:
+            print("选生命御守咯")
+            CommonUtils.click_img(生命御守, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(庇护头盔, hwnd) == 0:
+            print("选庇护头盔咯")
+            CommonUtils.click_img(庇护头盔, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(乾坤袋, hwnd) == 0:
+            print("选乾坤袋咯")
+            CommonUtils.click_img(乾坤袋, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(抵抗御守, hwnd) == 0:
+            print("选抵抗御守咯")
+            CommonUtils.click_img(抵抗御守, hwnd)
+            flag = 1
+            break
+
 
 
 
@@ -288,19 +377,24 @@ def 开始六道月之海() :
 
         # 首先找到开启坐标 点击
         CommonUtils.click_img(开启按钮,hwnd)
-        time.sleep(random.uniform(0.8, 1.2))
+        time.sleep(random.uniform(2.8, 3.2))
 
         # 找到确定坐标 点击
         CommonUtils.click_img(确定按钮, hwnd)
-        time.sleep(random.uniform(0.8, 1.2))
+        time.sleep(random.uniform(2.8, 3.2))
 
         # 找到开启2坐标 点击
         CommonUtils.click_img(开启2按钮, hwnd)
-        time.sleep(random.uniform(0.8, 1.2))
+        time.sleep(random.uniform(2.8, 3.2))
 
         # 找到柔风保暖坐标 点击
         CommonUtils.click_img_select(柔风抱暖, hwnd)
         time.sleep(random.uniform(0.8, 1.2))
+
+
+        print("开始战斗")
+
+        关卡内战斗()
 
 
 
@@ -309,4 +403,4 @@ def 开始六道月之海() :
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
 
-关卡内战斗()
+开始六道月之海()
