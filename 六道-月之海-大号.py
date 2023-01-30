@@ -32,7 +32,7 @@ smallWaitTime = 2
 开启2按钮 = './image/六道-月之海/开启2按钮.png'
 技能怪 = './image/六道-月之海/技能怪.png'
 挑战按钮 = './image/六道-月之海/挑战按钮.png'
-星之子按钮 = './image/六道-月之海/星之子按钮.png'
+挑战技能怪 = './image/六道-月之海/挑战技能怪.png'
 柔风抱暖 = './image/六道-月之海/柔风抱暖.png'
 细雨化屏 = './image/六道-月之海/细雨化屏.png'
 暴虐按钮 = './image/六道-月之海/暴虐按钮.png'
@@ -49,6 +49,10 @@ smallWaitTime = 2
 麓战3 = './image/六道-月之海/麓战3.png'
 麓战4 = './image/六道-月之海/麓战4.png'
 麓战5 = './image/六道-月之海/麓战5.png'
+混沌1 = './image/六道-月之海/混沌1.png'
+混沌2 = './image/六道-月之海/混沌2.png'
+星之屿1 = './image/六道-月之海/星之屿1.png'
+
 月读按钮 = './image/六道-月之海/月读按钮.png'
 万相之赐 = './image/六道-月之海/万相之赐.png'
 没钱按钮 = './image/六道-月之海/没钱按钮.png'
@@ -56,8 +60,16 @@ smallWaitTime = 2
 
 
 # 技能怪坐标
-powerX = 637
-powerY = 252
+技能怪X = 637
+技能怪Y = 252
+
+# 精英怪坐标
+精英怪X = 637
+精英怪Y = 252
+
+# 精英怪坐标
+精英怪X = 788
+精英怪Y = 92
 
 # 读取文件里的结算坐标
 overAddress = []
@@ -75,14 +87,42 @@ hwnd = CommonUtils.getBigHwnd()
 
 def 关卡内战斗():
     # 判断是否打到月读了
-    while CommonUtils.openimages(月读按钮, hwnd) != 0:
+    while CommonUtils.openimages(挑战按钮, hwnd) != 0:
          # 调整技能
          break
-
+    星之子()
     麓战()
+    神秘()
+    混沌()
+    安息()
 
+def 星之子():
+    while CommonUtils.openimages(星之屿1, hwnd) != 0:
+        print("打技能怪喽")
+        CommonUtils.click_img(星之屿1, hwnd)
 
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
 
+        CommonUtils.click_img(挑战技能怪, hwnd)
+
+        # 打完后点击结算
+        flag = 0
+        countTime = 0
+        while flag == 0:
+            if CommonUtils.openimages(万相之赐, hwnd) == 0:
+                print("等待第 " + str(countTime + 1) + " 次...")
+                countTime = countTime + 1
+                time.sleep(1)
+            elif CommonUtils.openimages(万相之赐, hwnd) != 0:
+                flag = 1
+                break;
+        break
+def 神秘():
+    print("选择神秘")
+def 混沌():
+    print("选择混沌")
+def 安息():
+    print("选择安息")
 
 def 麓战():
     # 判断是否有麓战 优先打麓战
@@ -90,9 +130,9 @@ def 麓战():
         print("打技能怪喽")
         CommonUtils.click_img(麓战1, hwnd)
 
-        CommonUtils.click_point_random(powerX, powerY, hwnd)
-
-        CommonUtils.click_img(挑战按钮, hwnd)
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
+        time.sleep(random.uniform(2.4, 3.5))
+        CommonUtils.click_img(挑战技能怪, hwnd)
 
         # 打完后点击结算
         flag = 0
@@ -110,9 +150,10 @@ def 麓战():
         print("打技能怪喽")
         CommonUtils.click_img(麓战2, hwnd)
 
-        CommonUtils.click_point_random(powerX, powerY, hwnd)
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
+        time.sleep(random.uniform(2.4, 3.5))
 
-        CommonUtils.click_img(挑战按钮, hwnd)
+        CommonUtils.click_img(挑战技能怪, hwnd)
 
         # 打完后点击结算
         flag = 0
@@ -132,9 +173,10 @@ def 麓战():
         print("打技能怪喽")
         CommonUtils.click_img(麓战3, hwnd)
 
-        CommonUtils.click_point_random(powerX, powerY, hwnd)
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
+        time.sleep(random.uniform(2.4, 3.5))
 
-        CommonUtils.click_img(挑战按钮, hwnd)
+        CommonUtils.click_img(挑战技能怪, hwnd)
 
         # 打完后点击结算
         flag = 0
@@ -152,9 +194,10 @@ def 麓战():
         print("打技能怪喽")
         CommonUtils.click_img(麓战4, hwnd)
 
-        CommonUtils.click_point_random(powerX, powerY, hwnd)
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
+        time.sleep(random.uniform(2.4, 3.5))
 
-        CommonUtils.click_img(挑战按钮, hwnd)
+        CommonUtils.click_img(挑战技能怪, hwnd)
 
         # 打完后点击结算
         flag = 0
@@ -172,9 +215,10 @@ def 麓战():
         print("打技能怪喽")
         CommonUtils.click_img(麓战5, hwnd)
 
-        CommonUtils.click_point_random(powerX, powerY, hwnd)
+        CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
+        time.sleep(random.uniform(2.4, 3.5))
 
-        CommonUtils.click_img(挑战按钮, hwnd)
+        CommonUtils.click_img(挑战技能怪, hwnd)
 
         # 打完后点击结算
         flag = 0
@@ -255,7 +299,7 @@ def 开始六道月之海() :
         time.sleep(random.uniform(0.8, 1.2))
 
         # 找到柔风保暖坐标 点击
-        CommonUtils.click_img_select(柔风按钮, hwnd)
+        CommonUtils.click_img_select(柔风抱暖, hwnd)
         time.sleep(random.uniform(0.8, 1.2))
 
 
