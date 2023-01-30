@@ -14,9 +14,9 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 80
+maxcount = 150
 # 每局消耗时间
-consumeTime = 40
+consumeTime = 33
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -63,7 +63,7 @@ def 开始挑战活动() :
                 return
             startX, startY, = CommonUtils.openimages(startImg, hwnd)
             CommonUtils.click_point_random(startX, startY, hwnd)
-            time.sleep(random.uniform(0.8, 1.2))
+            time.sleep(random.uniform(1.0, 1.2))
 
         # 一把打完至少要120秒
         time.sleep(consumeTime)

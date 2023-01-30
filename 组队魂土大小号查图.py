@@ -14,7 +14,7 @@ import logging
 import async_all
 
 # 体力
-power = 350
+power = 390
 # 每局消耗体力
 consume = 8
 # 计划打的局数
@@ -29,8 +29,8 @@ smallWaitTime = 2
 不可挑战按钮 = './image/魂土/不可挑战按钮.png'
 成功 = './image/魂土/成功.png'
 成功1 = './image/魂土/成功1.png'
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwndBig = CommonUtils.getBigHwnd()
+hwndSmall = CommonUtils.getSmallHwnd()
 
 
 def 开始组队魂土() :

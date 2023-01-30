@@ -32,7 +32,8 @@ startImg = './image/结界突破/start.png'
 
 
 
-hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+# hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwnd = CommonUtils.getSmallHwnd()
 def 开始结界突破() :
     # 设置突破卷数量
     start = datetime.datetime.now()
