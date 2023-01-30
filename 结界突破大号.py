@@ -31,8 +31,8 @@ startImg = './image/结界突破/start.png'
 刷新确认按钮 = './image/结界突破/刷新确认按钮.png'
 
 
-hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
-
+# hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+hwnd = CommonUtils.getBigHwnd()
 def 开始结界突破() :
     # 设置突破卷数量
     start = datetime.datetime.now()

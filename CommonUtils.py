@@ -117,3 +117,34 @@ def getSmallHwnd():
     hwnd = win32gui.FindWindow(None, "捉鼠大师小叮当")
     win32gui.EnumChildWindows(hwnd, winfun, None)
     return child_handles[0]
+
+def click_img(img,hwnd):
+    startX, startY, = openimages(img, hwnd)
+    click_point_random(startX, startY, hwnd)
+    time.sleep(random.uniform(2.2, 2.8))
+    playCount = 0
+    while openimages(img, hwnd) != 0:
+        print("---没有成功点击!!!---")
+        playCount = playCount + 1
+        if playCount > 3:
+            return
+        startX, startY, = openimages(img, hwnd)
+        click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(2.2, 2.8))
+
+
+def click_img_select(img,hwnd):
+    startX, startY, = openimages(img, hwnd)
+    startY = startY + 280
+    click_point_random(startX, startY, hwnd)
+    time.sleep(random.uniform(2.2, 2.8))
+    playCount = 0
+    while openimages(img, hwnd) != 0:
+        print("---没有成功点击!!!---")
+        playCount = playCount + 1
+        if playCount > 3:
+            return
+        startX, startY, = openimages(img, hwnd)
+        startY = startY + 280
+        click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(2.2, 2.8))

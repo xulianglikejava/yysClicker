@@ -31,9 +31,8 @@ successImg = './image/通用图片/success.png'
 success1Img = './image/通用图片/success1.png'
 挑战Img = './image/通用图片/挑战.png'
 
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
-
+hwndBig = CommonUtils.getBigHwnd()
+hwndSmall = CommonUtils.getSmallHwnd()
 
 def 开始组队日轮() :
     start = datetime.datetime.now()
