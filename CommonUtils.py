@@ -118,6 +118,7 @@ def getSmallHwnd():
     win32gui.EnumChildWindows(hwnd, winfun, None)
     return child_handles[0]
 
+# 直接点图，包含错误重试
 def click_img(img,hwnd):
     startX, startY, = openimages(img, hwnd)
     click_point_random(startX, startY, hwnd)
@@ -132,7 +133,32 @@ def click_img(img,hwnd):
         click_point_random(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
 
+# 直接点图，无错误重试
+def click_img_no_retry(img,hwnd):
+    startX, startY, = openimages(img, hwnd)
+    click_point_random(startX, startY, hwnd)
+    time.sleep(random.uniform(2.2, 2.8))
 
+
+# 商店购买产品
+def click_img_buy(img,hwnd):
+    startX, startY, = openimages(img, hwnd)
+    startY = startY + random.randint(10,20)
+    click_point_random(startX, startY, hwnd)
+    time.sleep(random.uniform(2.2, 2.8))
+    playCount = 0
+    while openimages(img, hwnd) != 0:
+        print("---没有成功点击!!!---")
+        playCount = playCount + 1
+        if playCount > 3:
+            return
+        startX, startY, = openimages(img, hwnd)
+        startY = startY + random.randint(10, 20)
+        click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(2.2, 2.8))
+
+
+# 打完怪选技能
 def click_img_select(img,hwnd):
     startX, startY, = openimages(img, hwnd)
     startY = startY + 280
