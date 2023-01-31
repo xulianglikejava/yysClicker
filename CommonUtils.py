@@ -168,7 +168,7 @@ def click_img_select(img,hwnd):
     while openimages(img, hwnd) != 0:
         print("---没有成功点击!!!---")
         playCount = playCount + 1
-        if playCount > 3:
+        if playCount > 5:
             return
         startX, startY, = openimages(img, hwnd)
         startY = startY + 280

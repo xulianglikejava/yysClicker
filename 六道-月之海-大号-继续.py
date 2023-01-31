@@ -288,7 +288,7 @@ def 安息():
             CommonUtils.click_img(确定按钮, hwnd)
 
         print("离开商店")
-        CommonUtils.click_img_no_retry(离开商店, hwnd)
+        CommonUtils.click_img(离开商店, hwnd)
         CommonUtils.click_img(确定按钮, hwnd)
 
 def 麓战():
@@ -500,4 +500,4 @@ def 开始六道月之海() :
     print("总共耗时为：" + str(end - start) + " 秒")
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
-开始六道月之海()
+关卡内战斗()
