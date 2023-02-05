@@ -111,7 +111,7 @@ smallWaitTime = 2
 
 # 读取文件里的结算坐标
 overAddress = []
-overFile = open('./address/结界突破/结算坐标.txt')
+overFile = open('./address/六道-月之海/结算坐标.txt')
 for line in overFile.readlines():
     line = line.strip('\n')
     overAddress.append(line)
@@ -357,13 +357,6 @@ def 选择技能(flag):
             CommonUtils.click_img_select(柔风抱暖,hwnd)
 
             break;
-
-        if CommonUtils.openimages(细雨化屏, hwnd) != 0:
-            print("选化雨咯")
-            CommonUtils.click_img_select(细雨化屏,hwnd)
-
-            break;
-
         if CommonUtils.openimages(六道暴虐, hwnd) != 0:
             print("选暴虐咯")
             CommonUtils.click_img_select(六道暴虐,hwnd)
@@ -373,6 +366,15 @@ def 选择技能(flag):
             print("选分身咯")
             CommonUtils.click_img_select(妖力化身,hwnd)
             break;
+
+        if CommonUtils.openimages(细雨化屏, hwnd) != 0:
+            print("选化雨咯")
+            CommonUtils.click_img_select(细雨化屏,hwnd)
+
+            break;
+
+
+
         if flush < 3:
             print("刷新！刷新技能!")
             x,y = CommonUtils.openimages(刷新按钮, hwnd)
@@ -405,27 +407,29 @@ def 备战BOSS():
     print("点击备战")
     CommonUtils.click_img(备战, hwnd)
     time.sleep(random.uniform(1.0, 2.0))
-    CommonUtils.click_img(技能刷新, hwnd)
-    time.sleep(random.uniform(1.0, 2.0))
-    CommonUtils.click_img(重置技能, hwnd)
-    time.sleep(random.uniform(1.0, 2.0))
-    CommonUtils.click_img(确认按钮, hwnd)
-    time.sleep(random.uniform(1.0, 2.0))
-    print("填充技能")
-    CommonUtils.click_img_no_retry(小柔风抱暖, hwnd)
-    CommonUtils.click_img(装备, hwnd)
+    print("检查技能是否全")
+    if CommonUtils.openimages(小柔风抱暖,hwnd) == 0 and  CommonUtils.openimages(小六道暴虐,hwnd) == 0 and CommonUtils.openimages(小细雨化屏, hwnd) == 0 and  CommonUtils.openimages(小妖力化身,hwnd) == 0 :
+        CommonUtils.click_img(技能刷新, hwnd)
+        time.sleep(random.uniform(1.0, 2.0))
+        CommonUtils.click_img(重置技能, hwnd)
+        time.sleep(random.uniform(1.0, 2.0))
+        CommonUtils.click_img(确认按钮, hwnd)
+        time.sleep(random.uniform(1.0, 2.0))
+        print("填充技能")
+        CommonUtils.click_img_no_retry(小柔风抱暖, hwnd)
+        CommonUtils.click_img(装备, hwnd)
 
-    CommonUtils.click_img_no_retry(小六道暴虐, hwnd)
-    CommonUtils.click_img(装备, hwnd)
+        CommonUtils.click_img_no_retry(小六道暴虐, hwnd)
+        CommonUtils.click_img(装备, hwnd)
 
-    CommonUtils.click_img_no_retry(小细雨化屏, hwnd)
-    CommonUtils.click_img(装备, hwnd)
+        CommonUtils.click_img_no_retry(小细雨化屏, hwnd)
+        CommonUtils.click_img(装备, hwnd)
 
-    CommonUtils.click_img_no_retry(小妖力化身, hwnd)
-    CommonUtils.click_img(装备, hwnd)
+        CommonUtils.click_img_no_retry(小妖力化身, hwnd)
+        CommonUtils.click_img(装备, hwnd)
 
-    CommonUtils.click_img_no_retry(退出技能重置, hwnd)
-    CommonUtils.click_img_no_retry(退出技能重置, hwnd)
+        CommonUtils.click_img_no_retry(退出技能重置, hwnd)
+        CommonUtils.click_img_no_retry(退出技能重置, hwnd)
 
 def 选择符咒():
     # 刷新次数
@@ -436,6 +440,11 @@ def 选择符咒():
         if CommonUtils.openimages(火之卷, hwnd) != 0:
             print("选火之卷咯")
             CommonUtils.click_img_select(火之卷, hwnd)
+            flag = 1
+            break
+        if CommonUtils.openimages(变呱符咒, hwnd) == 0:
+            print("选变呱符咒咯")
+            CommonUtils.click_img(变呱符咒, hwnd)
             flag = 1
             break
         if CommonUtils.openimages(雷之卷, hwnd) != 0:
@@ -449,11 +458,7 @@ def 选择符咒():
             CommonUtils.click_img(冰之卷, hwnd)
             flag = 1
             break
-        if CommonUtils.openimages(变呱符咒, hwnd) == 0:
-            print("选变呱符咒咯")
-            CommonUtils.click_img(变呱符咒, hwnd)
-            flag = 1
-            break
+
         if CommonUtils.openimages(抵抗御守, hwnd) == 0:
             print("选抵抗御守咯")
             CommonUtils.click_img(抵抗御守, hwnd)
