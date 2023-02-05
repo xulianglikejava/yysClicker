@@ -49,6 +49,12 @@ smallWaitTime = 2
 没钱按钮 = './image/六道-月之海/没钱按钮.png'
 刷新按钮 = './image/六道-月之海/刷新按钮.png'
 
+
+检查柔风抱暖 = './image/六道-月之海/检查柔风抱暖.png'
+检查细雨化屏 = './image/六道-月之海/检查细雨化屏.png'
+检查六道暴虐 = './image/六道-月之海/检查六道暴虐.png'
+检查妖力化身 = './image/六道-月之海/检查妖力化身.png'
+
 确定按钮 = './image/六道-月之海/确定按钮.png'
 确认按钮 = './image/六道-月之海/确认按钮.png'
 跳过按钮 = './image/六道-月之海/跳过按钮.png'
@@ -412,8 +418,11 @@ def 备战BOSS():
     print("点击备战")
     CommonUtils.click_img(备战, hwnd)
     time.sleep(random.uniform(1.0, 2.0))
+    检查技能()
+def 检查技能():
+
     print("检查技能是否全")
-    if CommonUtils.openimages(小柔风抱暖,hwnd) == 0 and  CommonUtils.openimages(小六道暴虐,hwnd) == 0 and CommonUtils.openimages(小细雨化屏, hwnd) == 0 and  CommonUtils.openimages(小妖力化身,hwnd) == 0 :
+    if CommonUtils.openimages(检查柔风抱暖,hwnd) == 0 and  CommonUtils.openimages(检查六道暴虐,hwnd) == 0 and CommonUtils.openimages(检查细雨化屏, hwnd) == 0 and  CommonUtils.openimages(检查妖力化身,hwnd) == 0 :
         CommonUtils.click_img(技能刷新, hwnd)
         time.sleep(random.uniform(1.0, 2.0))
         CommonUtils.click_img(重置技能, hwnd)
@@ -435,6 +444,7 @@ def 备战BOSS():
 
         CommonUtils.click_img_no_retry(退出技能重置, hwnd)
         CommonUtils.click_img_no_retry(退出技能重置, hwnd)
+
 
 def 选择符咒():
     # 刷新次数
@@ -537,4 +547,5 @@ def 开始六道月之海() :
     print("总共耗时为：" + str(end - start) + " 秒")
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
-关卡内战斗()
+# 关卡内战斗()
+检查技能()
