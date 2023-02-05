@@ -84,6 +84,10 @@ smallWaitTime = 2
 
 # 安息
 离开商店 = './image/六道-月之海/离开商店.png'
+商品柔风抱暖 = './image/六道-月之海/商品柔风抱暖.png'
+商品细雨化屏 = './image/六道-月之海/商品细雨化屏.png'
+商品六道暴虐 = './image/六道-月之海/商品六道暴虐.png'
+商品妖力化身 = './image/六道-月之海/商品妖力化身.png'
 
 月读按钮 = './image/六道-月之海/月读按钮.png'
 胜利 = './image/六道-月之海/胜利.png'
@@ -181,7 +185,7 @@ def 星之子():
         CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
         time.sleep(random.uniform(2.4, 3.5))
         CommonUtils.click_img(挑战技能怪, hwnd)
-        time.sleep(20)
+        time.sleep(15)
         # 打完后点击结算
         flag = 0
         countTime = 0
@@ -278,31 +282,33 @@ def 安息():
     while CommonUtils.openimages(安息1, hwnd) != 0:
         CommonUtils.click_img(安息1,hwnd)
         time.sleep(random.uniform(2.2, 2.8))
-        print("购买商品")
-        if CommonUtils.openimages(小柔风抱暖, hwnd) != 0:
-            print("有柔风抱暖")
-            CommonUtils.click_img_buy(小柔风抱暖, hwnd)
-            CommonUtils.click_img(确定按钮, hwnd)
+        购买()
 
-        if CommonUtils.openimages(小六道暴虐, hwnd) != 0:
-            print("有六道暴虐")
-            CommonUtils.click_img_buy(小六道暴虐, hwnd)
-            CommonUtils.click_img(确定按钮, hwnd)
-
-        if CommonUtils.openimages(小细雨化屏, hwnd) != 0:
-            print("有细雨化屏")
-            CommonUtils.click_img_buy(小细雨化屏, hwnd)
-            CommonUtils.click_img(确定按钮, hwnd)
-
-        if CommonUtils.openimages(小妖力化身, hwnd) != 0:
-            print("有妖力化身")
-            CommonUtils.click_img_buy(小妖力化身, hwnd)
-            CommonUtils.click_img(确定按钮, hwnd)
-
-        print("离开商店")
-        CommonUtils.click_img_no_retry(离开商店, hwnd)
+def 购买():
+    print("购买商品")
+    if CommonUtils.openimages(商品柔风抱暖, hwnd) != 0:
+        print("有柔风抱暖")
+        CommonUtils.click_img_buy(商品柔风抱暖, hwnd)
         CommonUtils.click_img(确定按钮, hwnd)
 
+    if CommonUtils.openimages(商品六道暴虐, hwnd) != 0:
+        print("有六道暴虐")
+        CommonUtils.click_img_buy(商品六道暴虐, hwnd)
+        CommonUtils.click_img(确定按钮, hwnd)
+
+    if CommonUtils.openimages(商品细雨化屏, hwnd) != 0:
+        print("有细雨化屏")
+        CommonUtils.click_img_buy(商品细雨化屏, hwnd)
+        CommonUtils.click_img(确定按钮, hwnd)
+
+    if CommonUtils.openimages(商品妖力化身, hwnd) != 0:
+        print("有妖力化身")
+        CommonUtils.click_img_buy(商品妖力化身, hwnd)
+        CommonUtils.click_img(确定按钮, hwnd)
+
+    print("离开商店")
+    CommonUtils.click_img_no_retry(离开商店, hwnd)
+    CommonUtils.click_img(确定按钮, hwnd)
 def 麓战():
     # 判断是否有麓战 优先打麓战
     print("打麓战")
@@ -372,7 +378,6 @@ def 选择技能(flag):
             CommonUtils.click_img_select(细雨化屏,hwnd)
 
             break;
-
 
 
         if flush < 3:
@@ -532,4 +537,4 @@ def 开始六道月之海() :
     print("总共耗时为：" + str(end - start) + " 秒")
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
 
-开始六道月之海()
+关卡内战斗()
