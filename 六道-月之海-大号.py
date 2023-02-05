@@ -18,7 +18,7 @@ power = 350
 # 每局消耗体力
 consume = 60
 # 计划打的局数
-maxcount = 2
+maxcount = 3
 # 每局消耗时间
 consumeTime = 500
 # 大等待时间
@@ -35,6 +35,7 @@ smallWaitTime = 2
 挑战BOSS = './image/六道-月之海/挑战BOSS.png'
 挑战技能怪 = './image/六道-月之海/挑战技能怪.png'
 万相铃 = './image/六道-月之海/万相铃.png'
+结束 = './image/六道-月之海/结束.png'
 
 柔风抱暖 = './image/六道-月之海/柔风抱暖.png'
 细雨化屏 = './image/六道-月之海/细雨化屏.png'
@@ -167,8 +168,8 @@ def 关卡内战斗():
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(2.8, 3.2))
         print("再点击结算")
-        overX, overY = overAddress[random.randint(0, 9)].split(',')
-        CommonUtils.click_point_random(overX, overY, hwnd)
+        CommonUtils.click_img(结束,hwnd)
+        time.sleep(random.uniform(2.8, 3.2))
         break
 def 星之子():
 
@@ -208,26 +209,37 @@ def 神秘():
         # 如果是仿造
         while CommonUtils.openimages(虚仿造按钮, hwnd) != 0:
             if CommonUtils.openimages(小柔风抱暖, hwnd) != 0:
-                CommonUtils.click_img(小柔风抱暖, hwnd)
-                if CommonUtils.openimages(虚仿造按钮, hwnd) == 0 and CommonUtils.openimages(仿造按钮, hwnd) != 0:
+                CommonUtils.click_img_no_retry(小柔风抱暖, hwnd)
+                CommonUtils.click_img_no_retry(仿造按钮, hwnd)
+                if CommonUtils.openimages(确定按钮, hwnd) != 0:
+                    CommonUtils.click_img(确定按钮, hwnd)
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwnd)
                     break
             if CommonUtils.openimages(小六道暴虐, hwnd) != 0:
-                CommonUtils.click_img(小六道暴虐, hwnd)
-                if CommonUtils.openimages(虚仿造按钮, hwnd) == 0 and CommonUtils.openimages(仿造按钮, hwnd) != 0:
-                    break
-            if CommonUtils.openimages(小妖力化身, hwnd) != 0:
-                CommonUtils.click_img(小妖力化身, hwnd)
-                if CommonUtils.openimages(虚仿造按钮, hwnd) == 0 and CommonUtils.openimages(仿造按钮, hwnd) != 0:
+                CommonUtils.click_img_no_retry(小六道暴虐, hwnd)
+                CommonUtils.click_img_no_retry(仿造按钮, hwnd)
+                if CommonUtils.openimages(确定按钮, hwnd) != 0:
+                    CommonUtils.click_img(确定按钮, hwnd)
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwnd)
                     break
             if CommonUtils.openimages(小细雨化屏, hwnd) != 0:
-                CommonUtils.click_img(小细雨化屏, hwnd)
-                if CommonUtils.openimages(虚仿造按钮, hwnd) == 0 and CommonUtils.openimages(仿造按钮, hwnd) != 0:
+                CommonUtils.click_img_no_retry(小细雨化屏, hwnd)
+                CommonUtils.click_img_no_retry(仿造按钮, hwnd)
+                if CommonUtils.openimages(确定按钮, hwnd) != 0:
+                    CommonUtils.click_img(确定按钮, hwnd)
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwnd)
                     break
-
-        CommonUtils.click_img(仿造按钮,hwnd)
-        CommonUtils.click_img(确定按钮,hwnd)
-        overX, overY = overAddress[random.randint(0, 9)].split(',')
-        CommonUtils.click_point_random(overX, overY, hwnd)
+            if CommonUtils.openimages(小妖力化身, hwnd) != 0:
+                CommonUtils.click_img_no_retry(小妖力化身, hwnd)
+                CommonUtils.click_img_no_retry(仿造按钮, hwnd)
+                if CommonUtils.openimages(确定按钮, hwnd) != 0:
+                    CommonUtils.click_img(确定按钮, hwnd)
+                    overX, overY = overAddress[random.randint(0, 9)].split(',')
+                    CommonUtils.click_point_random(overX, overY, hwnd)
+                    break
 def 混沌():
     print("选择混沌")
     # 判断是否有麓战 优先打麓战
@@ -323,6 +335,21 @@ def 选择技能(flag):
     # 刷新次数
     flush = 0
     print("选技能咯")
+    print("是否有奖励页面 如果有直接停止")
+    if CommonUtils.openimages(万相铃, hwnd) != 0:
+        flush = 5
+        print("点击结算")
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
+        CommonUtils.click_point_random(overX, overY, hwnd)
+        time.sleep(random.uniform(2.2, 2.8))
+        playCount = 0
+        while CommonUtils.openimages(万相铃, hwnd) != 0:
+            print("---没有成功点击!!!---")
+            time.sleep(random.uniform(2.2, 2.8))
+            playCount = playCount + 1
+            if playCount > 3:
+                return
+            CommonUtils.click_point_random(overX, overY, hwnd)
     while flush < 4:
         time.sleep(random.uniform(1.5, 2.2))
         if CommonUtils.openimages(柔风抱暖, hwnd) != 0:
@@ -493,7 +520,7 @@ def 开始六道月之海() :
         print("开始战斗")
 
         关卡内战斗()
-        break
+
 
 
     end = datetime.datetime.now()
