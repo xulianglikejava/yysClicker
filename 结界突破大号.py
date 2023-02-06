@@ -105,20 +105,20 @@ def 开始结界突破() :
         totalAddress.append(tempAddr)
         print("开始打第 " + str(tempAddr + 1) + " 个点")
         startX, startY, againX, againY = startAddress[tempAddr].split(',')
+        while CommonUtils.openimages(刷新按钮, hwnd) == 0:
+            CommonUtils.click_point_random(overX, overY, hwnd)
+            time.sleep(random.uniform(0.8, 1.2))
         CommonUtils.click_point_random(startX,startY,hwnd)
         time.sleep(random.uniform(0.8,1.2))
         # 如果最后一次 那么就要退出2次
         if i == 9 or i == 18 or  i == 27 :
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
-                time.sleep(random.uniform(0.5, 0.7))
-
-
+                time.sleep(random.uniform(2.0, 2.5))
             while CommonUtils.openimages(startImg, hwnd) != 0:
-                againX, againY = CommonUtils.openimages(startImg, hwnd)
-                CommonUtils.click_point_random(againX, againY, hwnd)
+                CommonUtils.click_img(startImg, hwnd)
+                time.sleep(random.uniform(2.0, 2.5))
                 break
-            time.sleep(random.uniform(0.5, 0.7))
 
             print('返回退回2次')
             for j in range(2):
@@ -127,25 +127,21 @@ def 开始结界突破() :
                 for j in range(2):
                     j += 1
                     while CommonUtils.openimages(返回按钮Img, hwnd) != 0:
-                        x, y = CommonUtils.openimages(返回按钮Img, hwnd)
-                        CommonUtils.click_point_random(x, y, hwnd)
+                        CommonUtils.click_img(返回按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(2.0,2.5))
                     while CommonUtils.openimages(退出确认按钮Img, hwnd) != 0:
-                        x, y = CommonUtils.openimages(退出确认按钮Img, hwnd)
-                        CommonUtils.click_point_random(x, y, hwnd)
+                        CommonUtils.click_img(退出确认按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(4.0, 4.5))
 
                     while CommonUtils.openimages(再次挑战按钮Img, hwnd) != 0:
-                        x, y = CommonUtils.openimages(再次挑战按钮Img, hwnd)
-                        CommonUtils.click_point_random(x, y, hwnd)
+                        CommonUtils.click_img(再次挑战按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(1.0, 2.5))
 
                     while CommonUtils.openimages(再次挑战确认按钮Img, hwnd) != 0:
-                        x, y = CommonUtils.openimages(再次挑战确认按钮Img, hwnd)
-                        CommonUtils.click_point_random(x, y, hwnd)
+                        CommonUtils.click_img(再次挑战确认按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(2.0, 3.5))
 
@@ -154,12 +150,13 @@ def 开始结界突破() :
             while CommonUtils.openimages(startImg, hwnd) == 0:
                 CommonUtils.click_point_random(startX, startY, hwnd)
                 time.sleep(random.uniform(2.0, 2.5))
-
             while CommonUtils.openimages(startImg, hwnd) != 0:
-                print('没有成功进去')
-                againX, againY = CommonUtils.openimages(startImg, hwnd)
-                CommonUtils.click_point_random(againX, againY, hwnd)
+                CommonUtils.click_img(startImg, hwnd)
+                time.sleep(random.uniform(2.0, 2.5))
                 break
+
+
+
             time.sleep(random.uniform(1.1, 2.9))
 
         # 一把打完至少要三十秒
