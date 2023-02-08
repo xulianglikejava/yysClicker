@@ -383,9 +383,9 @@ def 选择技能(flag):
             CommonUtils.click_img_select_fz(柔风抱暖文字,hwnd)
 
             break;
-        if CommonUtils.openimages(六道暴虐文字, hwnd) != 0:
+        if CommonUtils.openimages(六道暴虐, hwnd) != 0:
             print("选暴虐咯")
-            CommonUtils.click_img_select_fz(六道暴虐文字, hwnd)
+            CommonUtils.click_img_select(六道暴虐, hwnd)
             break;
 
         if CommonUtils.openimages(妖力化身文字, hwnd) != 0:
@@ -566,8 +566,6 @@ def 开始六道月之海() :
             time.sleep(random.uniform(2.8, 3.2))
         print("开始战斗")
         关卡内战斗()
-
-
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
