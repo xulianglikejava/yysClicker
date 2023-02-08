@@ -267,7 +267,7 @@ def 混沌():
             print("开启幸运宝箱")
             CommonUtils.click_img(幸运宝箱, hwnd)
             print("点击开启")
-            CommonUtils.click_img(开启按钮, hwnd)
+            CommonUtils.click_img_no_retry(开启按钮, hwnd)
             overX, overY = overAddress[random.randint(0, 9)].split(',')
             CommonUtils.click_point_random(overX, overY, hwnd)
             break
@@ -420,7 +420,7 @@ def 选择技能(flag):
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
         playCount = 0
-        while CommonUtils.openimages(万相铃, hwnd) != 0:
+        while CommonUtils.openimages(刷新按钮, hwnd) != 0:
             print("---没有成功点击!!!---")
             time.sleep(random.uniform(2.2, 2.8))
             playCount = playCount + 1
