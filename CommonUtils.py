@@ -11,7 +11,7 @@ child_handles = []
 SmallHwnd = 0
 
 
-# 简单点击事件
+# 简单漂移点击事件
 def click_point_random(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
     # 随机一下
@@ -28,6 +28,13 @@ def click_point_random(x,y,hwnd):
     time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 
+def click_point(x,y,hwnd):
+    # 模拟鼠标指针 传送到指定坐标
+    print("点击的坐标为：" + str(x) + "," + str(y))
+    long_position = win32api.MAKELONG(x, y)
+    win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
+    time.sleep(random.uniform(0.02 , 0.08))
+    win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 def click_point_random_clear(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
     # 随机一下
@@ -163,4 +170,22 @@ def click_img_select(img,hwnd):
         startX, startY, = openimages(img, hwnd)
         startY = startY + 280
         click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(2.2, 2.8))
+
+
+# 打完怪选符咒
+def click_img_select_fz(img,hwnd):
+    startX, startY, = openimages(img, hwnd)
+    startY = startY + 183
+    click_point(startX, startY, hwnd)
+    time.sleep(random.uniform(2.2, 2.8))
+    playCount = 0
+    while openimages(img, hwnd) != 0:
+        print("---没有成功点击!!!---")
+        playCount = playCount + 1
+        if playCount > 10:
+            return
+        startX, startY, = openimages(img, hwnd)
+        startY = startY + 280
+        click_point(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
