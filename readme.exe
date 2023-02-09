@@ -1,0 +1,1 @@
+打包exe命令： pyinstaller -F -p ExePackage -w -i icon.ico MyUi.py

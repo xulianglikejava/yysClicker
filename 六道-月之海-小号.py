@@ -188,6 +188,7 @@ def 关卡内战斗():
     # 判断是否胜利
     while CommonUtils.openimages(胜利, hwnd) != 0:
         print("点击结算")
+        time.sleep(random.uniform(1.8, 2.2))
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(2.8, 3.2))

@@ -188,10 +188,15 @@ def 关卡内战斗():
     # 判断是否胜利
     while CommonUtils.openimages(胜利, hwnd) != 0:
         print("点击结算")
+        time.sleep(random.uniform(1.8, 2.2))
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(2.8, 3.2))
         print("再点击结算")
+        while CommonUtils.openimages(结束,hwnd) == 0:
+            CommonUtils.click_point_random(overX, overY, hwnd)
+            time.sleep(random.uniform(2.8, 3.2))
+
         CommonUtils.click_img(结束,hwnd)
         time.sleep(random.uniform(2.8, 3.2))
         break
@@ -277,11 +282,13 @@ def 混沌():
             CommonUtils.click_img(离开宝箱, hwnd)
             break
 
+
         if CommonUtils.openimages(精英, hwnd) != 0:
-            CommonUtils.click_point_random(精英怪X,精英怪Y,hwnd)
-            time.sleep(random.uniform(2.4, 2.9))
+            while CommonUtils.openimages(挑战技能怪, hwnd) == 0:
+                CommonUtils.click_point_random(精英怪X, 精英怪Y, hwnd)
+                time.sleep(random.uniform(2.4, 2.9))
             CommonUtils.click_img(挑战技能怪, hwnd)
-            time.sleep(10)
+            time.sleep(15)
             # 打完后点击结算
             flag = 0
             countTime = 0
@@ -332,7 +339,7 @@ def 购买():
 
 
     print("离开商店")
-    CommonUtils.click_img_no_retry(离开商店, hwnd)
+    CommonUtils.click_img(离开商店, hwnd)
 
 def 麓战():
     # 判断是否有麓战 优先打麓战
