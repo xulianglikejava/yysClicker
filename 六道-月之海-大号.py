@@ -286,7 +286,9 @@ def 混沌():
 
 
         if CommonUtils.openimages(精英, hwnd) != 0:
+            print("挑战精英")
             while CommonUtils.openimages(挑战技能怪, hwnd) == 0:
+                print("点击精英")
                 CommonUtils.click_point_random(精英怪X, 精英怪Y, hwnd)
                 time.sleep(random.uniform(2.0, 3.0))
             CommonUtils.click_img(挑战技能怪, hwnd)
