@@ -26,8 +26,8 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 接受邀请 = './image/通用图片/接受邀请.png'
-hwndBig = win32gui.FindWindow(0, "铁血战士胖虎")
-hwndSmall = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwndBig = CommonUtils.getBigHwnd()
+hwndSmall = CommonUtils.getSmallHwnd()
 
 
 def 开始组队魂土() :
@@ -49,7 +49,6 @@ def 开始组队魂土() :
             break
 
         count = count + 1
-        print("监控持续" + str(count) + "次")
 
 
 

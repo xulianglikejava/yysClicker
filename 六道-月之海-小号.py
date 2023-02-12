@@ -278,12 +278,11 @@ def 混沌():
     # 判断是否有麓战 优先打麓战
     while CommonUtils.openimages(混沌1, hwnd) != 0:
         CommonUtils.click_img(混沌1, hwnd)
-
+        time.sleep(random.uniform(2.0, 3.0))
         if CommonUtils.openimages(幸运宝箱, hwnd) != 0:
             print("离开幸运宝箱")
             CommonUtils.click_img(离开宝箱, hwnd)
             break
-
 
         if CommonUtils.openimages(精英, hwnd) != 0:
             print("挑战精英")

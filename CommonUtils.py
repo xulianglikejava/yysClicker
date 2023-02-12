@@ -28,6 +28,7 @@ def click_point_random(x,y,hwnd):
     time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 
+# 无偏移点击
 def click_point(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
     print("点击的坐标为：" + str(x) + "," + str(y))
@@ -143,7 +144,7 @@ def click_img(img,hwnd):
 # 直接点图，无错误重试
 def click_img_no_retry(img,hwnd):
     startX, startY, = openimages(img, hwnd)
-    click_point_random(startX, startY, hwnd)
+    click_point(startX, startY, hwnd)
     time.sleep(random.uniform(2.2, 2.8))
 
 

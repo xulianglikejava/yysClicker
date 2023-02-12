@@ -31,8 +31,11 @@ startImg = './image/结界突破/start.png'
 刷新确认按钮 = './image/结界突破/刷新确认按钮.png'
 
 
-hwnd = win32gui.FindWindow(0, "川源")
+
 def 开始结界突破() :
+    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+    overX = 0
+    overY = 0
     # 设置突破卷数量
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
