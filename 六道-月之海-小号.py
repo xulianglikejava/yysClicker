@@ -283,8 +283,7 @@ def 混沌():
             print("离开幸运宝箱")
             CommonUtils.click_img(离开宝箱, hwnd)
             break
-
-        if CommonUtils.openimages(精英, hwnd) != 0:
+        else :
             print("挑战精英")
             while CommonUtils.openimages(挑战技能怪, hwnd) == 0:
                 print("点击精英")
@@ -312,6 +311,9 @@ def 安息():
         CommonUtils.click_img(安息1,hwnd)
         time.sleep(random.uniform(2.0, 3.0))
         购买()
+
+
+
 
 def 购买():
     print("购买商品")
