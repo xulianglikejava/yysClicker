@@ -139,7 +139,7 @@ for line in overFile.readlines():
 # 赋值完毕
 overFile.close()
 
-hwnd = CommonUtils.getSmallHwnd()
+hwnd = CommonUtils.getBigHwnd()
 
 def 关卡内战斗():
     startTmp = datetime.datetime.now()
