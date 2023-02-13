@@ -18,7 +18,7 @@ power = 350
 # 每局消耗体力
 consume = 60
 # 计划打的局数
-maxcount = 3
+maxcount = 1
 # 每局消耗时间
 consumeTime = 500
 # 大等待时间
@@ -60,6 +60,7 @@ smallWaitTime = 2
 确认按钮 = './image/六道-月之海/确认按钮.png'
 跳过按钮 = './image/六道-月之海/跳过按钮.png'
 选择按钮 = './image/六道-月之海/选择按钮.png'
+使用 = './image/六道-月之海/使用.png'
 
 麓战1 = './image/六道-月之海/麓战1.png'
 混沌1 = './image/六道-月之海/混沌1.png'
@@ -172,16 +173,27 @@ def 关卡内战斗():
             安息()
             continue
 
-    # 判断是否胜利
-    while CommonUtils.openimages(胜利, hwnd) != 0:
+        # 判断是否胜利
+    while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(使用, hwnd) != 0:
+        if CommonUtils.openimages(使用, hwnd) != 0:
+            print("使用双倍")
+            CommonUtils.click_img(使用, hwnd)
         print("点击结算")
+        time.sleep(random.uniform(1.5, 2.5))
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
-        time.sleep(random.uniform(2.8, 3.2))
+        time.sleep(random.uniform(1.5, 2.5))
         print("再点击结算")
-        CommonUtils.click_img(结束,hwnd)
-        time.sleep(random.uniform(2.8, 3.2))
+        while CommonUtils.openimages(结束, hwnd) == 0:
+            time.sleep(random.uniform(1.5, 2.5))
+            CommonUtils.click_point_random(overX, overY, hwnd)
+            time.sleep(random.uniform(1.5, 2.5))
+
+        CommonUtils.click_img(结束, hwnd)
+        time.sleep(random.uniform(1.5, 2.5))
         break
+
+
 def 星之子():
 
     # 判断是否有麓战 优先打麓战
@@ -192,7 +204,7 @@ def 星之子():
         CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
         time.sleep(random.uniform(2.4, 3.5))
         CommonUtils.click_img(挑战技能怪, hwnd)
-        time.sleep(15)
+        time.sleep(5)
         # 打完后点击结算
         flag = 0
         countTime = 0
@@ -270,7 +282,7 @@ def 混沌():
             CommonUtils.click_point_random(精英怪X,精英怪Y,hwnd)
             time.sleep(random.uniform(2.4, 2.9))
             CommonUtils.click_img(挑战技能怪, hwnd)
-            time.sleep(10)
+            time.sleep(5)
             # 打完后点击结算
             flag = 0
             countTime = 0
@@ -433,28 +445,27 @@ def 备战BOSS():
 def 检查技能():
 
     print("检查技能是否全")
-    if CommonUtils.openimages(检查柔风抱暖,hwnd) == 0 and  CommonUtils.openimages(检查六道暴虐,hwnd) == 0 and CommonUtils.openimages(检查细雨化屏, hwnd) == 0 and  CommonUtils.openimages(检查妖力化身,hwnd) == 0 :
-        print("技能不全")
-        CommonUtils.click_img(技能刷新, hwnd)
-        time.sleep(random.uniform(1.0, 2.0))
-        CommonUtils.click_img(重置技能, hwnd)
-        time.sleep(random.uniform(1.0, 2.0))
-        CommonUtils.click_img(确认按钮, hwnd)
-        time.sleep(random.uniform(1.0, 2.0))
-        print("填充技能")
-        CommonUtils.click_img_no_retry(小柔风抱暖, hwnd)
-        CommonUtils.click_img(装备, hwnd)
+    print("技能不全")
+    CommonUtils.click_img(技能刷新, hwnd)
+    time.sleep(random.uniform(1.0, 2.0))
+    CommonUtils.click_img(重置技能, hwnd)
+    time.sleep(random.uniform(1.0, 2.0))
+    CommonUtils.click_img(确认按钮, hwnd)
+    time.sleep(random.uniform(1.0, 2.0))
+    print("填充技能")
+    CommonUtils.click_img_no_retry(小柔风抱暖, hwnd)
+    CommonUtils.click_img(装备, hwnd)
 
-        CommonUtils.click_img_no_retry(小六道暴虐, hwnd)
-        CommonUtils.click_img(装备, hwnd)
+    CommonUtils.click_img_no_retry(小六道暴虐, hwnd)
+    CommonUtils.click_img(装备, hwnd)
 
-        CommonUtils.click_img_no_retry(小细雨化屏, hwnd)
-        CommonUtils.click_img(装备, hwnd)
+    CommonUtils.click_img_no_retry(小细雨化屏, hwnd)
+    CommonUtils.click_img(装备, hwnd)
 
-        CommonUtils.click_img_no_retry(小妖力化身, hwnd)
-        CommonUtils.click_img(装备, hwnd)
+    CommonUtils.click_img_no_retry(小妖力化身, hwnd)
+    CommonUtils.click_img(装备, hwnd)
 
-        CommonUtils.click_img_no_retry(退出技能重置, hwnd)
+    CommonUtils.click_img_no_retry(退出技能重置, hwnd)
 
 
 def 选择符咒():

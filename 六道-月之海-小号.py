@@ -37,6 +37,7 @@ smallWaitTime = 2
 挑战技能怪 = './image/六道-月之海/挑战技能怪.png'
 万相铃 = './image/六道-月之海/万相铃.png'
 结束 = './image/六道-月之海/结束.png'
+使用 = './image/六道-月之海/使用.png'
 
 柔风抱暖 = './image/六道-月之海/柔风抱暖.png'
 细雨化屏 = './image/六道-月之海/细雨化屏.png'
@@ -186,7 +187,10 @@ def 关卡内战斗():
             continue
 
     # 判断是否胜利
-    while CommonUtils.openimages(胜利, hwnd) != 0:
+    while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(使用, hwnd) != 0 :
+        if CommonUtils.openimages(使用, hwnd) != 0:
+            print("使用双倍")
+            CommonUtils.click_img(使用, hwnd)
         print("点击结算")
         time.sleep(random.uniform(1.5, 2.5))
         overX, overY = overAddress[random.randint(0, 9)].split(',')
