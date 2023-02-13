@@ -11,7 +11,7 @@ import time
 
 child_handles = []
 SmallHwnd = 0
-new_dir = "data/image/"
+new_dir = "Snipaste/"
 
 
 # 简单漂移点击事件
@@ -117,7 +117,6 @@ def saveImg(hwnd,ImgName):
 
     bmpstr = saveBitMap.GetBitmapBits(True)
     im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
-    image_path = "E:\photo"
     if not os.path.isdir(new_dir):
         os.makedirs(new_dir)
     im_PIL.save(new_dir+ImgName)
