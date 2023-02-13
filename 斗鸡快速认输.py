@@ -64,7 +64,7 @@ def 开始斗鸡() :
             if CommonUtils.openimages(取消, hwnd) != 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
-                time.sleep(1)
+                time.sleep(3)
 
             elif CommonUtils.openimages(返回, hwnd) != 0 and CommonUtils.openimages(取消, hwnd) == 0:
                 print("找到对手了")
