@@ -390,6 +390,7 @@ def 购买(fightCount):
 
             if CommonUtils.openimages(刷新商店, hwnd) != 0:
                 print("刷新商店")
+                CommonUtils.click_img_no_retry(刷新商店, hwnd)
 
             flush = flush + 1
 

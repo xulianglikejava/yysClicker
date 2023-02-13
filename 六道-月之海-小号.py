@@ -357,7 +357,7 @@ def 购买(fightCount):
                 CommonUtils.click_img(确定按钮, hwnd)
 
     else:
-        while flush < 3 :
+        while flush < 2 :
 
             if CommonUtils.openimages(商品柔风抱暖, hwnd) != 0:
                 print("有柔风抱暖")
@@ -384,6 +384,7 @@ def 购买(fightCount):
 
             if CommonUtils.openimages(刷新商店, hwnd) != 0:
                 print("刷新商店")
+                CommonUtils.click_img_no_retry(刷新商店, hwnd)
 
             flush = flush + 1
 
