@@ -447,6 +447,12 @@ def 选择技能(flag):
                 return
             CommonUtils.click_point_random(overX, overY, hwnd)
 
+
+def 选择初始技能():
+    if CommonUtils.openimages(柔风抱暖文字, hwnd) != 0:
+        print("选柔风咯")
+        CommonUtils.click_img_select_fz(柔风抱暖文字, hwnd)
+
 def 备战BOSS():
     print("点击备战")
     CommonUtils.click_img(备战, hwnd)
@@ -586,8 +592,7 @@ def 开始六道月之海() :
             time.sleep(random.uniform(1.5, 2.5))
 
             # 找到柔风保暖坐标 点击
-            CommonUtils.click_img_select(柔风抱暖, hwnd)
-            time.sleep(random.uniform(1.5, 2.5))
+            选择初始技能()
         if CommonUtils.openimages(继续按钮, hwnd) != 0:
             # 首先找到开启坐标 点击
             CommonUtils.click_img(继续按钮, hwnd)
