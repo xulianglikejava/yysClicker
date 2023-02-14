@@ -159,33 +159,32 @@ def 关卡内战斗(fightCount):
             CommonUtils.click_point_random(符咒X, 符咒Y, hwnd)
             continue
 
-        # 判断是否有星之子
-        if CommonUtils.openimages(星之屿1, hwnd) != 0:
-            fightCount += 1
-            星之子(fightCount)
-            continue
+            # 判断是否有麓战
+            if CommonUtils.openimages(麓战1, hwnd) != 0:
+                fightCount += 1
+                麓战(fightCount)
+                continue
 
-        # 判断是否有麓战
-        if CommonUtils.openimages(麓战1, hwnd) != 0:
-            fightCount += 1
-            麓战(fightCount)
-            continue
+            # 判断是否有神秘
+            if CommonUtils.openimages(神秘1, hwnd) != 0:
+                神秘()
+                continue
 
-        # 判断是否有神秘
-        if CommonUtils.openimages(神秘1, hwnd) != 0:
-            神秘()
-            continue
+            # 判断是否有混沌
+            if CommonUtils.openimages(混沌1, hwnd) != 0:
+                fightCount += 2
+                混沌(fightCount)
+                continue
 
-        # 判断是否有混沌
-        if CommonUtils.openimages(混沌1, hwnd) != 0:
-            fightCount += 2
-            混沌(fightCount)
-            continue
-
-        # 判断是否有安息
-        if CommonUtils.openimages(安息1, hwnd) != 0:
-            安息(fightCount)
-            continue
+            # 判断是否有星之子
+            if CommonUtils.openimages(星之屿1, hwnd) != 0:
+                fightCount += 1
+                星之子(fightCount)
+                continue
+            # 判断是否有安息
+            if CommonUtils.openimages(安息1, hwnd) != 0:
+                安息(fightCount)
+                continue
 
     # 判断是否胜利
     while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(使用, hwnd) != 0:
@@ -207,9 +206,9 @@ def 关卡内战斗(fightCount):
         CommonUtils.click_img(结束, hwnd)
         time.sleep(random.uniform(1.5, 2.5))
         break
-
     endTmp = datetime.datetime.now()
     print("一次战斗耗时为：" + str(endTmp - startTmp) + " 秒")
+    time.sleep(random.uniform(1.5, 2.5))
 
 
 def 星之子(fightCount):
@@ -487,13 +486,9 @@ def 选择技能(flag):
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(1.5, 2.5))
-        playCount = 0
         while CommonUtils.openimages(万相铃, hwnd) != 0:
-            print("---没有成功点击!!!---")
+            print("---没有成功点击结算!!!---")
             time.sleep(random.uniform(1.5, 2.5))
-            playCount = playCount + 1
-            if playCount > 3:
-                return
             CommonUtils.click_point_random(overX, overY, hwnd)
 
 
@@ -541,13 +536,9 @@ def 选择万相之赐():
     overX, overY = overAddress[random.randint(0, 9)].split(',')
     CommonUtils.click_point_random(overX, overY, hwnd)
     time.sleep(random.uniform(1.5, 2.5))
-    playCount = 0
     while CommonUtils.openimages(万相铃, hwnd) != 0:
-        print("---没有成功点击!!!---")
+        print("---没有成功点击结算!!!---")
         time.sleep(random.uniform(1.5, 2.5))
-        playCount = playCount + 1
-        if playCount > 3:
-            return
         CommonUtils.click_point_random(overX, overY, hwnd)
 
 
