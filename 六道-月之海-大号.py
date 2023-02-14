@@ -26,6 +26,8 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
+六道入口 = './image/六道-月之海/六道入口.png'
+月之海入口 = './image/六道-月之海/月之海入口.png'
 准备按钮 = './image/六道-月之海/准备按钮.png'
 开启按钮 = './image/六道-月之海/开启按钮.png'
 继续按钮 = './image/六道-月之海/继续按钮.png'
@@ -672,6 +674,15 @@ def 开始六道月之海():
         print("开始打第 " + str(playCount + 1) + " 次")
         playCount += 1
         fightCount = 2
+
+        if CommonUtils.openimages(六道入口, hwnd) != 0:
+            print("六道入口")
+            CommonUtils.click_img(六道入口, hwnd)
+            time.sleep(random.uniform(2.0, 2.5))
+        if CommonUtils.openimages(月之海入口, hwnd) != 0:
+            print("月之海入口")
+            CommonUtils.click_img(月之海入口, hwnd)
+            time.sleep(random.uniform(2.0, 2.5))
         if CommonUtils.openimages(开启按钮, hwnd) != 0:
             fightCount = 0
             # 首先找到开启坐标 点击

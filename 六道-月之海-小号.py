@@ -674,14 +674,13 @@ def 开始六道月之海() :
         fightCount = 2
 
         if CommonUtils.openimages(六道入口, hwnd) != 0:
-            # 首先找到开启坐标 点击
+            print("六道入口")
             CommonUtils.click_img(六道入口, hwnd)
-            time.sleep(random.uniform(1.5, 2.5))
+            time.sleep(random.uniform(2.0, 2.5))
         if CommonUtils.openimages(月之海入口, hwnd) != 0:
-            # 首先找到开启坐标 点击
+            print("月之海入口")
             CommonUtils.click_img(月之海入口, hwnd)
-            time.sleep(random.uniform(1.5, 2.5))
-
+            time.sleep(random.uniform(2.0, 2.5))
         if CommonUtils.openimages(开启按钮,hwnd) != 0 :
             fightCount = 0
             # 首先找到开启坐标 点击
