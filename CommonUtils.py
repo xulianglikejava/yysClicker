@@ -7,7 +7,7 @@ import numpy as np
 import aircv as ac
 import random
 import time
-
+import pyocr
 
 child_handles = []
 SmallHwnd = 0
@@ -55,7 +55,6 @@ def click_point_random_clear(x,y,hwnd):
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
     time.sleep(random.uniform(0.02 , 0.08))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
-
 # 对窗口进行后台截图 并返回信息
 def makeimg(hwnd):
     """
@@ -120,9 +119,6 @@ def saveImg(hwnd,ImgName):
     if not os.path.isdir(new_dir):
         os.makedirs(new_dir)
     im_PIL.save(new_dir+ImgName)
-
-    # image = im_PIL.save(f"{image_path}/" + ImgName)
-
     # pil转换格式到opencv
     win32gui.DeleteObject(saveBitMap.GetHandle())
     mfcDC.DeleteDC()
@@ -163,12 +159,10 @@ def getBigHwnd():
     hwnd = win32gui.FindWindow(None, "铁血战士胖虎")
     win32gui.EnumChildWindows(hwnd, winfun, None)
     return child_handles[0]
-
 def getSmallHwnd():
     hwnd = win32gui.FindWindow(None, "捉鼠大师小叮当")
     win32gui.EnumChildWindows(hwnd, winfun, None)
     return child_handles[0]
-
 # 直接点图，包含错误重试
 def click_img(img,hwnd):
     startX, startY, = openimages(img, hwnd)
@@ -183,22 +177,16 @@ def click_img(img,hwnd):
         startX, startY, = openimages(img, hwnd)
         click_point_random(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
-
 # 直接点图，无错误重试
 def click_img_no_retry(img,hwnd):
     startX, startY, = openimages(img, hwnd)
     click_point(startX, startY, hwnd)
     time.sleep(random.uniform(2.2, 2.8))
-
-
 # 商店购买产品
 def click_img_buy(img,hwnd):
     startX, startY, = openimages(img, hwnd)
     click_point_random(startX, startY, hwnd)
     time.sleep(random.uniform(2.2, 2.8))
-
-
-
 # 打完怪选技能
 def click_img_select(img,hwnd):
     startX, startY, = openimages(img, hwnd)
@@ -215,8 +203,6 @@ def click_img_select(img,hwnd):
         startY = startY + 280
         click_point_random(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
-
-
 # 打完怪选符咒
 def click_img_select_fz(img,hwnd):
     startX, startY, = openimages(img, hwnd)
@@ -237,3 +223,44 @@ def click_img_select_fz(img,hwnd):
             startY = random.randint(445, 455)
         click_point(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
+
+# 获取当前多少钱
+def get_money(hwnd,imgName):
+    """
+       后台截屏函数,并返回opencv的对象
+       """
+    left, top, right, bot = win32gui.GetWindowRect(hwnd)
+    width = right - left
+    height = bot - top
+    # 返回句柄窗口的设备环境，覆盖整个窗口，包括非客户区，标题栏，菜单，边框
+    hWndDC = win32gui.GetWindowDC(hwnd)
+    # 创建设备描述表
+    mfcDC = win32ui.CreateDCFromHandle(hWndDC)
+    # 创建内存设备描述表
+    saveDC = mfcDC.CreateCompatibleDC()
+    # 创建位图对象准备保存图片
+    saveBitMap = win32ui.CreateBitmap()
+    # 为bitmap开辟存储空间
+    saveBitMap.CreateCompatibleBitmap(mfcDC, width, height)
+    # 将截图保存到saveBitMap中
+    saveDC.SelectObject(saveBitMap)
+    # 保存bitmap到内存设备描述表
+    saveDC.BitBlt((0, 0), (width, height), mfcDC, (0, 0), win32con.SRCCOPY)
+    bmpinfo = saveBitMap.GetInfo()
+    bmpstr = saveBitMap.GetBitmapBits(True)
+    im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
+    # 图片尺寸
+    img_size = im_PIL.size
+    h = img_size[1]  # 图片高度
+    w = img_size[0]  # 图片宽度
+    # 设置左上角的为起始点，起始点坐标，然后设置长，宽，（通过屏幕图片得知该信息。）
+    data_1 =[866, 10, 80, 35]
+    x = int(data_1[0])
+    y = int(data_1[1])
+    w = int(data_1[2])
+    h = int(data_1[3])
+    # 开始截取
+    region = im_PIL.crop((x, y, x + w, y + h))
+    region.save(new_dir + imgName)
+    pyocr.pyocr(region)
+

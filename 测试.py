@@ -5,9 +5,7 @@ import win32gui, win32con, win32api,win32ui
 import CommonUtils
 import async_all
 
-hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
-
-
+hwnd = CommonUtils.getBigHwnd()
 
 def 生成截图(hwnd):
     imgName = str(datetime.datetime.now()).split(".")[0].replace(" ","_").replace(":","_");
@@ -15,4 +13,10 @@ def 生成截图(hwnd):
     print(imgName)
     CommonUtils.saveImg(hwnd,imgName)
 
+def 获取余额():
+    imgName = str(datetime.datetime.now()).split(".")[0].replace(" ", "_").replace(":", "_");
+    imgName = "钱.png"
+    CommonUtils.get_money(hwnd,imgName)
+
+获取余额()
 

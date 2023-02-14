@@ -18,7 +18,7 @@ power = 390
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 0
+maxcount = 6
 # 每局消耗时间
 consumeTime = 15
 # 大等待时间
@@ -28,13 +28,12 @@ smallWaitTime = 2
 
 开始 = './image/寮突/开始.png'
 进攻 = './image/寮突/进攻.png'
-成功 = './image/结界突破/success.png'
+成功 = './image/寮突/成功.png'
 失败 = './image/寮突/失败.png'
 hwndBig = CommonUtils.getBigHwnd()
 
 
 def 开始寮突() :
-    maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
     print("预计寮突 " + str(maxcount) + "局")
@@ -60,7 +59,7 @@ def 开始寮突() :
         while CommonUtils.openimages(开始, hwndBig) != 0 and CommonUtils.openimages(进攻, hwndBig) == 0:
             print("点击坐标")
             CommonUtils.click_img_no_retry(开始, hwndBig)
-            time.sleep(random.uniform(2,3))
+            time.sleep(random.uniform(1,2))
         while CommonUtils.openimages(进攻, hwndBig) != 0:
             print("点击进攻")
             CommonUtils.click_img(进攻, hwndBig)
@@ -71,11 +70,11 @@ def 开始寮突() :
         flag = 0
         countTime = 0
         while flag == 0:
-            if CommonUtils.openimages(成功, hwndBig) == 0 :
+            if CommonUtils.openimages(成功, hwndBig) == 0 or CommonUtils.openimages(失败, hwndBig) == 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
                 time.sleep(2)
-            elif CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
+            if CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
                 print("打完了")
                 while CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
                     time.sleep(random.uniform(1.2, 2.3))
@@ -85,7 +84,6 @@ def 开始寮突() :
                     time.sleep(2.5 + random.uniform(1.2, 2.5))
                 flag = 1
                 break;
-
 
     startFile.close()
     end = datetime.datetime.now()
