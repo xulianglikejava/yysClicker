@@ -162,32 +162,32 @@ def 关卡内战斗(fightCount):
             CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
             continue
 
-            # 判断是否有麓战
-            if CommonUtils.openimages(麓战1, hwnd) != 0:
-                fightCount += 1
-                麓战(fightCount)
-                continue
+        # 判断是否有麓战
+        if CommonUtils.openimages(麓战1, hwnd) != 0:
+            fightCount += 1
+            麓战(fightCount)
+            continue
 
-            # 判断是否有神秘
-            if CommonUtils.openimages(神秘1, hwnd) != 0:
-                神秘()
-                continue
+        # 判断是否有神秘
+        if CommonUtils.openimages(神秘1, hwnd) != 0:
+            神秘()
+            continue
 
-            # 判断是否有混沌
-            if CommonUtils.openimages(混沌1, hwnd) != 0:
-                fightCount += 2
-                混沌(fightCount)
-                continue
+        # 判断是否有混沌
+        if CommonUtils.openimages(混沌1, hwnd) != 0:
+            fightCount += 2
+            混沌(fightCount)
+            continue
 
-            # 判断是否有星之子
-            if CommonUtils.openimages(星之屿1, hwnd) != 0:
-                fightCount += 1
-                星之子(fightCount)
-                continue
-            # 判断是否有安息
-            if CommonUtils.openimages(安息1, hwnd) != 0:
-                安息(fightCount)
-                continue
+        # 判断是否有星之子
+        if CommonUtils.openimages(星之屿1, hwnd) != 0:
+            fightCount += 1
+            星之子(fightCount)
+            continue
+        # 判断是否有安息
+        if CommonUtils.openimages(安息1, hwnd) != 0:
+            安息(fightCount)
+            continue
 
     # 判断是否胜利
     while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(使用, hwnd) != 0 :
