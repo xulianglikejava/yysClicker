@@ -212,7 +212,13 @@ def 关卡内战斗(fightCount):
         time.sleep(random.uniform(1.5, 2.5))
         break
     endTmp = datetime.datetime.now()
-    print("一次战斗耗时为：" + str(endTmp - startTmp) + " 秒")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
+    print("一次战斗耗时为：" + str(endTmp - startTmp).split(".")[0] + " 秒")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
+    print(">>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<")
     time.sleep(random.uniform(1.5, 2.5))
 
 

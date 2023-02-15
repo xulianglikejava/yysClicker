@@ -76,7 +76,7 @@ def 开始寮突() :
                 time.sleep(2)
             if CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
                 print("打完了")
-                while CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
+                while CommonUtils.openimages(开始, hwndBig) == 0 :
                     time.sleep(random.uniform(1.2, 2.3))
                     print("点击结算")
                     overX, overY = overAddress[random.randint(0, 9)].split(',')
