@@ -29,7 +29,6 @@ smallWaitTime = 2
 返回 = './image/斗鸡/返回.png'
 确认 = './image/斗鸡/确认.png'
 取消 = './image/斗鸡/取消.png'
-失败 = './image/斗鸡/失败.png'
 hwnd = CommonUtils.getSmallHwnd()
 
 
@@ -76,14 +75,12 @@ def 开始斗鸡() :
                 print("确认")
                 while CommonUtils.openimages(确认, hwnd) == 0:
                     CommonUtils.click_img_no_retry(返回, hwnd)
-                    print("重新退出")
                 CommonUtils.click_img(确认, hwnd)
                 time.sleep(random.uniform(2.2, 2.8))
-                while CommonUtils.openimages(失败, hwnd) != 0:
-                    overX, overY = overAddress[random.randint(0, 9)].split(',')
-                    print("点击结算")
-                    CommonUtils.click_point_random(overX, overY, hwnd)
-                    time.sleep(random.uniform(3.2, 4.8))
+                overX, overY = overAddress[random.randint(0, 9)].split(',')
+                print("点击结算")
+                CommonUtils.click_point_random(overX, overY, hwnd)
+                time.sleep(random.uniform(3.2, 4.8))
 
                 flag = 1
                 break;

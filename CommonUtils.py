@@ -264,3 +264,9 @@ def get_money(hwnd,imgName):
     region.save(new_dir + imgName)
     pyocr.pyocr(region)
 
+def getBigHwndMuMu():
+    hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+    return hwnd
+def getSmallHwndMuMu():
+    hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+    return hwnd

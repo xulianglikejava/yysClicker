@@ -8,7 +8,7 @@ hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 
 
 def rename():
-    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
-    win32gui.SetWindowText(hwnd,'川源')
+    win32gui.SetWindowText(hwnd,'铁血战士胖虎')
 
 
+rename()
