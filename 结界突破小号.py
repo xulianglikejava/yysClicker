@@ -105,6 +105,9 @@ def 开始结界突破() :
         totalAddress.append(tempAddr)
         print("开始打第 " + str(tempAddr + 1) + " 个点")
         startX, startY, againX, againY = startAddress[tempAddr].split(',')
+        while CommonUtils.openimages(刷新按钮, hwnd) == 0:
+            CommonUtils.click_point_random(overX, overY, hwnd)
+            time.sleep(random.uniform(0.8, 1.2))
         CommonUtils.click_point_random(startX,startY,hwnd)
         time.sleep(random.uniform(0.8,1.2))
         # 如果最后一次 那么就要退出2次
@@ -124,7 +127,7 @@ def 开始结界突破() :
                 for j in range(2):
                     j += 1
                     while CommonUtils.openimages(返回按钮Img, hwnd) != 0:
-                        CommonUtils.click_img(返回按钮Img, hwnd)
+                        CommonUtils.click_img_no_retry(返回按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(2.0,2.5))
                     while CommonUtils.openimages(退出确认按钮Img, hwnd) != 0:

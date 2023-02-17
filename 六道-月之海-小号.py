@@ -157,11 +157,11 @@ def 关卡内战斗(fightCount):
             CommonUtils.click_img(挑战BOSS,hwnd)
             time.sleep(random.uniform(1.5, 2.5))
 
-            print("释放符咒一次")
-            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            # print("释放符咒一次")
+            # CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
             time.sleep(random.uniform(45, 50))
-            print("再释放符咒一次")
-            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            # print("再释放符咒一次")
+            # CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
             continue
 
         # 判断是否有麓战
@@ -198,6 +198,7 @@ def 关卡内战斗(fightCount):
             CommonUtils.click_img(使用, hwnd)
         print("点击结算")
         time.sleep(random.uniform(1.5, 2.5))
+        # CommonUtils.生成截图(hwnd)
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(1.5, 2.5))
@@ -392,11 +393,14 @@ def 购买(fightCount):
                 CommonUtils.click_img_buy(商品细雨化屏, hwnd)
                 if CommonUtils.openimages(确定按钮, hwnd) != 0:
                     CommonUtils.click_img(确定按钮, hwnd)
-
-            if CommonUtils.openimages(刷新商店, hwnd) != 0 and flush < 1:
+            # 打了8次才有点钱刷新吧
+            if fightCount < 8:
+                print("打的太少了，不刷新了")
+                flush = flush + 1
+            # 打了8次才有点钱刷新吧
+            if CommonUtils.openimages(刷新商店, hwnd) != 0 and flush < 1 and fightCount > 8:
                 print("刷新商店")
                 CommonUtils.click_img_no_retry(刷新商店, hwnd)
-
             flush = flush + 1
 
 
@@ -454,7 +458,7 @@ def 选择技能(flag):
                 return
             CommonUtils.click_point_random(overX, overY, hwnd)
     while flush < 4:
-        time.sleep(random.uniform(1.2, 2.0))
+        time.sleep(random.uniform(1.0, 1.5))
         if CommonUtils.openimages(柔风抱暖文字, hwnd) != 0:
             print("选柔风咯")
             CommonUtils.click_img_select_fz(柔风抱暖文字,hwnd)
@@ -490,7 +494,7 @@ def 选择技能(flag):
         print("点击结算")
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         CommonUtils.click_point_random(overX, overY, hwnd)
-        time.sleep(random.uniform(1.5, 2.5))
+        time.sleep(random.uniform(1.0, 2.0))
         while CommonUtils.openimages(万相铃, hwnd) != 0:
             print("---没有成功点击结算!!!---")
             time.sleep(random.uniform(1.5, 2.5))

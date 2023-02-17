@@ -127,7 +127,7 @@ def 开始结界突破() :
                 for j in range(2):
                     j += 1
                     while CommonUtils.openimages(返回按钮Img, hwnd) != 0:
-                        CommonUtils.click_img(返回按钮Img, hwnd)
+                        CommonUtils.click_img_no_retry(返回按钮Img, hwnd)
                         break
                     time.sleep(random.uniform(2.0,2.5))
                     while CommonUtils.openimages(退出确认按钮Img, hwnd) != 0:

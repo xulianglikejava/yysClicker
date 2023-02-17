@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import win32gui, win32con, win32api,win32ui
@@ -270,3 +271,13 @@ def getBigHwndMuMu():
 def getSmallHwndMuMu():
     hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
     return hwnd
+
+def getMuMu():
+    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+    return hwnd
+
+def 生成截图(hwnd):
+    imgName = str(datetime.datetime.now()).split(".")[0].replace(" ","_").replace(":","_");
+    imgName = "Snipaste_" + imgName + ".png"
+    print(imgName)
+    saveImg(hwnd,imgName)
