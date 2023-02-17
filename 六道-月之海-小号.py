@@ -157,11 +157,11 @@ def 关卡内战斗(fightCount):
             CommonUtils.click_img(挑战BOSS,hwnd)
             time.sleep(random.uniform(1.5, 2.5))
 
-            # print("释放符咒一次")
-            # CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            print("释放符咒一次")
+            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
             time.sleep(random.uniform(45, 50))
-            # print("再释放符咒一次")
-            # CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            print("再释放符咒一次")
+            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
             continue
 
         # 判断是否有麓战
