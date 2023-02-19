@@ -16,7 +16,7 @@ consume = 8
 # 计划打的局数
 maxcount = 150
 # 每局消耗时间
-consumeTime = 33
+consumeTime = 14
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -26,7 +26,7 @@ hwnd = CommonUtils.getBigHwnd()
 successImg = './image/活动通用/success.png'
 success1Img = './image/活动通用/success1.png'
 failImg = './image/活动通用/fail.png'
-startImg = './image/活动通用/start.png'
+挑战 = './image/活动通用/挑战.png'
 
 
 def 开始挑战活动() :
@@ -52,28 +52,16 @@ def 开始挑战活动() :
         print("------------------------")
         print("开始打第 " + str(i+1) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg,hwnd)
-        CommonUtils.click_point_random(startX, startY,hwnd)
-        time.sleep(random.uniform(0.8, 1.2))
-        playCount = 0
-        while CommonUtils.openimages(startImg, hwnd) != 0:
-            print("---没有成功进去挑战!!!---")
-            playCount = playCount + 1
-            if playCount > 3:
-                return
-            startX, startY, = CommonUtils.openimages(startImg, hwnd)
-            CommonUtils.click_point_random(startX, startY, hwnd)
-            time.sleep(random.uniform(0.8, 1.2))
-
+        CommonUtils.click_img(挑战,hwnd)
         # 一把打完至少要120秒
         time.sleep(consumeTime)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 or CommonUtils.openimages(success1Img,hwnd) == 0  :
+            while CommonUtils.openimages(successImg,hwnd) == 0 or CommonUtils.openimages(success1Img,hwnd) == 0  :
                 print("战斗还没结束...")
                 time.sleep(3)
-            else :
+            while CommonUtils.openimages(successImg,hwnd) != 0 or CommonUtils.openimages(success1Img,hwnd) != 0 :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
                 CommonUtils.click_point_random(overX, overY,hwnd)

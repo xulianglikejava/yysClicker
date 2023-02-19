@@ -8,7 +8,7 @@ import numpy as np
 import aircv as ac
 import random
 import time
-import pyocr
+
 
 child_handles = []
 SmallHwnd = 0

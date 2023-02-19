@@ -72,6 +72,7 @@ def 开始结界突破() :
         print("------------------------")
         print("开始打第 " + str(i + 1) + " 次")
         i += 1
+        overX, overY = overAddress[random.randint(0, 9)].split(',')
 
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0, 8)
@@ -175,7 +176,6 @@ def 开始结界突破() :
                 time.sleep(3)
 
             elif CommonUtils.openimages(failImg,hwnd) != 0 and CommonUtils.openimages(fail2Img,hwnd) != 0 and CommonUtils.openimages(successImg,hwnd) == 0:
-                overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
                 print("失败了")
                 CommonUtils.click_point_random(overX, overY,hwnd)
@@ -184,7 +184,6 @@ def 开始结界突破() :
 
             elif CommonUtils.openimages(successImg,hwnd) != 0 and CommonUtils.openimages(failImg,hwnd) == 0 :
                 # 如果成功 那么成功次数加一  加一后再计算是否是第三次 如果是得多点次
-                overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
                 print("已经成功打完了第" + str(successTotal + 1 ) + " 次...")
                 successTotal = successTotal + 1

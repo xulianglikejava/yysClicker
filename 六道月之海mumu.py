@@ -40,6 +40,7 @@ smallWaitTime = 2
 万相铃 = './image/六道-月之海/万相铃.png'
 结束 = './image/六道-月之海/结束.png'
 使用 = './image/六道-月之海/使用.png'
+获得经验 = './image/六道-月之海/获得经验.png'
 
 柔风抱暖 = './image/六道-月之海/柔风抱暖.png'
 细雨化屏 = './image/六道-月之海/细雨化屏.png'
@@ -200,6 +201,9 @@ def 关卡内战斗(fightCount):
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(1.5, 2.5))
         print("再点击结算")
+        while CommonUtils.openimages(获得经验, hwnd) != 0:
+            CommonUtils.click_img(获得经验, hwnd)
+            time.sleep(random.uniform(1.5, 2.5))
 
         while CommonUtils.openimages(结束, hwnd) == 0:
             time.sleep(random.uniform(1.5, 2.5))
