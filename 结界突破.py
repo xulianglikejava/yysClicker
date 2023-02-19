@@ -32,6 +32,7 @@ smallWaitTime = 1.5
 勋章 = './image/结界突破/勋章.png'
 灰刷新 = './image/结界突破/灰刷新.png'
 结界突破 = './image/结界突破/结界突破.png'
+结算勋章 = './image/结界突破/结算勋章.png'
 
 # 读取文件里的挑战坐标
 startAddress = []
@@ -169,9 +170,9 @@ def 开始结界突破() :
                     time.sleep(random.uniform(2.4, 3.5))
 
                 flag = 1
-                break;
+                break
 
-            elif CommonUtils.openimages(成功,hwnd) != 0 and CommonUtils.openimages(失败一,hwnd) == 0 and CommonUtils.openimages(勋章, hwnd) != 0 :
+            elif CommonUtils.openimages(成功,hwnd) != 0 and CommonUtils.openimages(失败一,hwnd) == 0 and CommonUtils.openimages(结算勋章, hwnd) != 0 :
                 # 如果成功 那么成功次数加一  加一后再计算是否是第三次 如果是得多点次
                 print("点击结算")
                 print("已经成功打完了第" + str(successTotal + 1 ) + " 次...")
@@ -183,9 +184,8 @@ def 开始结界突破() :
                     print("点击弹窗胜利")
                     CommonUtils.click_point_random(overX, overY, hwnd)
                     time.sleep(random.uniform(2.4, 3.5))
-
-                flag = 1
                 break;
+
 
         time.sleep(bigWaitTime +  random.uniform(0.1,0.7))
 
