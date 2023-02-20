@@ -81,7 +81,7 @@ def 开始寮突() :
                     print("点击结算")
                     overX, overY = overAddress[random.randint(0, 9)].split(',')
                     CommonUtils.click_point_random(overX, overY, hwndBig)
-                    time.sleep(2.5 + random.uniform(1.2, 2.5))
+                    time.sleep(random.uniform(1.2, 2.5))
                 flag = 1
                 break;
 
