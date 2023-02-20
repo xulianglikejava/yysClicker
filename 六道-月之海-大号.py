@@ -140,7 +140,7 @@ for line in overFile.readlines():
 # 赋值完毕
 overFile.close()
 # 窗口句柄
-hwnd = CommonUtils.getBigHwnd()
+hwnd = CommonUtils.getBigHwndMuMu()
 
 
 def 关卡内战斗(fightCount):

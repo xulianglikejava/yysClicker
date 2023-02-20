@@ -225,51 +225,12 @@ def click_img_select_fz(img,hwnd):
         click_point(startX, startY, hwnd)
         time.sleep(random.uniform(2.2, 2.8))
 
-# 获取当前多少钱
-def get_money(hwnd,imgName):
-    """
-       后台截屏函数,并返回opencv的对象
-       """
-    left, top, right, bot = win32gui.GetWindowRect(hwnd)
-    width = right - left
-    height = bot - top
-    # 返回句柄窗口的设备环境，覆盖整个窗口，包括非客户区，标题栏，菜单，边框
-    hWndDC = win32gui.GetWindowDC(hwnd)
-    # 创建设备描述表
-    mfcDC = win32ui.CreateDCFromHandle(hWndDC)
-    # 创建内存设备描述表
-    saveDC = mfcDC.CreateCompatibleDC()
-    # 创建位图对象准备保存图片
-    saveBitMap = win32ui.CreateBitmap()
-    # 为bitmap开辟存储空间
-    saveBitMap.CreateCompatibleBitmap(mfcDC, width, height)
-    # 将截图保存到saveBitMap中
-    saveDC.SelectObject(saveBitMap)
-    # 保存bitmap到内存设备描述表
-    saveDC.BitBlt((0, 0), (width, height), mfcDC, (0, 0), win32con.SRCCOPY)
-    bmpinfo = saveBitMap.GetInfo()
-    bmpstr = saveBitMap.GetBitmapBits(True)
-    im_PIL = Image.frombuffer('RGB', (bmpinfo['bmWidth'], bmpinfo['bmHeight']), bmpstr, 'raw', 'BGRX', 0, 1)
-    # 图片尺寸
-    img_size = im_PIL.size
-    h = img_size[1]  # 图片高度
-    w = img_size[0]  # 图片宽度
-    # 设置左上角的为起始点，起始点坐标，然后设置长，宽，（通过屏幕图片得知该信息。）
-    data_1 =[866, 10, 80, 35]
-    x = int(data_1[0])
-    y = int(data_1[1])
-    w = int(data_1[2])
-    h = int(data_1[3])
-    # 开始截取
-    region = im_PIL.crop((x, y, x + w, y + h))
-    region.save(new_dir + imgName)
-    pyocr.pyocr(region)
 
 def getBigHwndMuMu():
-    hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
+    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
     return hwnd
 def getSmallHwndMuMu():
-    hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+    hwnd = win32gui.FindWindow(0, "#N1 阴阳师 - MuMu模拟器")
     return hwnd
 
 def getMuMu():
