@@ -11,7 +11,7 @@ power = 200
 # 每局消耗体力
 consume = 8
 # 计划打的局数
-maxcount = 30
+maxcount = 9
 # 每局消耗时间
 consumeTime = 23
 # 大等待时间
@@ -69,25 +69,6 @@ def 开始结界突破() :
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0, 8)
-        if i % 10 == 0  or i % 16 == 0 or i % 28 == 0 :
-
-            if successTotal == 9 :
-                totalAddress = []
-                successTotal = 0
-
-            else:
-                totalAddress = []
-                successTotal = 0
-
-                while CommonUtils.openimages(刷新按钮, hwnd) != 0 and CommonUtils.openimages(刷新确认按钮, hwnd) == 0:
-                    print("点击刷新")
-                    CommonUtils.click_img_no_retry(刷新按钮,hwnd)
-                    time.sleep(random.uniform(1.0, 2.0))
-
-                while CommonUtils.openimages(刷新确认按钮, hwnd) != 0:
-                    print("点击刷新确认按钮")
-                    CommonUtils.click_img_no_retry(刷新确认按钮, hwnd)
-                    time.sleep(random.uniform(1.0, 2.0))
         # 正常流程
 
         while tempAddr in totalAddress:
@@ -125,34 +106,17 @@ def 开始结界突破() :
                 return
             time.sleep(random.uniform(0.8, 1.2))
 
-        # 如果最后一次 那么就要退出2次
-        if i == 9 or i == 16 or  i == 27 :
-            time.sleep(random.uniform(3, 3.5))
-            print('9退4')
-            for j in range(4):
-                j += 1
-                print("退出第" + str(j) + "次" )
-                while CommonUtils.openimages(返回按钮, hwnd) != 0:
-                    CommonUtils.click_img_no_retry(返回按钮, hwnd)
-                    break
-                time.sleep(random.uniform(1.0, 2.0))
-                while CommonUtils.openimages(退出确认按钮, hwnd) != 0:
-                    CommonUtils.click_img(退出确认按钮, hwnd)
-                    break
-                time.sleep(random.uniform(4.0, 4.5))
+        time.sleep(random.uniform(2.8, 3.2))
 
-                while CommonUtils.openimages(再次挑战按钮, hwnd) != 0:
-                    CommonUtils.click_img(再次挑战按钮, hwnd)
-                    break
-                time.sleep(random.uniform(1.0, 2.5))
-
-                while CommonUtils.openimages(再次挑战确认按钮, hwnd) != 0:
-                    CommonUtils.click_img(再次挑战确认按钮, hwnd)
-                    break
-                time.sleep(random.uniform(2.0, 3.5))
-
+        while CommonUtils.openimages(返回按钮, hwnd) != 0:
+            CommonUtils.click_img_no_retry(返回按钮, hwnd)
+            break
+        time.sleep(random.uniform(1.0, 2.0))
+        while CommonUtils.openimages(退出确认按钮, hwnd) != 0:
+            CommonUtils.click_img(退出确认按钮, hwnd)
+            break
+        time.sleep(random.uniform(4.0, 4.5))
         # 一把打完至少要三十秒
-        time.sleep(10)
         # 循环找图用的
         flag = 0
         # 由于计算等待次数
@@ -188,7 +152,7 @@ def 开始结界突破() :
                         CommonUtils.click_point_random(overX, overY, hwnd)
                         time.sleep(random.uniform(2.0, 2.5))
 
-        time.sleep(smallWaitTime + random.uniform(0.5, 1.0))
+        time.sleep(bigWaitTime + random.uniform(0.5, 1.0))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
