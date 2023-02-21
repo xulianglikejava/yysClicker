@@ -126,9 +126,9 @@ def 开始结界突破() :
             time.sleep(random.uniform(0.8, 1.2))
 
         # 如果最后一次 那么就要退出2次
-        if i == 9 or i == 18 or  i == 27 :
+        if i == 9 or i == 16 or  i == 27 :
             time.sleep(random.uniform(3, 3.5))
-            print('9退2')
+            print('9退4')
             for j in range(4):
                 j += 1
                 print("退出第" + str(j) + "次" )
@@ -152,46 +152,43 @@ def 开始结界突破() :
                 time.sleep(random.uniform(2.0, 3.5))
 
         # 一把打完至少要三十秒
-        time.sleep(15)
+        time.sleep(10)
         # 循环找图用的
         flag = 0
         # 由于计算等待次数
         countTime = 0
 
         # 循环截图 判断是否打完
-        while flag == 0 :
+        while flag == 0:
 
             if CommonUtils.openimages(成功, hwnd) == 0 and CommonUtils.openimages(失败一, hwnd) == 0:
-                print("等待第 " + str(countTime + 1 ) + " 次...")
                 countTime = countTime + 1
+                print("等待第 " + str(countTime) + " 次...")
                 time.sleep(3)
 
-            if CommonUtils.openimages(失败一, hwnd) != 0 and CommonUtils.openimages(失败二, hwnd) != 0 and CommonUtils.openimages(成功, hwnd) == 0:
-                print("失败了")
-                while CommonUtils.openimages(失败二, hwnd) != 0 :
-                    print("点击结算")
+            if CommonUtils.openimages(成功, hwnd) != 0 or CommonUtils.openimages(失败一, hwnd) != 0:
+                if CommonUtils.openimages(结算勋章, hwnd) != 0:
+                    print("打完了")
+                    flag = 1
+                    successTotal = successTotal + 1
                     CommonUtils.click_point_random(overX, overY, hwnd)
-                    time.sleep(random.uniform(2.4, 3.5))
-
-                flag = 1
-                break
-
-            if CommonUtils.openimages(失败一, hwnd) == 0 and CommonUtils.openimages(结算勋章, hwnd) != 0 :
-                # 如果成功 那么成功次数加一  加一后再计算是否是第三次 如果是得多点次
-                print("点击结算")
-                print("已经成功打完了第" + str(successTotal + 1 ) + " 次...")
-                successTotal = successTotal + 1
-                CommonUtils.click_point_random(overX, overY,hwnd)
-                time.sleep(random.uniform(1.0, 2.0))
-
-                while CommonUtils.openimages(勋章, hwnd) != 0 :
-                    print("点击弹窗胜利")
+                    time.sleep(random.uniform(2.5, 3.5))
+                    while CommonUtils.openimages(勋章, hwnd) != 0:
+                        print("点击弹窗")
+                        CommonUtils.click_point_random(overX, overY, hwnd)
+                        time.sleep(random.uniform(2.0, 2.5))
+                if CommonUtils.openimages(失败二, hwnd) != 0:
+                    print("失败了")
+                    flag = 1
+                    successTotal = successTotal + 1
                     CommonUtils.click_point_random(overX, overY, hwnd)
-                    time.sleep(random.uniform(1.0, 1.5))
-                break;
+                    time.sleep(random.uniform(2.5, 3.5))
+                    while CommonUtils.openimages(勋章, hwnd) != 0:
+                        print("点击弹窗")
+                        CommonUtils.click_point_random(overX, overY, hwnd)
+                        time.sleep(random.uniform(2.0, 2.5))
 
-
-        time.sleep(smallWaitTime +  random.uniform(0.1,0.7))
+        time.sleep(bigWaitTime + random.uniform(0.5, 1.0))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
