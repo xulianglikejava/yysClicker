@@ -1,17 +1,9 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
+
 import time
 import CommonUtils
 import random
 import datetime
-import os
-import logging
 
-import async_all
 
 # 体力
 power = 350
@@ -29,6 +21,10 @@ smallWaitTime = 2
 返回 = './image/斗鸡/返回.png'
 确认 = './image/斗鸡/确认.png'
 取消 = './image/斗鸡/取消.png'
+准备 = './image/斗鸡/准备.png'
+胜利 = './image/斗鸡/胜利.png'
+失败 = './image/斗鸡/失败.png'
+
 hwnd = CommonUtils.getSmallHwnd()
 
 
@@ -62,28 +58,35 @@ def 开始斗鸡() :
         countTime = 0
         while flag == 0:
             if CommonUtils.openimages(取消, hwnd) != 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
+                print("找对手中，第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
                 time.sleep(3)
 
             elif CommonUtils.openimages(返回, hwnd) != 0 and CommonUtils.openimages(取消, hwnd) == 0:
                 print("找到对手了")
                 time.sleep(random.uniform(5.2, 5.8))
-                print("退出")
-                CommonUtils.click_img_no_retry(返回, hwnd)
-                time.sleep(random.uniform(2.2, 2.8))
-                print("确认")
-                while CommonUtils.openimages(确认, hwnd) == 0:
-                    CommonUtils.click_img_no_retry(返回, hwnd)
-                CommonUtils.click_img(确认, hwnd)
-                time.sleep(random.uniform(2.2, 2.8))
-                overX, overY = overAddress[random.randint(0, 9)].split(',')
-                print("点击结算")
-                CommonUtils.click_point_random(overX, overY, hwnd)
-                time.sleep(random.uniform(3.2, 4.8))
+                print("点击准备")
+                CommonUtils.click_img(准备,hwnd)
+                print("等待打完")
 
-                flag = 1
-                break;
+                tempFlag = 0
+                tempCountTime = 0
+                while tempFlag == 0:
+                    if CommonUtils.openimages(取消, hwnd) != 0:
+                        print("打架中，第 " + str(countTime + 1) + " 次...")
+                        countTime = countTime + 1
+                        time.sleep(3)
+
+                    elif CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(失败, hwnd) != 0:
+                        while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(失败, hwnd) != 0:
+                            overX, overY = overAddress[random.randint(0, 9)].split(',')
+                            print("点击结算")
+                            CommonUtils.click_point_random(overX, overY, hwnd)
+                            time.sleep(random.uniform(3.2, 4.8))
+                            tempFlag = 1
+                            flag = 1
+
+
 
 
     end = datetime.datetime.now()

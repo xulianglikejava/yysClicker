@@ -723,7 +723,7 @@ def 开始六道月之海() :
             fightCount = 0
             # 首先找到开启坐标 点击
             CommonUtils.click_img(开启按钮, hwnd)
-            time.sleep(random.uniform(1.2, 2.0))
+            time.sleep(random.uniform(2.0, 2.5))
 
 
             # 找到确定坐标 点击
