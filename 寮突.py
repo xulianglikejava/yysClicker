@@ -31,6 +31,7 @@ smallWaitTime = 2
 成功 = './image/寮突/成功.png'
 失败 = './image/寮突/失败.png'
 勋章 = './image/寮突/勋章.png'
+突破记录 = './image/寮突/突破记录.png'
 hwndBig = CommonUtils.getBigHwnd()
 
 
@@ -77,7 +78,7 @@ def 开始寮突() :
                 time.sleep(2)
             if CommonUtils.openimages(成功, hwndBig) != 0 or CommonUtils.openimages(失败, hwndBig) != 0:
                 print("打完了")
-                while CommonUtils.openimages(勋章, hwndBig) != 0 :
+                while CommonUtils.openimages(勋章, hwndBig) != 0 and CommonUtils.openimages(突破记录, hwndBig) == 0 :
                     time.sleep(random.uniform(1.2, 2.3))
                     print("点击结算")
                     overX, overY = overAddress[random.randint(0, 9)].split(',')
