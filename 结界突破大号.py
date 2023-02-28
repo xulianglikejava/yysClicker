@@ -128,8 +128,8 @@ def 开始结界突破() :
         # 如果最后一次 那么就要退出2次
         if i == 9 or i == 16 or  i == 27 :
             time.sleep(random.uniform(3, 3.5))
-            print('9退4')
-            for j in range(4):
+            print('9退2')
+            for j in range(2):
                 j += 1
                 print("退出第" + str(j) + "次" )
                 while CommonUtils.openimages(返回按钮, hwnd) != 0:
@@ -149,7 +149,7 @@ def 开始结界突破() :
                 while CommonUtils.openimages(再次挑战确认按钮, hwnd) != 0:
                     CommonUtils.click_img(再次挑战确认按钮, hwnd)
                     break
-                time.sleep(random.uniform(2.0, 3.5))
+                time.sleep(random.uniform(3.0, 3.5))
 
         # 一把打完至少要三十秒
         time.sleep(10)
