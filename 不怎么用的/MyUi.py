@@ -1,12 +1,6 @@
-import threading
-
 import PySimpleGUI as sg
 import matplotlib
-from threading import Thread
-import 六道月之海mumu
-import 结界突破川源
-import 重命名大号
-
+from 不怎么用的 import 结界突破川源
 
 window = sg.Window('python小助手')
 matplotlib.use("TkAgg")

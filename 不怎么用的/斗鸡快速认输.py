@@ -17,13 +17,13 @@ consumeTime = 5
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
-战斗 = './image/斗鸡/战斗.png'
-返回 = './image/斗鸡/返回.png'
-确认 = './image/斗鸡/确认.png'
-取消 = './image/斗鸡/取消.png'
-准备 = './image/斗鸡/准备.png'
-胜利 = './image/斗鸡/胜利.png'
-失败 = './image/斗鸡/失败.png'
+战斗 = '../image/斗鸡/战斗.png'
+返回 = '../image/斗鸡/返回.png'
+确认 = '../image/斗鸡/确认.png'
+取消 = '../image/斗鸡/取消.png'
+准备 = '../image/斗鸡/准备.png'
+胜利 = '../image/斗鸡/胜利.png'
+失败 = '../image/斗鸡/失败.png'
 
 hwnd = CommonUtils.getBigHwnd()
 
@@ -34,7 +34,7 @@ def 开始斗鸡() :
     print("预计组队挑战斗鸡 " + str(maxcount) + "局")
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/斗鸡/结算坐标.txt')
+    overFile = open('../address/斗鸡/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)

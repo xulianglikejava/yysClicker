@@ -39,7 +39,7 @@ def 开始百鬼夜行() :
 
     # 读取文件里的鬼王坐标
     mainAddress = []
-    mainFile = open('./address/百鬼夜行/鬼王坐标.txt')
+    mainFile = open('../address/百鬼夜行/鬼王坐标.txt')
     for line in mainFile.readlines():
         line = line.strip('\n')
         mainAddress.append(line)
@@ -48,7 +48,7 @@ def 开始百鬼夜行() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/百鬼夜行/结算坐标.txt')
+    overFile = open('../address/百鬼夜行/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -57,7 +57,7 @@ def 开始百鬼夜行() :
 
     # 读取文件里的进入坐标
     startAddress = []
-    startFile = open('./address/百鬼夜行/进入坐标.txt')
+    startFile = open('../address/百鬼夜行/进入坐标.txt')
     for line in startFile.readlines():
         line = line.strip('\n')
         startAddress.append(line)
@@ -66,7 +66,7 @@ def 开始百鬼夜行() :
 
     # 读取文件里的进入坐标
     fightAddress = []
-    fightFile = open('./address/百鬼夜行/撒豆坐标.txt')
+    fightFile = open('../address/百鬼夜行/撒豆坐标.txt')
     for line in fightFile.readlines():
         line = line.strip('\n')
         fightAddress.append(line)

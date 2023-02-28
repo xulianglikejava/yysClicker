@@ -48,7 +48,7 @@ def 开始组队探索() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/探索/结算坐标.txt')
+    overFile = open('../address/探索/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -57,7 +57,7 @@ def 开始组队探索() :
 
     # 读取文件里的走动坐标
     moveAddress = []
-    moveFile = open('./address/探索/移动坐标.txt')
+    moveFile = open('../address/探索/移动坐标.txt')
     for line in moveFile.readlines():
         line = line.strip('\n')
         moveAddress.append(line)

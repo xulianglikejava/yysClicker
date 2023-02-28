@@ -37,7 +37,7 @@ def 开始挑战活动() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/活动通用/结算坐标.txt')
+    overFile = open('../address/活动通用/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)

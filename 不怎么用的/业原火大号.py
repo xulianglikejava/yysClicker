@@ -16,13 +16,13 @@ consume = 8
 # 计划打的局数
 maxcount = 30
 # 每局消耗时间
-consumeTime = 40
+consumeTime = 55
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = win32gui.FindWindow(0, "捉鼠大师小叮当")
+hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 successImg = './image/业原火/success.png'
 failImg = './image/业原火/fail.png'
 startImg = './image/业原火/start.png'
@@ -36,7 +36,7 @@ def 开始业原火() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/业原火/结算坐标.txt')
+    overFile = open('../address/业原火/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -49,10 +49,21 @@ def 开始业原火() :
     # 开始执行任务
     for i in range(maxcount):
         print("------------------------")
-        print("开始打第 " + str(i) + " 次")
+        print("开始打第 " + str(i + 1) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg,hwnd)
-        CommonUtils.click_point_random(startX, startY,hwnd)
+        # 首先找到挑战坐标 点击
+        startX, startY, = CommonUtils.openimages(startImg, hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
+        time.sleep(random.uniform(0.8, 1.2))
+        playCount = 0
+        while CommonUtils.openimages(startImg, hwnd) != 0:
+            print("---没有成功进去挑战!!!---")
+            playCount = playCount + 1
+            if playCount > 5:
+                return
+            startX, startY, = CommonUtils.openimages(startImg, hwnd)
+            CommonUtils.click_point_random(startX, startY, hwnd)
+            time.sleep(random.uniform(1.2, 1.8))
         # 一把打完至少要120秒
         time.sleep(consumeTime)
         flag = 0
@@ -69,7 +80,7 @@ def 开始业原火() :
                 CommonUtils.click_point_random(overX, overY,hwnd)
                 flag = 1
                 break;
-        time.sleep(bigWaitTime + random.uniform(0.2,0.6))
+        time.sleep(bigWaitTime + random.uniform(1.2,1.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")

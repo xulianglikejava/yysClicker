@@ -43,14 +43,14 @@ smallWaitTime = 2
 hwnd = CommonUtils.getBigHwnd()
 # 读取文件里的挑战坐标
 startAddress = []
-startFile = open('./address/地域鬼王/鬼王坐标.txt')
+startFile = open('../address/地域鬼王/鬼王坐标.txt')
 for line in startFile.readlines():
     line = line.strip('\n')
     startAddress.append(line)
 startFile.close()
 # 读取文件里的结算坐标
 overAddress = []
-overFile = open('./address/地域鬼王/结算坐标.txt')
+overFile = open('../address/地域鬼王/结算坐标.txt')
 for line in overFile.readlines():
     line = line.strip('\n')
     overAddress.append(line)
@@ -59,7 +59,7 @@ overFile.close()
 
 # 读取文件里的红蛋坐标
 redAddress = []
-redFile = open('./address/地域鬼王/红蛋坐标.txt')
+redFile = open('../address/地域鬼王/红蛋坐标.txt')
 for line in redFile.readlines():
     line = line.strip('\n')
     redAddress.append(line)
@@ -68,7 +68,7 @@ redFile.close()
 
 # 读取文件里的关闭坐标
 closeAddress = []
-closeFile = open('./address/地域鬼王/关闭坐标.txt')
+closeFile = open('../address/地域鬼王/关闭坐标.txt')
 for line in closeFile.readlines():
     line = line.strip('\n')
     closeAddress.append(line)

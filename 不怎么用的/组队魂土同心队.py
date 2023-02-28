@@ -33,14 +33,14 @@ def 开始组队魂土() :
     print("现在是：" +  str(start))
     print("预计组队挑战魂土 " + str(maxcount) + "局")
     # 读取文件里的挑战坐标
-    startFile = open('./address/组队魂土/挑战坐标.txt')
+    startFile = open('../address/组队魂土/挑战坐标.txt')
     startAddress = startFile.read()
     startX,startY = startAddress.split(',')
     startFile.close()
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/组队魂土/结算坐标.txt')
+    overFile = open('../address/组队魂土/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)

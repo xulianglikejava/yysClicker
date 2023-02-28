@@ -43,7 +43,7 @@ def 开始结界突破() :
 
     # 读取文件里的挑战坐标
     startAddress = []
-    startFile = open('./address/结界突破/挑战坐标.txt')
+    startFile = open('../address/结界突破/挑战坐标.txt')
     for line in startFile.readlines():
         line = line.strip('\n')
         startAddress.append(line)
@@ -51,7 +51,7 @@ def 开始结界突破() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/结界突破/结算坐标.txt')
+    overFile = open('../address/结界突破/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)
@@ -59,7 +59,7 @@ def 开始结界突破() :
     overFile.close()
 
     # 读取文件里的刷新坐标
-    flushFile = open('./address/结界突破/刷新坐标.txt')
+    flushFile = open('../address/结界突破/刷新坐标.txt')
     flushtAddress = flushFile.read()
     flushX, flushY = flushtAddress.split(',')
     flushFile.close()

@@ -22,7 +22,7 @@ bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 # hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
-hwnd = CommonUtils.getSmallHwnd()
+hwnd = CommonUtils.getBigHwnd()
 successImg = './image/御灵/success.png'
 success1Img = './image/御灵/success1.png'
 failImg = './image/御灵/fail.png'
@@ -37,7 +37,7 @@ def 开始挑战活动() :
 
     # 读取文件里的结算坐标
     overAddress = []
-    overFile = open('./address/活动通用/结算坐标.txt')
+    overFile = open('../address/活动通用/结算坐标.txt')
     for line in overFile.readlines():
         line = line.strip('\n')
         overAddress.append(line)

@@ -36,7 +36,7 @@ smallWaitTime = 1.5
 
 # 读取文件里的挑战坐标
 startAddress = []
-startFile = open('./address/结界突破/挑战坐标.txt')
+startFile = open('../address/结界突破/挑战坐标.txt')
 for line in startFile.readlines():
     line = line.strip('\n')
     startAddress.append(line)
@@ -44,7 +44,7 @@ startFile.close()
 
 # 读取文件里的结算坐标
 overAddress = []
-overFile = open('./address/结界突破/结算坐标.txt')
+overFile = open('../address/结界突破/结算坐标.txt')
 for line in overFile.readlines():
     line = line.strip('\n')
     overAddress.append(line)

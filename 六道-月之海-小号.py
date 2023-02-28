@@ -243,11 +243,11 @@ def 星之子(fightCount):
     while CommonUtils.openimages(星之屿1, hwnd) != 0:
         print("打星之子喽")
         CommonUtils.click_img(星之屿1, hwnd)
-        time.sleep(random.uniform(1.2, 2.0))
+        time.sleep(random.uniform(1.0, 1.5))
 
         while CommonUtils.openimages(挑战技能怪, hwnd) == 0:
             CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
-            time.sleep(random.uniform(1.2, 2.0))
+            time.sleep(random.uniform(1.0, 1.5))
 
         CommonUtils.click_img(挑战技能怪, hwnd)
         time.sleep(5)
@@ -258,7 +258,7 @@ def 星之子(fightCount):
             if CommonUtils.openimages(万相之赐, hwnd) == 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
-                time.sleep(2)
+                time.sleep(1)
             elif CommonUtils.openimages(万相之赐, hwnd) != 0:
                 flag = 1
                 选择符咒()
@@ -433,7 +433,7 @@ def 麓战(fightCount):
     while CommonUtils.openimages(麓战1, hwnd) != 0:
         print("打技能怪喽")
         CommonUtils.click_img(麓战1, hwnd)
-        time.sleep(random.uniform(1.2, 2.0))
+        time.sleep(random.uniform(1.0, 1.5))
 
         while CommonUtils.openimages(挑战技能怪,hwnd) == 0:
             CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
@@ -448,7 +448,7 @@ def 麓战(fightCount):
             if CommonUtils.openimages(万相之赐, hwnd) == 0:
                 print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
-                time.sleep(2)
+                time.sleep(1)
             elif CommonUtils.openimages(万相之赐, hwnd) != 0:
                 flag = 1
                 if fightCount > 2:
@@ -464,8 +464,8 @@ def 选择技能(flag):
     flush = 0
     print("选技能咯")
     print("是否有奖励页面 如果有直接停止")
-    time.sleep(random.uniform(1.5, 2.5))
     if CommonUtils.openimages(万相铃, hwnd) != 0:
+        time.sleep(random.uniform(0.5, 1.0))
         flush = 5
         print("点击结算")
         overX, overY = overAddress[random.randint(0, 9)].split(',')
@@ -482,7 +482,7 @@ def 选择技能(flag):
                 return
             CommonUtils.click_point_random(overX, overY, hwnd)
     while flush < 4:
-        time.sleep(random.uniform(1.0, 1.5))
+        time.sleep(random.uniform(1.0, 1.3))
         if CommonUtils.openimages(柔风抱暖文字, hwnd) != 0:
             print("选柔风咯")
             CommonUtils.click_img_select_fz(柔风抱暖文字,hwnd)
