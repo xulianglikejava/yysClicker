@@ -14,7 +14,7 @@ import logging
 import async_all
 
 # 体力
-power = 390
+power = 240
 # 每局消耗体力
 consume = 8
 # 计划打的局数
