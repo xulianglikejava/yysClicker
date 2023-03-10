@@ -25,7 +25,7 @@ consumeTime = 26
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
-接受邀请 = './image/通用图片/接受邀请.png'
+接受邀请 = '../image/通用图片/接受邀请.png'
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
 

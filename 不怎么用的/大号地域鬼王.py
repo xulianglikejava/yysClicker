@@ -25,19 +25,21 @@ bigWaitTime = 3
 smallWaitTime = 2
 
 # 图片素材
-探索Img = './image/通用图片/探索.png'
-地域鬼王Img = './image/地域鬼王/地域鬼王.png'
-筛选Img = './image/地域鬼王/筛选.png'
-挑战Img = './image/地域鬼王/挑战.png'
-准备Img = './image/地域鬼王/准备.png'
-收藏按钮Img = './image/地域鬼王/收藏按钮.png'
-收藏挑战1Img = './image/地域鬼王/收藏挑战1.png'
-收藏挑战2Img = './image/地域鬼王/收藏挑战2.png'
-第一 = './image/地域鬼王/第一.png'
-第二 = './image/地域鬼王/第二.png'
-第三 = './image/地域鬼王/第三.png'
-叉叉Img = './image/地域鬼王/叉叉.png'
-胜利 = './image/地域鬼王/胜利.png'
+探索Img = '../image/通用图片/探索.png'
+地域鬼王Img = '../image/地域鬼王/地域鬼王.png'
+筛选Img = '../image/地域鬼王/筛选.png'
+挑战Img = '../image/地域鬼王/挑战.png'
+准备Img = '../image/地域鬼王/准备.png'
+收藏按钮Img = '../image/地域鬼王/收藏按钮.png'
+收藏挑战1Img = '../image/地域鬼王/收藏挑战1.png'
+收藏挑战2Img = '../image/地域鬼王/收藏挑战2.png'
+第一 = '../image/地域鬼王/第一.png'
+第二 = '../image/地域鬼王/第二.png'
+第三 = '../image/地域鬼王/第三.png'
+叉叉Img = '../image/地域鬼王/叉叉.png'
+胜利 = '../image/地域鬼王/胜利.png'
+成功 = '../image/地域鬼王/成功.png'
+失败一 = '../image/地域鬼王/失败一.png'
 
 
 hwnd = CommonUtils.getBigHwnd()

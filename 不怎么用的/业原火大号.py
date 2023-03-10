@@ -16,16 +16,16 @@ consume = 8
 # 计划打的局数
 maxcount = 30
 # 每局消耗时间
-consumeTime = 55
+consumeTime = 80
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
 smallWaitTime = 2
 
-hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
-successImg = './image/业原火/success.png'
-failImg = './image/业原火/fail.png'
-startImg = './image/业原火/start.png'
+hwnd = CommonUtils.getBigHwnd()
+successImg = '../image/业原火/success.png'
+failImg = '../image/业原火/fail.png'
+startImg = '../image/业原火/start.png'
 
 
 def 开始业原火() :
@@ -69,18 +69,17 @@ def 开始业原火() :
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
+            if CommonUtils.openimages(successImg,hwnd) == 0 :
                 print("战斗还没结束...")
-                time.sleep(5)
-            else :
+                time.sleep(2)
+            if CommonUtils.openimages(successImg,hwnd) != 0 :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
-                print("点击结算")
-                CommonUtils.click_point_random(overX, overY,hwnd)
-                time.sleep(smallWaitTime + random.uniform(0.2,0.5))
-                CommonUtils.click_point_random(overX, overY,hwnd)
-                flag = 1
-                break;
-        time.sleep(bigWaitTime + random.uniform(1.2,1.6))
+                while CommonUtils.openimages(successImg, hwnd) != 0:
+                    print("点击结算")
+                    CommonUtils.click_point_random(overX, overY, hwnd)
+                    time.sleep(random.uniform(1.2,1.6))
+                    flag = 1
+        time.sleep(smallWaitTime +random.uniform(1.2, 1.6))
 
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
