@@ -24,6 +24,8 @@ smallWaitTime = 2
 准备 = '../image/斗鸡/准备.png'
 胜利 = '../image/斗鸡/胜利.png'
 失败 = '../image/斗鸡/失败.png'
+战斗数据 = '../image/斗鸡/战斗数据.png'
+分享 = '../image/斗鸡/分享.png'
 
 hwnd = CommonUtils.getBigHwnd()
 
@@ -81,6 +83,16 @@ def 开始斗鸡() :
                         while CommonUtils.openimages(胜利, hwnd) != 0 or CommonUtils.openimages(失败, hwnd) != 0:
                             overX, overY = overAddress[random.randint(0, 9)].split(',')
                             print("点击结算")
+                            CommonUtils.click_point_random(overX, overY, hwnd)
+                            time.sleep(random.uniform(3.2, 4.8))
+                            tempFlag = 1
+                            flag = 1
+                    elif CommonUtils.openimages(战斗数据, hwnd) != 0 and CommonUtils.openimages(分享, hwnd) != 0:
+                            overX, overY = overAddress[random.randint(0, 9)].split(',')
+                            print("点击结算")
+                            CommonUtils.click_point_random(overX, overY, hwnd)
+                            time.sleep(random.uniform(3.2, 4.8))
+                            print("再点击结算")
                             CommonUtils.click_point_random(overX, overY, hwnd)
                             time.sleep(random.uniform(3.2, 4.8))
                             tempFlag = 1

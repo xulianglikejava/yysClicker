@@ -129,7 +129,7 @@ def 开始结界突破() :
         if i == 9 or i == 16 or  i == 27 :
             time.sleep(random.uniform(3, 3.5))
             print('9退2')
-            for j in range(2):
+            for j in range(3):
                 j += 1
                 print("退出第" + str(j) + "次" )
                 while CommonUtils.openimages(返回按钮, hwnd) != 0:
