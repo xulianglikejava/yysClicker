@@ -27,9 +27,9 @@ bigWaitTime = 3
 smallWaitTime = 2
 
 # 图片素材
-successImg = './image/通用图片/success.png'
-success1Img = './image/通用图片/success1.png'
-挑战Img = './image/通用图片/挑战.png'
+successImg = '../image/通用图片/success.png'
+success1Img = '../image/通用图片/success1.png'
+挑战Img = '../image/通用图片/挑战.png'
 
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
