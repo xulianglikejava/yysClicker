@@ -123,7 +123,7 @@ def 开始结界突破() :
             attackCount += 1
             if attackCount > 3:
                 return
-            time.sleep(random.uniform(0.8, 1.2))
+            time.sleep(random.uniform(1, 1.5))
 
         # 如果最后一次 那么就要退出2次
         if i == 9 or i == 16 or  i == 27 :
@@ -139,7 +139,7 @@ def 开始结界突破() :
                 while CommonUtils.openimages(退出确认按钮, hwnd) != 0:
                     CommonUtils.click_img(退出确认按钮, hwnd)
                     break
-                time.sleep(random.uniform(4.0, 4.5))
+                time.sleep(random.uniform(3.0, 3.5))
 
                 while CommonUtils.openimages(再次挑战按钮, hwnd) != 0:
                     CommonUtils.click_img(再次挑战按钮, hwnd)

@@ -59,13 +59,14 @@ def 开始寮突() :
 
 
         while CommonUtils.openimages(开始, hwndBig) != 0 and CommonUtils.openimages(进攻, hwndBig) == 0:
-            print("点击坐标")
-            CommonUtils.click_img_no_retry(开始, hwndBig)
-            time.sleep(random.uniform(1.0,1.5))
+            while CommonUtils.openimages(进攻, hwndBig) == 0:
+                print("点击开始")
+                CommonUtils.click_img_no_retry(开始, hwndBig)
+                time.sleep(random.uniform(1.0,1.5))
         while CommonUtils.openimages(进攻, hwndBig) != 0:
             print("点击进攻")
             CommonUtils.click_img(进攻, hwndBig)
-            time.sleep(random.uniform(1.0,2.0))
+            time.sleep(random.uniform(1.0,1.5))
         print("战斗中间间隔：" + str(consumeTime) + " 秒")
         time.sleep(consumeTime)
         # 打完后点击结算
@@ -82,7 +83,7 @@ def 开始寮突() :
                 print("点击结算")
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 CommonUtils.click_point_random(overX, overY, hwndBig)
-                time.sleep(random.uniform(1.2, 2.5))
+                time.sleep(random.uniform(2.2, 2.5))
                 # while CommonUtils.openimages(勋章, hwndBig) != 0 and CommonUtils.openimages(突破记录, hwndBig) == 0 :
                 #
                 flag = 1

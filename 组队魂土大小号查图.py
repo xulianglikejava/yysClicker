@@ -14,7 +14,7 @@ import logging
 import async_all
 
 # 体力
-power = 400
+power = 392
 # 每局消耗体力
 consume = 8
 # 计划打的局数
@@ -62,7 +62,7 @@ def 开始组队魂土() :
         time.sleep(random.uniform(0.8, 1.2))
         playCount = 0
         while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
-            print("---没有成功进去挑战!!!---")
+            # print("---没有成功进去挑战!!!---")
             # if CommonUtils.openimages(不可挑战按钮, hwndSmall) != 0:
             #     print('---队友没有进来---')
             #     return
@@ -73,33 +73,33 @@ def 开始组队魂土() :
             CommonUtils.click_point_random(startX, startY, hwndSmall)
             time.sleep(random.uniform(1.2, 1.8))
         wait = consumeTime + random.uniform(0.5,0.9)
-        print("战斗中间间隔：" + str(wait) + " 秒")
+        # print("战斗中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)
         # 打完后点击结算
         flag = 0
         countTime = 0
         while flag == 0:
             if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1,hwndSmall) == 0:
-                print("等待第 " + str(countTime + 1) + " 次...")
+                # print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
                 time.sleep(1)
 
             elif CommonUtils.openimages(成功, hwndSmall) != 0 or CommonUtils.openimages(成功1,hwndSmall) != 0:
-                print("小号找到完成图了")
+                # print("小号找到完成图了")
                 time.sleep(random.uniform(1.2, 2.3))
-                print("小号点击结算")
+                # print("小号点击结算")
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
-                print("大号点击结算")
+                # print("大号点击结算")
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
                 wait = smallWaitTime + random.uniform(0.3, 1)
 
-                print("结算中间间隔：" + str(wait) + " 秒")
+                # print("结算中间间隔：" + str(wait) + " 秒")
                 time.sleep(wait)
-                print("小号再点击结算")
+                # print("小号再点击结算")
                 CommonUtils.click_point_random(overX, overY, hwndSmall)
-                print("大号再点击结算")
+                # print("大号再点击结算")
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
                 # 等待跳转
                 time.sleep(2.5 + random.uniform(1.2, 2.5))
