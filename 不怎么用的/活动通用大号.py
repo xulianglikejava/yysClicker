@@ -23,10 +23,10 @@ bigWaitTime = 3
 smallWaitTime = 2
 # hwnd = win32gui.FindWindow(0, "铁血战士胖虎")
 hwnd = CommonUtils.getBigHwnd()
-successImg = './image/活动通用/success.png'
-success1Img = './image/活动通用/success1.png'
-failImg = './image/活动通用/fail.png'
-挑战 = './image/活动通用/挑战.png'
+successImg = '../image/活动通用/success.png'
+success1Img = '../image/活动通用/success1.png'
+failImg = '../image/活动通用/fail.png'
+挑战 = '../image/活动通用/挑战.png'
 
 
 def 开始挑战活动() :
