@@ -26,7 +26,7 @@ def click_point_random(x,y,hwnd):
     else:
         x = int(x) - random.randint(0,4)
         y = int(y) + random.randint(0,3)
-    print("点击的坐标为：" + str(x) + "," + str(y))
+    # print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
     time.sleep(random.uniform(0.02 , 0.08))
@@ -35,7 +35,7 @@ def click_point_random(x,y,hwnd):
 # 无偏移点击
 def click_point(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
-    print("点击的坐标为：" + str(x) + "," + str(y))
+    # print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
     time.sleep(random.uniform(0.02 , 0.08))
@@ -50,7 +50,7 @@ def click_point_random_clear(x,y,hwnd):
     else:
         x = int(x) - random.randint(0,4)
         y = int(y) + random.randint(0,3)
-    print("点击的坐标为：" + str(x) + "," + str(y))
+    # print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
     hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
