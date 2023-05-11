@@ -26,7 +26,7 @@ def click_point_random(x,y,hwnd):
     else:
         x = int(x) - random.randint(0,4)
         y = int(y) + random.randint(0,3)
-    # print("点击的坐标为：" + str(x) + "," + str(y))
+    print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
     time.sleep(random.uniform(0.02 , 0.08))
@@ -234,8 +234,16 @@ def getSmallHwndMuMu():
     return hwnd
 
 def getMuMu():
-    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
-    return hwnd
+    hwnd_list = []
+    win32gui.EnumWindows(callback, hwnd_list)
+    return hwnd_list
+
+
+def callback(hwnd, extra):
+    if "铁血战士胖虎" in win32gui.GetWindowText(hwnd):
+        extra.append(hwnd)
+
+
 
 def 生成截图(hwnd):
     imgName = str(datetime.datetime.now()).split(".")[0].replace(" ","_").replace(":","_");

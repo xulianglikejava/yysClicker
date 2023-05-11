@@ -30,6 +30,7 @@ smallWaitTime = 2
 成功 = './image/魂土/成功.png'
 成功1 = './image/魂土/成功1.png'
 金币 = './image/魂土/金币.png'
+队友 = './image/魂土/队友.png'
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
 
@@ -102,10 +103,17 @@ def 开始组队魂土() :
                 # 等待跳转
                 break;
 
-        while CommonUtils.openimages(金币, hwndSmall) != 0 and CommonUtils.openimages(金币,hwndBig) != 0:
+        while CommonUtils.openimages(金币, hwndSmall) != 0 and CommonUtils.openimages(金币, hwndBig) != 0:
             print("小号点击金币")
             CommonUtils.click_point_random(overXSmall, overYSmall, hwndSmall)
             print("大号点击金币")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            wait = bigWaitTime + random.uniform(0.3, 1)
+            time.sleep(wait);
+            break
+
+        while CommonUtils.openimages(队友, hwndSmall) == 0 :
+            print("大号有问题")
             CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
             wait = bigWaitTime + random.uniform(0.3, 1)
             time.sleep(wait);

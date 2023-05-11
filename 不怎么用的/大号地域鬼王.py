@@ -149,15 +149,17 @@ def 开始打地域鬼王() :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
                 CommonUtils.click_point_random(overX, overY, hwnd)
-                time.sleep(random.uniform(2.1, 2.5))
+                time.sleep(random.uniform(3.1, 3.5))
                 print("再点击结算")
                 CommonUtils.click_point_random(overX, overY, hwnd)
-                time.sleep(random.uniform(2.1, 3.5))
+                time.sleep(random.uniform(3.1, 3.5))
                 break
 
         print('点击叉叉')
         while CommonUtils.openimages(叉叉Img, hwnd) != 0:
-            CommonUtils.click_img(叉叉Img, hwnd)
+            CommonUtils.click_img_no_retry(叉叉Img, hwnd)
+            time.sleep(random.uniform(2.1, 2.5))
+
             break
 
         i += 1

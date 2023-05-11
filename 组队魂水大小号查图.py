@@ -20,7 +20,7 @@ consume = 8
 # 计划打的局数
 maxcount = 0
 # 每局消耗时间
-consumeTime = 24
+consumeTime = 34
 # 大等待时间
 bigWaitTime = 3
 # 小等待时间
@@ -29,6 +29,7 @@ smallWaitTime = 2
 不可挑战按钮 = './image/魂水/不可挑战按钮.png'
 成功 = './image/魂水/成功.png'
 成功1 = './image/魂水/成功1.png'
+金币 = './image/魂土/金币.png'
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
 
@@ -37,7 +38,7 @@ def 开始组队魂土() :
     maxcount = math.floor(power/consume)
     start = datetime.datetime.now()
     print("现在是：" +  str(start))
-    print("预计组队挑战魂水 " + str(maxcount) + "局")
+    print("预计组队挑战魂十 " + str(maxcount) + "局")
     # 读取文件里的挑战坐标
     startFile = open('./address/组队魂土/挑战坐标.txt')
     startAddress = startFile.read()
@@ -57,9 +58,11 @@ def 开始组队魂土() :
         i += 1
 
         # 首先找到挑战坐标 点击
-        startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
-        CommonUtils.click_point_random(startX, startY, hwndSmall)
-        time.sleep(random.uniform(0.8, 1.2))
+        while CommonUtils.openimages(挑战按钮, hwndSmall) != 0 :
+            startX, startY, = CommonUtils.openimages(挑战按钮, hwndSmall)
+            CommonUtils.click_point_random(startX, startY, hwndSmall)
+            time.sleep(random.uniform(0.8, 1.2))
+            break;
         playCount = 0
         while CommonUtils.openimages(挑战按钮, hwndSmall) != 0:
             # print("---没有成功进去挑战!!!---")
@@ -78,6 +81,9 @@ def 开始组队魂土() :
         # 打完后点击结算
         flag = 0
         countTime = 0
+        overXSmall, overYSmall = overAddress[random.randint(0, 9)].split(',')
+        overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+
         while flag == 0:
             if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1,hwndSmall) == 0:
                 # print("等待第 " + str(countTime + 1) + " 次...")
@@ -86,26 +92,24 @@ def 开始组队魂土() :
 
             elif CommonUtils.openimages(成功, hwndSmall) != 0 and CommonUtils.openimages(成功,hwndBig) != 0:
                 # print("小号找到完成图了")
-                time.sleep(random.uniform(2.0, 2.3))
-                # print("小号点击结算")
-                overX, overY = overAddress[random.randint(0, 9)].split(',')
-                overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
-                CommonUtils.click_point_random(overX, overY, hwndSmall)
-                # print("大号点击结算")
+                time.sleep(random.uniform(1.2, 1.8))
+                print("小号点击结算")
+                CommonUtils.click_point_random(overXSmall, overYSmall, hwndSmall)
+                print("大号点击结算")
                 CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
                 wait = smallWaitTime + random.uniform(0.3, 1)
-
-                # print("结算中间间隔：" + str(wait) + " 秒")
-                time.sleep(wait)
-                # print("小号再点击结算")
-                CommonUtils.click_point_random(overX, overY, hwndSmall)
-                # print("大号再点击结算")
-                CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+                time.sleep(wait);
                 # 等待跳转
-                time.sleep(2.5 + random.uniform(1.2, 2.5))
-                flag = 1
                 break;
 
+        while CommonUtils.openimages(金币, hwndSmall) != 0 and CommonUtils.openimages(金币,hwndBig) != 0:
+            print("小号点击金币")
+            CommonUtils.click_point_random(overXSmall, overYSmall, hwndSmall)
+            print("大号点击金币")
+            CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
+            wait = bigWaitTime + random.uniform(0.3, 1)
+            time.sleep(wait);
+            break
 
     startFile.close()
     end = datetime.datetime.now()
