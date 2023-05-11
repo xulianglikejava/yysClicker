@@ -1,10 +1,8 @@
-import win32gui, win32con, win32api,win32ui
+import win32gui
 import time
 import CommonUtils
 import random
 import datetime
-
-import async_all
 
 # 体力
 power = 200

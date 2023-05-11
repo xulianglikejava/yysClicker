@@ -1,17 +1,7 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-import os
-import logging
-
-import async_all
 
 # 体力
 power = 350
@@ -157,15 +147,15 @@ def 关卡内战斗(fightCount):
         while CommonUtils.openimages(挑战BOSS, hwnd) != 0:
             # 调整技能
             # 备战BOSS()
-            CommonUtils.click_img(挑战BOSS,hwnd)
+            CommonUtils.click_img(挑战BOSS, hwnd)
             time.sleep(random.uniform(1.2, 2.0))
 
 
             # print("释放符咒一次")
-            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            CommonUtils.click_point_random(符咒X, 符咒Y, hwnd)
             time.sleep(random.uniform(45, 50))
             # print("再释放符咒一次")
-            CommonUtils.click_point_random(符咒X,符咒Y,hwnd)
+            CommonUtils.click_point_random(符咒X, 符咒Y, hwnd)
             continue
 
         # 判断是否有麓战
@@ -208,13 +198,13 @@ def 关卡内战斗(fightCount):
         CommonUtils.click_point_random(overX, overY, hwnd)
         time.sleep(random.uniform(1.2, 2.0))
 
-        while CommonUtils.openimages(获得奖励,hwnd) != 0:
+        while CommonUtils.openimages(获得奖励, hwnd) != 0:
             # print("再点击获得奖励")
-            CommonUtils.click_img(获得奖励,hwnd)
+            CommonUtils.click_img(获得奖励, hwnd)
             time.sleep(random.uniform(1.2, 2.0))
 
 
-        while CommonUtils.openimages(结束,hwnd) == 0:
+        while CommonUtils.openimages(结束, hwnd) == 0:
             # print("没有找到结束")
             time.sleep(random.uniform(1.2, 2.0))
 
@@ -222,7 +212,7 @@ def 关卡内战斗(fightCount):
             time.sleep(random.uniform(1.2, 2.0))
 
         # print("再点击结束")
-        CommonUtils.click_img(结束,hwnd)
+        CommonUtils.click_img(结束, hwnd)
         time.sleep(random.uniform(1.2, 2.0))
 
         break
@@ -355,7 +345,7 @@ def 混沌(fightCount):
 def 安息(fightCount):
     # print("选择安息")
     while CommonUtils.openimages(安息1, hwnd) != 0:
-        CommonUtils.click_img(安息1,hwnd)
+        CommonUtils.click_img(安息1, hwnd)
         time.sleep(random.uniform(1.2, 2.0))
 
         购买(fightCount)
@@ -435,7 +425,7 @@ def 麓战(fightCount):
         CommonUtils.click_img(麓战1, hwnd)
         time.sleep(random.uniform(1.0, 1.5))
 
-        while CommonUtils.openimages(挑战技能怪,hwnd) == 0:
+        while CommonUtils.openimages(挑战技能怪, hwnd) == 0:
             CommonUtils.click_point_random(技能怪X, 技能怪Y, hwnd)
             time.sleep(random.uniform(1.2, 2.0))
 
@@ -485,12 +475,12 @@ def 选择技能(flag):
         time.sleep(random.uniform(1.0, 1.3))
         if CommonUtils.openimages(柔风抱暖文字, hwnd) != 0:
             # print("选柔风咯")
-            CommonUtils.click_img_select_fz(柔风抱暖文字,hwnd)
+            CommonUtils.click_img_select_fz(柔风抱暖文字, hwnd)
 
             break;
         if CommonUtils.openimages(妖力化身文字, hwnd) != 0:
             # print("选分身咯")
-            CommonUtils.click_img_select_fz(妖力化身文字,hwnd)
+            CommonUtils.click_img_select_fz(妖力化身文字, hwnd)
             break;
 
         if CommonUtils.openimages(六道暴虐, hwnd) != 0:
@@ -499,18 +489,18 @@ def 选择技能(flag):
             break;
         if CommonUtils.openimages(细雨化屏文字, hwnd) != 0:
             # print("选化雨咯")
-            CommonUtils.click_img_select_fz(细雨化屏文字,hwnd)
+            CommonUtils.click_img_select_fz(细雨化屏文字, hwnd)
             break;
         if flush < 3:
             # print("刷新！刷新技能!")
             x,y = CommonUtils.openimages(刷新按钮, hwnd)
-            CommonUtils.click_point_random(x,y,hwnd)
+            CommonUtils.click_point_random(x, y, hwnd)
             flush += 1
             continue
 
         if flush == 3 :
             # print("没刷新次数喽，选万相之赐咯")
-            CommonUtils.click_img_select_fz(万相之赐文字,hwnd)
+            CommonUtils.click_img_select_fz(万相之赐文字, hwnd)
             break;
 
 
@@ -719,7 +709,7 @@ def 开始六道月之海() :
             # print("月之海入口")
             CommonUtils.click_img(月之海入口, hwnd)
             time.sleep(random.uniform(2.0, 2.5))
-        if CommonUtils.openimages(开启按钮,hwnd) != 0 :
+        if CommonUtils.openimages(开启按钮, hwnd) != 0 :
             fightCount = 0
             # 首先找到开启坐标 点击
             CommonUtils.click_img(开启按钮, hwnd)

@@ -1,17 +1,9 @@
 import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
+import win32gui
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-import os
-import logging
-
-import async_all
 
 # 体力
 power = 400
@@ -58,7 +50,7 @@ def 开始组队觉醒() :
         i += 1
 
         # 首先找到挑战坐标 点击
-        CommonUtils.click_point_random(startX,startY,hwndSmall)
+        CommonUtils.click_point_random(startX, startY, hwndSmall)
         wait = consumeTime + random.uniform(0.5,0.9)
         print("战斗中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)

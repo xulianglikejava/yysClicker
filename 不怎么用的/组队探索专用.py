@@ -1,15 +1,9 @@
 import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
+import win32gui
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-
-import async_all
 
 # 体力
 power = 230
@@ -75,7 +69,7 @@ def 开始组队探索() :
         if CommonUtils.openimages(startImg, hwndSmall) != 0:
             print("小号点击开始")
             smallX,smallY = CommonUtils.openimages(startImg, hwndSmall)
-            CommonUtils.click_point_random(smallX,smallY,hwndSmall)
+            CommonUtils.click_point_random(smallX, smallY, hwndSmall)
             time.sleep(random.uniform(3.1, 4.9))
             continue
 
@@ -95,7 +89,7 @@ def 开始组队探索() :
                     countTime = countTime + 1
                     time.sleep(1)
 
-                elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg,hwndSmall) != 0:
+                elif CommonUtils.openimages(successImg, hwndSmall) != 0 or CommonUtils.openimages(successImg, hwndSmall) != 0:
                     # 打完后点击结算
                     print("小号点击结算")
                     overX, overY = overAddress[random.randint(0, 9)].split(',')

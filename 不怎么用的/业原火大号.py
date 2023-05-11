@@ -1,11 +1,5 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
 
@@ -69,10 +63,10 @@ def 开始业原火() :
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 :
+            if CommonUtils.openimages(successImg, hwnd) == 0 :
                 print("战斗还没结束...")
                 time.sleep(2)
-            if CommonUtils.openimages(successImg,hwnd) != 0 :
+            if CommonUtils.openimages(successImg, hwnd) != 0 :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 while CommonUtils.openimages(successImg, hwnd) != 0:
                     print("点击结算")

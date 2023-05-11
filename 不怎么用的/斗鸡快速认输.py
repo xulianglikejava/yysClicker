@@ -1,6 +1,6 @@
 
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
 
@@ -68,7 +68,7 @@ def 开始斗鸡() :
                 print("找到对手了")
                 time.sleep(random.uniform(5.2, 5.8))
                 print("点击准备")
-                CommonUtils.click_img(准备,hwnd)
+                CommonUtils.click_img(准备, hwnd)
                 print("等待打完")
 
                 tempFlag = 0

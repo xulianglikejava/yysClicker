@@ -1,17 +1,8 @@
 import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-import os
-import logging
-
-import async_all
 
 # 体力
 power = 392
@@ -86,12 +77,12 @@ def 开始组队魂土() :
         overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
 
         while flag == 0:
-            if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1,hwndSmall) == 0:
+            if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1, hwndSmall) == 0:
                 # print("等待第 " + str(countTime + 1) + " 次...")
                 countTime = countTime + 1
                 time.sleep(1)
 
-            elif CommonUtils.openimages(成功, hwndSmall) != 0 and CommonUtils.openimages(成功,hwndBig) != 0:
+            elif CommonUtils.openimages(成功, hwndSmall) != 0 and CommonUtils.openimages(成功, hwndBig) != 0:
                 # print("小号找到完成图了")
                 time.sleep(random.uniform(1.2, 1.8))
                 print("小号点击结算")

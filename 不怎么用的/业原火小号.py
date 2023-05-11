@@ -1,11 +1,6 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
+import win32gui
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
 
@@ -51,22 +46,22 @@ def 开始业原火() :
         print("------------------------")
         print("开始打第 " + str(i) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg,hwnd)
-        CommonUtils.click_point_random(startX, startY,hwnd)
+        startX,startY, = CommonUtils.openimages(startImg, hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
         # 一把打完至少要120秒
         time.sleep(consumeTime)
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 and CommonUtils.openimages(failImg,hwnd) == 0:
+            if CommonUtils.openimages(successImg, hwnd) == 0 and CommonUtils.openimages(failImg, hwnd) == 0:
                 print("战斗还没结束...")
                 time.sleep(5)
             else :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
-                CommonUtils.click_point_random(overX, overY,hwnd)
+                CommonUtils.click_point_random(overX, overY, hwnd)
                 time.sleep(smallWaitTime + random.uniform(0.2,0.5))
-                CommonUtils.click_point_random(overX, overY,hwnd)
+                CommonUtils.click_point_random(overX, overY, hwnd)
                 flag = 1
                 break;
         time.sleep(bigWaitTime + random.uniform(0.2,0.6))

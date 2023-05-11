@@ -1,11 +1,5 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
 
@@ -52,8 +46,8 @@ def 开始挑战活动() :
         print("------------------------")
         print("开始打第 " + str(i+1) + " 次")
         i += 1
-        startX,startY, = CommonUtils.openimages(startImg,hwnd)
-        CommonUtils.click_point_random(startX, startY,hwnd)
+        startX,startY, = CommonUtils.openimages(startImg, hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
         time.sleep(random.uniform(0.8, 1.2))
         playCount = 0
         while CommonUtils.openimages(startImg, hwnd) != 0:
@@ -70,13 +64,13 @@ def 开始挑战活动() :
         flag = 0
         # 循环截图 判断是否打完
         while flag == 0 :
-            if CommonUtils.openimages(successImg,hwnd) == 0 or CommonUtils.openimages(success1Img,hwnd) == 0  :
+            if CommonUtils.openimages(successImg, hwnd) == 0 or CommonUtils.openimages(success1Img, hwnd) == 0  :
                 print("战斗还没结束...")
                 time.sleep(3)
             else :
                 overX, overY = overAddress[random.randint(0, 9)].split(',')
                 print("点击结算")
-                CommonUtils.click_point_random(overX, overY,hwnd)
+                CommonUtils.click_point_random(overX, overY, hwnd)
                 time.sleep(1 + random.uniform(0.5,0.8))
                 # 检查一下
                 print("检查一下")

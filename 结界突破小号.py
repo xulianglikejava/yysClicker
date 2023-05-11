@@ -1,10 +1,7 @@
-import win32gui, win32con, win32api,win32ui
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-
-import async_all
 
 # 体力
 power = 200
@@ -81,7 +78,7 @@ def 开始结界突破() :
 
                 while CommonUtils.openimages(刷新按钮, hwnd) != 0 and CommonUtils.openimages(刷新确认按钮, hwnd) == 0:
                     print("点击刷新")
-                    CommonUtils.click_img_no_retry(刷新按钮,hwnd)
+                    CommonUtils.click_img_no_retry(刷新按钮, hwnd)
                     time.sleep(random.uniform(1.0, 2.0))
 
                 while CommonUtils.openimages(刷新确认按钮, hwnd) != 0:
@@ -100,7 +97,7 @@ def 开始结界突破() :
             CommonUtils.click_point_random(overX, overY, hwnd)
             time.sleep(random.uniform(0.8, 1.2))
         #     开始
-        CommonUtils.click_point_random(startX,startY,hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
         time.sleep(random.uniform(0.8,1.2))
         # 防止没有成功进去
         playCount = 0

@@ -1,7 +1,4 @@
-import win32gui, win32con, win32api,win32ui
-
-
-import async_all
+import win32gui
 
 hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
 

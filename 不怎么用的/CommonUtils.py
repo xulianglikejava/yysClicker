@@ -12,7 +12,7 @@ import time
 
 child_handles = []
 SmallHwnd = 0
-new_dir = "Snipaste/"
+new_dir = "../Snipaste/"
 
 
 # 简单漂移点击事件

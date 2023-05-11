@@ -1,15 +1,8 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
 import time
-import CommonUtils
 import random
 import datetime
 
-import async_all
+from 不怎么用的 import async_all, CommonUtils
 
 # 体力
 power = 230

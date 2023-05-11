@@ -1,15 +1,8 @@
-import math
-import win32gui, win32con, win32api,win32ui
-from PIL import Image
-import cv2
-import numpy as np
-import aircv as ac
+import win32gui
 import time
-import CommonUtils
+from 不怎么用的 import CommonUtils
 import random
 import datetime
-
-import async_all
 
 # 体力
 power = 392
@@ -55,7 +48,7 @@ def 开始组队魂土() :
         # 首先找到挑战坐标 点击
         startX, startY, = CommonUtils.openimages(挑战按钮, hwnd)
 
-        CommonUtils.click_point_random(startX,startY,hwnd)
+        CommonUtils.click_point_random(startX, startY, hwnd)
         while CommonUtils.openimages(挑战按钮, hwnd) != 0:
             print("---没有成功进去挑战!!!---")
             startX, startY, = CommonUtils.openimages(挑战按钮, hwnd)
@@ -67,12 +60,12 @@ def 开始组队魂土() :
         # 打完后点击结算
         print("点击结算")
         overX,overY = overAddress[random.randint(0,9)].split(',')
-        CommonUtils.click_point_random(overX,overY,hwnd)
+        CommonUtils.click_point_random(overX, overY, hwnd)
         wait = smallWaitTime + random.uniform(1.2, 1.4)
         print("结算中间间隔：" + str(wait) + " 秒")
         time.sleep(wait)
         print("再点击结算")
-        CommonUtils.click_point_random(overX,overY,hwnd)
+        CommonUtils.click_point_random(overX, overY, hwnd)
         # 等待跳转
         time.sleep(bigWaitTime + random.uniform(1.4,2.3))
 
