@@ -14,6 +14,13 @@ child_handles = []
 SmallHwnd = 0
 new_dir = "../Snipaste/"
 
+加成按钮 = './image/通用图片/加成.png'
+加成启动 = './image/通用图片/加成启动.png'
+加成坐标 = './address/通用坐标/加成按钮坐标.txt'
+邀请 = './image/通用图片/邀请.png'
+邀请好友 = './image/通用图片/邀请好友.png'
+队友 = './image/通用图片/队友.png'
+接受邀请 = './image/通用图片/接受邀请.png'
 
 # 简单漂移点击事件
 def click_point_random(x,y,hwnd):
@@ -250,3 +257,102 @@ def 生成截图(hwnd):
     imgName = "Snipaste_" + imgName + ".png"
     print(imgName)
     saveImg(hwnd,imgName)
+
+def 打开挖土加成(hwndSmall,hwndBig):
+    # 读取文件里的结算坐标
+    clickAddress = []
+    overFile = open(加成坐标,'r', encoding='utf-8')
+    for line in overFile.readlines():
+        line = line.strip('\n')
+        clickAddress.append(line)
+    # 赋值完毕
+    overFile.close()
+    # 加成坐标
+    # 御魂加成
+    itemXSmall, itemYSmall = clickAddress[3].split(',')
+    itemXSmall = int(itemXSmall)
+    itemYSmall = int(itemYSmall)
+    # 经验50%加成
+    exp50XSmall, exp50YSmall = clickAddress[5].split(',')
+    exp50XSmall = int(exp50XSmall)
+    exp50YSmall = int(exp50YSmall)
+    # 经验100%加成
+    exp100XSmall, exp100YSmall = clickAddress[7].split(',')
+    exp100XSmall = int(exp100XSmall)
+    exp100YSmall = int(exp100YSmall)
+    print("小号打开加成页面")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号打开加成页面")
+    click_img_no_retry(加成按钮, hwndBig)
+    time.sleep(random.uniform(0.6, 1));
+    if openimages(加成启动, hwndSmall) == 0:
+        print("小号打开御魂加成")
+        click_point(itemXSmall, itemYSmall, hwndSmall)
+    if openimages(加成启动, hwndBig) == 0:
+        print("大号打开御魂加成")
+        click_point(itemXSmall, itemYSmall, hwndBig)
+        time.sleep(random.uniform(0.6, 1));
+        print("大号打开经验50%加成")
+        click_point(exp50XSmall, exp50YSmall, hwndBig)
+        time.sleep(random.uniform(0.6, 1));
+        print("大号打开经验100%加成")
+        click_point(exp100XSmall, exp100YSmall, hwndBig)
+        time.sleep(random.uniform(0.6, 1));
+    print("小号关闭加成页面")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号关闭加成页面")
+    click_img_no_retry(加成按钮, hwndBig)
+
+
+def 关闭加成(hwndSmall,hwndBig):
+    # 读取文件里的结算坐标
+    clickAddress = []
+    overFile = open(加成坐标, 'r', encoding='utf-8')
+    for line in overFile.readlines():
+        line = line.strip('\n')
+        clickAddress.append(line)
+    # 赋值完毕
+    overFile.close()
+    # 加成坐标
+    # 御魂加成
+    itemXSmall, itemYSmall = clickAddress[3].split(',')
+    itemXSmall = int(itemXSmall)
+    itemYSmall = int(itemYSmall)
+    # 经验50%加成
+    exp50XSmall, exp50YSmall = clickAddress[5].split(',')
+    exp50XSmall = int(exp50XSmall)
+    exp50YSmall = int(exp50YSmall)
+    # 经验100%加成
+    exp100XSmall, exp100YSmall = clickAddress[7].split(',')
+    exp100XSmall = int(exp100XSmall)
+    exp100YSmall = int(exp100YSmall)
+    print("小号打开加成菜单")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号打开加成菜单")
+    click_img_no_retry(加成按钮, hwndBig)
+    time.sleep(random.uniform(0.6, 1));
+    print("小号关闭加成")
+    while openimages(加成启动, hwndSmall) != 0:
+        click_img_no_retry(加成启动,hwndSmall)
+        time.sleep(random.uniform(0.6, 1));
+
+    print("大号关闭加成")
+    while openimages(加成启动, hwndBig) != 0:
+        click_img_no_retry(加成启动,hwndBig)
+        time.sleep(random.uniform(0.6, 1));
+    print("小号关闭加成菜单")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号关闭加成菜单")
+    click_img_no_retry(加成按钮, hwndBig)
+
+def 邀请队友(hwndSmall,hwndBig):
+    click_img_no_retry(邀请, hwndSmall)
+    time.sleep(random.uniform(0.6, 1));
+    click_img_no_retry(队友, hwndSmall)
+    time.sleep(random.uniform(2.6, 3));
+    click_img(邀请好友, hwndSmall)
+    time.sleep(random.uniform(0.6, 1));
+    click_img(接受邀请, hwndBig)
+
+
+

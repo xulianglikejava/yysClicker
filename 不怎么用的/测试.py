@@ -5,6 +5,8 @@ from 不怎么用的 import CommonUtils
 金币 = '../image/魂土/金币.png'
 阴阳师 = '../image/魂土/阴阳师.png'
 hwnd = CommonUtils.getSmallHwnd()
+hwndBig = CommonUtils.getBigHwnd()
+hwndSmall = CommonUtils.getSmallHwnd()
 探索 = '../image/通用图片/探索.png'
 # 模拟器的设备ID
 DEVICE_ID = '127.0.0.1:16416'
@@ -39,5 +41,7 @@ def 点击():
     # # 执行adb命令
     # subprocess.run(adb_cmd)
 
-点击()
+
+CommonUtils.打开挖土加成(hwndSmall, hwndBig)
+
 

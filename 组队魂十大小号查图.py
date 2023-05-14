@@ -5,7 +5,7 @@ import random
 import datetime
 
 # 体力
-power = 392
+power = 500
 # 每局消耗体力
 consume = 8
 # 计划打的局数
@@ -43,6 +43,8 @@ def 开始组队魂土() :
         line = line.strip('\n')
         overAddress.append(line)
     # 赋值完毕
+    CommonUtils.打开挖土加成(hwndSmall,hwndBig)
+    CommonUtils.关闭加成(hwndSmall, hwndBig)
 
     for i in range(maxcount):
         print("------------------------")
@@ -73,8 +75,8 @@ def 开始组队魂土() :
         # 打完后点击结算
         flag = 0
         countTime = 0
-        overXSmall, overYSmall = overAddress[random.randint(0, 9)].split(',')
-        overXBig, overYBig = overAddress[random.randint(0, 9)].split(',')
+        overXSmall, overYSmall = overAddress[random.randint(0, 22)].split(',')
+        overXBig, overYBig = overAddress[random.randint(0, 22)].split(',')
 
         while flag == 0:
             if CommonUtils.openimages(成功, hwndSmall) == 0 and CommonUtils.openimages(成功1, hwndSmall) == 0:
