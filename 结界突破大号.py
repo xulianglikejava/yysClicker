@@ -66,7 +66,7 @@ def 开始结界突破() :
         overX, overY = overAddress[random.randint(0, 9)].split(',')
         # 首先找到挑战坐标 点击  每次挑战坐标全部随机 最后打完刷新
         tempAddr = random.randint(0, 8)
-        if i % 10 == 0  or i % 16 == 0 or i % 28 == 0 :
+        if i % 10 == 0  or i % 19 == 0 or i % 28 == 0 :
 
             if successTotal == 9 :
                 totalAddress = []

@@ -55,7 +55,7 @@ for line in overFile.readlines():
 overFile.close()
 
 # 窗口句柄
-hwndBig = CommonUtils.getBigHwnd()
+hwndBig = CommonUtils.getSmallHwnd()
 def 开始结界突破() :
     while CommonUtils.openimages(开始无勋章, hwndBig) != 0 and CommonUtils.openimages(进攻, hwndBig) == 0:
         while CommonUtils.openimages(进攻, hwndBig) == 0:

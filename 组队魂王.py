@@ -58,7 +58,7 @@ def 开始组队魂土() :
         time.sleep(random.uniform(0.6, 1));
         CommonUtils.click_img_no_retry(御魂,hwndSmall)
         time.sleep(random.uniform(0.6, 1));
-        CommonUtils.click_img_no_retry(魂十, hwndSmall)
+        CommonUtils.click_img_no_retry(魂王, hwndSmall)
         time.sleep(random.uniform(0.6, 1));
         CommonUtils.click_img_no_retry(创建队伍, hwndSmall)
         time.sleep(random.uniform(0.6, 1));
@@ -68,7 +68,7 @@ def 开始组队魂土() :
         CommonUtils.邀请队友(hwndSmall,hwndBig)
     # 赋值完毕
 
-    # CommonUtils.打开御魂经验加成(hwndSmall,hwndBig)
+    CommonUtils.打开御魂经验(hwndSmall,hwndBig)
 
     for i in range(maxcount):
         print("------------------------")
@@ -128,7 +128,7 @@ def 开始组队魂土() :
             CommonUtils.click_img(自动接受邀请, hwndBig)
             time.sleep(random.uniform(0.6, 1));
     print('打完了')
-    # CommonUtils.关闭加成(hwndSmall, hwndBig)
+    CommonUtils.关闭加成(hwndSmall, hwndBig)
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置

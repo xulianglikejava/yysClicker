@@ -258,7 +258,7 @@ def 生成截图(hwnd):
     print(imgName)
     saveImg(hwnd,imgName)
 
-def 打开挖土加成(hwndSmall,hwndBig):
+def 打开御魂经验加成(hwndSmall,hwndBig):
     # 读取文件里的结算坐标
     clickAddress = []
     overFile = open(加成坐标,'r', encoding='utf-8')
@@ -304,10 +304,10 @@ def 打开挖土加成(hwndSmall,hwndBig):
     click_img_no_retry(加成按钮, hwndBig)
 
 
-def 关闭加成(hwndSmall,hwndBig):
+def 打开御魂加成(hwndSmall,hwndBig):
     # 读取文件里的结算坐标
     clickAddress = []
-    overFile = open(加成坐标, 'r', encoding='utf-8')
+    overFile = open(加成坐标,'r', encoding='utf-8')
     for line in overFile.readlines():
         line = line.strip('\n')
         clickAddress.append(line)
@@ -318,14 +318,33 @@ def 关闭加成(hwndSmall,hwndBig):
     itemXSmall, itemYSmall = clickAddress[3].split(',')
     itemXSmall = int(itemXSmall)
     itemYSmall = int(itemYSmall)
-    # 经验50%加成
-    exp50XSmall, exp50YSmall = clickAddress[5].split(',')
-    exp50XSmall = int(exp50XSmall)
-    exp50YSmall = int(exp50YSmall)
-    # 经验100%加成
-    exp100XSmall, exp100YSmall = clickAddress[7].split(',')
-    exp100XSmall = int(exp100XSmall)
-    exp100YSmall = int(exp100YSmall)
+    print("小号打开加成页面")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号打开加成页面")
+    click_img_no_retry(加成按钮, hwndBig)
+    time.sleep(random.uniform(0.6, 1));
+    if openimages(加成启动, hwndSmall) == 0:
+        print("小号打开御魂加成")
+        click_point(itemXSmall, itemYSmall, hwndSmall)
+    if openimages(加成启动, hwndBig) == 0:
+        print("大号打开御魂加成")
+        click_point(itemXSmall, itemYSmall, hwndBig)
+        time.sleep(random.uniform(0.6, 1));
+    print("小号关闭加成页面")
+    click_img_no_retry(加成按钮, hwndSmall)
+    print("大号关闭加成页面")
+    click_img_no_retry(加成按钮, hwndBig)
+
+
+def 关闭加成(hwndSmall,hwndBig):
+    # 读取文件里的结算坐标
+    clickAddress = []
+    overFile = open(加成坐标, 'r', encoding='utf-8')
+    for line in overFile.readlines():
+        line = line.strip('\n')
+        clickAddress.append(line)
+    # 赋值完毕
+    overFile.close()
     print("小号打开加成菜单")
     click_img_no_retry(加成按钮, hwndSmall)
     print("大号打开加成菜单")
