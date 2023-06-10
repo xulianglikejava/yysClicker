@@ -38,6 +38,9 @@ smallWaitTime = 2
 确定 = './image/通用图片/确定.png'
 自动接受邀请 = './image/通用图片/自动接受邀请.png'
 战斗中 = './image/通用图片/战斗中.png'
+返回 = './image/通用图片/返回.png'
+好友 = './image/通用图片/好友.png'
+聊天 = './image/通用图片/聊天.png'
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
 
@@ -112,14 +115,18 @@ def 开始组队魂土() :
         while CommonUtils.openimages(金币, hwndSmall) != 0 and CommonUtils.openimages(确定, hwndSmall) == 0:
             print("小号再点击结算")
             CommonUtils.click_point_random(overXSmall, overYSmall, hwndSmall)
-            time.sleep(random.uniform(0.5, 1));
+            if i == 1 :
+                time.sleep(random.uniform(1.5, 2));
+            else :
+                time.sleep(random.uniform(0.5, 1));
+
 
         while CommonUtils.openimages(金币, hwndBig) != 0 :
             print("大号再点击结算")
             CommonUtils.click_point_random(overXBig, overYBig, hwndBig)
             time.sleep(random.uniform(1.5, 2));
 
-        if i == 1 and CommonUtils.openimages(默认邀请队友, hwndSmall) != 0 and CommonUtils.openimages(确定, hwndSmall) != 0:
+        if i == 1 and CommonUtils.openimages(确定, hwndSmall) != 0 :
             print("自动邀请队友")
             CommonUtils.click_img(默认邀请队友, hwndSmall)
             time.sleep(random.uniform(0.2, 0.5));

@@ -38,6 +38,9 @@ smallWaitTime = 2
 确定 = './image/通用图片/确定.png'
 自动接受邀请 = './image/通用图片/自动接受邀请.png'
 战斗中 = './image/通用图片/战斗中.png'
+返回 = './image/通用图片/返回.png'
+好友 = './image/通用图片/好友.png'
+聊天 = './image/通用图片/聊天.png'
 hwndBig = CommonUtils.getBigHwnd()
 hwndSmall = CommonUtils.getSmallHwnd()
 
@@ -68,7 +71,7 @@ def 开始组队魂土() :
         CommonUtils.邀请队友(hwndSmall,hwndBig)
     # 赋值完毕
 
-    CommonUtils.打开御魂经验加成(hwndSmall,hwndBig)
+    # CommonUtils.打开御魂经验加成(hwndSmall,hwndBig)
 
     for i in range(maxcount):
         print("------------------------")
@@ -122,13 +125,13 @@ def 开始组队魂土() :
         if i == 1 and CommonUtils.openimages(默认邀请队友, hwndSmall) != 0 and CommonUtils.openimages(确定, hwndSmall) != 0:
             print("自动邀请队友")
             CommonUtils.click_img(默认邀请队友, hwndSmall)
-            time.sleep(random.uniform(0.2, 0.5));
+            time.sleep(random.uniform(0.8, 1.5));
             CommonUtils.click_img(确定, hwndSmall)
             time.sleep(random.uniform(0.6, 1));
             CommonUtils.click_img(自动接受邀请, hwndBig)
             time.sleep(random.uniform(0.6, 1));
     print('打完了')
-    CommonUtils.关闭加成(hwndSmall, hwndBig)
+    # CommonUtils.关闭加成(hwndSmall, hwndBig)
     end = datetime.datetime.now()
     print("总共耗时为：" + str(end - start) + " 秒")
     # os.system('shutdown -s -t 1')  # 1代表一秒内关机，可自行设置
