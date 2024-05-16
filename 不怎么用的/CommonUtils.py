@@ -45,7 +45,7 @@ def click_point(x,y,hwnd):
     # print("点击的坐标为：" + str(x) + "," + str(y))
     long_position = win32api.MAKELONG(x, y)
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONDOWN, win32con.MK_LBUTTON, long_position)
-    time.sleep(random.uniform(0.02 , 0.08))
+    time.sleep(random.uniform(0.08 , 0.20))
     win32api.SendMessage(hwnd, win32con.WM_LBUTTONUP, win32con.MK_LBUTTON, long_position)
 def click_point_random_clear(x,y,hwnd):
     # 模拟鼠标指针 传送到指定坐标
@@ -69,8 +69,8 @@ def makeimg(hwnd):
     后台截屏函数,并返回opencv的对象
     """
     left, top, right, bot = win32gui.GetWindowRect(hwnd)
-    width = right - left
-    height = bot - top
+    width = 540
+    height = 960
     # 返回句柄窗口的设备环境，覆盖整个窗口，包括非客户区，标题栏，菜单，边框
     hWndDC = win32gui.GetWindowDC(hwnd)
     # 创建设备描述表
@@ -103,8 +103,8 @@ def saveImg(hwnd,ImgName):
     后台截屏函数,并返回opencv的对象
     """
     left, top, right, bot = win32gui.GetWindowRect(hwnd)
-    width = right - left
-    height = bot - top
+    width = 540
+    height = 960
     # 返回句柄窗口的设备环境，覆盖整个窗口，包括非客户区，标题栏，菜单，边框
     hWndDC = win32gui.GetWindowDC(hwnd)
     # 创建设备描述表
@@ -234,7 +234,7 @@ def click_img_select_fz(img,hwnd):
 
 
 def getBigHwndMuMu():
-    hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+    hwnd = win32gui.FindWindow(0, "抖音-记录美好生活 - Google Chrome")
     return hwnd
 def getSmallHwndMuMu():
     hwnd = win32gui.FindWindow(0, "#N1 阴阳师 - MuMu模拟器")

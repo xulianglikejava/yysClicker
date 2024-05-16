@@ -21,27 +21,6 @@ def 生成截图(hwnd):
     print(imgName)
     CommonUtils.saveImg(hwnd, imgName)
 
-def 获取余额():
-    imgName = str(datetime.datetime.now()).split(".")[0].replace(" ", "_").replace(":", "_");
-    imgName = "钱.png"
-    CommonUtils.get_money(hwnd, imgName)
-def 点击():
-    hwnd_list = CommonUtils.getMuMu();
-    print(hwnd_list)
-    CommonUtils.click_img(阴阳师, hwnd_list[0])
-    生成截图(hwnd_list[1])
-    CommonUtils.click_img(阴阳师, hwnd_list[1])
-    # subprocess.run(['adb', 'connect', DEVICE_ID])
-    #
-    # # 等待连接建立
-    #
-    # # 构建adb命令
-    # adb_cmd = ['adb', '-s', DEVICE_ID, 'shell', 'input', 'tap', str(X_COORDINATE), str(Y_COORDINATE)]
-    #
-    # # 执行adb命令
-    # subprocess.run(adb_cmd)
 
-
-CommonUtils.打开挖土加成(hwndSmall, hwndBig)
-
+生成截图(CommonUtils.getBigHwnd())
 

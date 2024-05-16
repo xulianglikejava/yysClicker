@@ -1,6 +1,6 @@
 import win32gui
 
-hwnd = win32gui.FindWindow(0, "阴阳师 - MuMu模拟器")
+hwnd = win32gui.FindWindow(0, "雷电模拟器")
 
 
 
